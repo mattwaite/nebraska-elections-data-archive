@@ -1,0 +1,1274 @@
+{
+ "Statewide": [
+  {
+   "Total": 110852171,
+   "Republican": 537605,
+   "Democratic": 392344,
+   "Libertarian": 1790,
+   "Natural Law": 65,
+   "Green": 325,
+   "Nonpartisan": 153088
+  },
+  {
+   "Total": 110852171,
+   "Republican": 537605,
+   "Democratic": 3923441,
+   "Libertarian": 1790,
+   "Natural Law": 65,
+   "Green": 325,
+   "Nonpartisan": 153088
+  }
+ ],
+ "Adams": [
+  {
+   "Total": 49336,
+   "Republican": 10405,
+   "Democratic": 6336,
+   "Libertarian": 40,
+   "Natural Law": 0,
+   "Green": 8,
+   "Nonpartisan": 2547
+  },
+  {
+   "Total": 19336,
+   "Republican": 10405,
+   "Democratic": 6336,
+   "Libertarian": 40,
+   "Natural Law": 0,
+   "Green": 8,
+   "Nonpartisan": 2547
+  }
+ ],
+ "Banner": [
+  {
+   "Total": 571,
+   "Republican": 444,
+   "Democratic": 84,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 43
+  },
+  {
+   "Total": 571,
+   "Republican": 333,
+   "Democratic": 84,
+   "Libertarian": 65,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 17
+  }
+ ],
+ "Blaine": [
+  {
+   "Total": 433,
+   "Republican": 334,
+   "Democratic": 76,
+   "Libertarian": 0,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 22
+  }
+ ],
+ "Boone": [
+  {
+   "Total": 4181,
+   "Republican": 2343,
+   "Democratic": 1437,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 400
+  },
+  {
+   "Total": 4181,
+   "Republican": 4625,
+   "Democratic": 1437,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 400
+  }
+ ],
+ "Brown": [
+  {
+   "Total": 2444,
+   "Republican": 1756,
+   "Democratic": 465,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 218
+  },
+  {
+   "Total": 2441,
+   "Republican": 1202,
+   "Democratic": 548,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 133
+  },
+  {
+   "Total": 2441,
+   "Republican": 1756,
+   "Democratic": 465,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 218
+  }
+ ],
+ "Buffalo": [
+  {
+   "Total": 26710,
+   "Republican": 15119,
+   "Democratic": 7807,
+   "Libertarian": 50,
+   "Natural Law": 2,
+   "Green": 7,
+   "Nonpartisan": 3725
+  }
+ ],
+ "Burt": [
+  {
+   "Total": 5644,
+   "Republican": 2884,
+   "Democratic": 2030,
+   "Libertarian": 8,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 741
+  }
+ ],
+ "Butler": [
+  {
+   "Total": 6368,
+   "Republican": 2488,
+   "Democratic": 2950,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 925
+  },
+  {
+   "Total": 6368,
+   "Republican": 2486,
+   "Democratic": 2950,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 925
+  }
+ ],
+ "Cass": [
+  {
+   "Total": 16313,
+   "Republican": 7738,
+   "Democratic": 5813,
+   "Libertarian": 23,
+   "Natural Law": 0,
+   "Green": 3,
+   "Nonpartisan": 2738
+  },
+  {
+   "Total": 16313,
+   "Republican": 6368,
+   "Democratic": 7736,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 825
+  },
+  {
+   "Total": 16313,
+   "Republican": 7736,
+   "Democratic": 5813,
+   "Libertarian": 23,
+   "Natural Law": 0,
+   "Green": 3,
+   "Nonpartisan": 2738
+  }
+ ],
+ "Cedar": [
+  {
+   "Total": 6245,
+   "Republican": 2740,
+   "Democratic": 2870,
+   "Libertarian": 0,
+   "Natural Law": 2,
+   "Green": 0,
+   "Nonpartisan": 633
+  },
+  {
+   "Total": 6245,
+   "Republican": 2740,
+   "Democratic": 5813,
+   "Libertarian": 23,
+   "Natural Law": 0,
+   "Green": 3,
+   "Nonpartisan": 2738
+  }
+ ],
+ "Chase": [
+  {
+   "Total": 2864,
+   "Republican": 1813,
+   "Democratic": 837,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 214
+  }
+ ],
+ "Cheyenne": [
+  {
+   "Total": 6737,
+   "Republican": 3998,
+   "Democratic": 1879,
+   "Libertarian": 13,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 847
+  },
+  {
+   "Total": 8737,
+   "Republican": 3998,
+   "Democratic": 1879,
+   "Libertarian": 13,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 847
+  }
+ ],
+ "Clay": [
+  {
+   "Total": 4881,
+   "Republican": 2911,
+   "Democratic": 1412,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 557
+  },
+  {
+   "Total": 4881,
+   "Republican": 2911,
+   "Democratic": 1412,
+   "Libertarian": 1,
+   "Natural Law": 8,
+   "Green": 0,
+   "Nonpartisan": 957
+  },
+  {
+   "Total": 4881,
+   "Republican": 2911,
+   "Democratic": 1412,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 8,
+   "Nonpartisan": 557
+  }
+ ],
+ "Colfax": [
+  {
+   "Total": 5445,
+   "Republican": 2440,
+   "Democratic": 2523,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 480
+  }
+ ],
+ "Custer": [
+  {
+   "Total": 8826,
+   "Republican": 5618,
+   "Democratic": 2310,
+   "Libertarian": 4,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 894
+  },
+  {
+   "Total": 6593,
+   "Republican": 8826,
+   "Democratic": 1877,
+   "Libertarian": 12,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 589
+  }
+ ],
+ "Dawes": [
+  {
+   "Total": 5624,
+   "Republican": 3426,
+   "Democratic": 1384,
+   "Libertarian": 18,
+   "Natural Law": 6,
+   "Green": 2,
+   "Nonpartisan": 788
+  },
+  {
+   "Total": 5624,
+   "Republican": 3428,
+   "Democratic": 1384,
+   "Libertarian": 8,
+   "Natural Law": 8,
+   "Green": 2,
+   "Nonpartisan": 788
+  }
+ ],
+ "Dawson": [
+  {
+   "Total": 12665,
+   "Republican": 7412,
+   "Democratic": 3759,
+   "Libertarian": 16,
+   "Natural Law": 0,
+   "Green": 9,
+   "Nonpartisan": 1478
+  },
+  {
+   "Total": 12665,
+   "Republican": 7412,
+   "Democratic": 3759,
+   "Libertarian": 16,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 1478
+  },
+  {
+   "Total": 3274,
+   "Republican": 2,
+   "Democratic": 662,
+   "Libertarian": 435,
+   "Natural Law": 10,
+   "Green": 0,
+   "Nonpartisan": 3711
+  }
+ ],
+ "Deuel": [
+  {
+   "Total": 1465,
+   "Republican": 1012,
+   "Democratic": 260,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 190
+  },
+  {
+   "Total": 12665,
+   "Republican": 1465,
+   "Democratic": 7412,
+   "Libertarian": 3759,
+   "Natural Law": 16,
+   "Green": 0,
+   "Nonpartisan": 1478
+  },
+  {
+   "Total": 1465,
+   "Republican": 1012,
+   "Democratic": 260,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 180
+  }
+ ],
+ "Fillmore": [
+  {
+   "Total": 4526,
+   "Republican": 2399,
+   "Democratic": 1632,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 494
+  },
+  {
+   "Total": 4526,
+   "Republican": 2398,
+   "Democratic": 1632,
+   "Libertarian": 8,
+   "Natural Law": 8,
+   "Green": 1,
+   "Nonpartisan": 494
+  }
+ ],
+ "Franklin": [
+  {
+   "Total": 2591,
+   "Republican": 1517,
+   "Democratic": 803,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 6,
+   "Nonpartisan": 270
+  },
+  {
+   "Total": 2591,
+   "Republican": 1517,
+   "Democratic": 803,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 270
+  }
+ ],
+ "Furnas": [
+  {
+   "Total": 4082,
+   "Republican": 2436,
+   "Democratic": 1180,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 466
+  }
+ ],
+ "Garden": [
+  {
+   "Total": 1794,
+   "Republican": 1300,
+   "Democratic": 336,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 157
+  },
+  {
+   "Total": 4794,
+   "Republican": 1300,
+   "Democratic": 336,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 157
+  }
+ ],
+ "Hayes": [
+  {
+   "Total": 793,
+   "Republican": 695,
+   "Democratic": 151,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 47
+  },
+  {
+   "Total": 793,
+   "Republican": 595,
+   "Democratic": 151,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 47
+  }
+ ],
+ "Cherry": [
+  {
+   "Total": 4470,
+   "Republican": 3076,
+   "Democratic": 1058,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 323
+  },
+  {
+   "Total": 4470,
+   "Republican": 3078,
+   "Democratic": 71088,
+   "Libertarian": 837,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 214
+  },
+  {
+   "Total": 4470,
+   "Republican": 3078,
+   "Democratic": 1068,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 323
+  }
+ ],
+ "Dakota": [
+  {
+   "Total": 9144,
+   "Republican": 3621,
+   "Democratic": 3887,
+   "Libertarian": 16,
+   "Natural Law": 1,
+   "Green": 1,
+   "Nonpartisan": 1618
+  }
+ ],
+ "Dixon": [
+  {
+   "Total": 4109,
+   "Republican": 2123,
+   "Democratic": 1471,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 512
+  }
+ ],
+ "Greeley": [
+  {
+   "Total": 1944,
+   "Republican": 651,
+   "Democratic": 1188,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 104
+  }
+ ],
+ "Holt": [
+  {
+   "Total": 8162,
+   "Republican": 5151,
+   "Democratic": 2248,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 760
+  }
+ ],
+ "Arthur": [
+  {
+   "Total": 333,
+   "Republican": 250,
+   "Democratic": 65,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 17
+  }
+ ],
+ "Frontier": [
+  {
+   "Total": 2038,
+   "Republican": 1382,
+   "Democratic": 477,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 179
+  }
+ ],
+ "Gage": [
+  {
+   "Total": 15638,
+   "Republican": 7611,
+   "Democratic": 5787,
+   "Libertarian": 21,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 2218
+  }
+ ],
+ "Hamilton": [
+  {
+   "Total": 6405,
+   "Republican": 4030,
+   "Democratic": 1864,
+   "Libertarian": 8,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 702
+  },
+  {
+   "Total": 6405,
+   "Republican": 4030,
+   "Democratic": 1664,
+   "Libertarian": 8,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 702
+  }
+ ],
+ "Boyd": [
+  {
+   "Total": 1884,
+   "Republican": 7202,
+   "Democratic": 548,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 133
+  }
+ ],
+ "Dodge": [
+  {
+   "Total": 21790,
+   "Republican": 10866,
+   "Democratic": 7771,
+   "Libertarian": 41,
+   "Natural Law": 0,
+   "Green": 2,
+   "Nonpartisan": 3110
+  }
+ ],
+ "Douglas": [
+  {
+   "Total": 284998,
+   "Republican": 121384,
+   "Democratic": 117169,
+   "Libertarian": 660,
+   "Natural Law": 14,
+   "Green": 112,
+   "Nonpartisan": 45659
+  }
+ ],
+ "Garfield": [
+  {
+   "Total": 1392,
+   "Republican": 7008,
+   "Democratic": 311,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 72
+  }
+ ],
+ "Grant": [
+  {
+   "Total": 524,
+   "Republican": 400,
+   "Democratic": 92,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 32
+  }
+ ],
+ "Harlan": [
+  {
+   "Total": 2687,
+   "Republican": 1578,
+   "Democratic": 890,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 219
+  }
+ ],
+ "Howard": [
+  {
+   "Total": 4595,
+   "Republican": 2190,
+   "Democratic": 1965,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 440
+  },
+  {
+   "Total": 4505,
+   "Republican": 2190,
+   "Democratic": 1965,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 440
+  }
+ ],
+ "Jefferson": [
+  {
+   "Total": 5792,
+   "Republican": 3067,
+   "Democratic": 2014,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 709
+  }
+ ],
+ "Kearney": [
+  {
+   "Total": 4715,
+   "Republican": 2776,
+   "Democratic": 1399,
+   "Libertarian": 4,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 535
+  }
+ ],
+ "Keith": [
+  {
+   "Total": 6139,
+   "Republican": 3734,
+   "Democratic": 1560,
+   "Libertarian": 4,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 843
+  },
+  {
+   "Total": 6139,
+   "Republican": 3734,
+   "Democratic": 1560,
+   "Libertarian": 4,
+   "Natural Law": 0,
+   "Green": 4,
+   "Nonpartisan": 843
+  }
+ ],
+ "Kimball": [
+  {
+   "Total": 2843,
+   "Republican": 1832,
+   "Democratic": 710,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 299
+  }
+ ],
+ "Knox": [
+  {
+   "Total": 6140,
+   "Republican": 3058,
+   "Democratic": 2393,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 689
+  }
+ ],
+ "Lancaster": [
+  {
+   "Total": 157930,
+   "Republican": 69170,
+   "Democratic": 62941,
+   "Libertarian": 331,
+   "Natural Law": 18,
+   "Green": 153,
+   "Nonpartisan": 25317
+  },
+  {
+   "Total": 157930,
+   "Republican": 69170,
+   "Democratic": 62944,
+   "Libertarian": 331,
+   "Natural Law": 18,
+   "Green": 153,
+   "Nonpartisan": 25317
+  },
+  {
+   "Total": 157930,
+   "Republican": 69170,
+   "Democratic": 62041,
+   "Libertarian": 331,
+   "Natural Law": 18,
+   "Green": 153,
+   "Nonpartisan": 25317
+  }
+ ],
+ "Lincoln": [
+  {
+   "Total": 23814,
+   "Republican": 12021,
+   "Democratic": 8918,
+   "Libertarian": 27,
+   "Natural Law": 5,
+   "Green": 4,
+   "Nonpartisan": 2839
+  }
+ ],
+ "Loup": [
+  {
+   "Total": 526,
+   "Republican": 369,
+   "Democratic": 125,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 32
+  }
+ ],
+ "McPherson": [
+  {
+   "Total": 387,
+   "Republican": 287,
+   "Democratic": 91,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 7
+  }
+ ],
+ "Merrick": [
+  {
+   "Total": 5639,
+   "Republican": 3332,
+   "Democratic": 1772,
+   "Libertarian": 4,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 531
+  },
+  {
+   "Total": 5639,
+   "Republican": 3332,
+   "Democratic": 287,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 7
+  }
+ ],
+ "Nance": [
+  {
+   "Total": 2680,
+   "Republican": 1189,
+   "Democratic": 1267,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 223
+  },
+  {
+   "Total": 2680,
+   "Republican": 1189,
+   "Democratic": 1267,
+   "Libertarian": 4,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 223
+  }
+ ],
+ "Nuckolls": [
+  {
+   "Total": 3739,
+   "Republican": 1907,
+   "Democratic": 1502,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 2,
+   "Nonpartisan": 327
+  },
+  {
+   "Total": 217,
+   "Republican": 3730,
+   "Democratic": 1907,
+   "Libertarian": 1502,
+   "Natural Law": 7,
+   "Green": 0,
+   "Nonpartisan": 0
+  }
+ ],
+ "Pawnee": [
+  {
+   "Total": 2135,
+   "Republican": 1124,
+   "Democratic": 808,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 202
+  }
+ ],
+ "Perkins": [
+  {
+   "Total": 2194,
+   "Republican": 1276,
+   "Democratic": 665,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 250
+  },
+  {
+   "Total": 21614,
+   "Republican": 1276,
+   "Democratic": 665,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 8,
+   "Nonpartisan": 250
+  },
+  {
+   "Total": 2194,
+   "Republican": 1276,
+   "Democratic": 665,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 9,
+   "Nonpartisan": 250
+  }
+ ],
+ "Phelps": [
+  {
+   "Total": 7000,
+   "Republican": 4482,
+   "Democratic": 1830,
+   "Libertarian": 5,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 683
+  },
+  {
+   "Total": 7000,
+   "Republican": 4482,
+   "Democratic": 1276,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 250
+  }
+ ],
+ "Polk": [
+  {
+   "Total": 3863,
+   "Republican": 2303,
+   "Democratic": 1163,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 395
+  },
+  {
+   "Total": 3863,
+   "Republican": 2303,
+   "Democratic": 4163,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 395
+  }
+ ],
+ "Red Willow": [
+  {
+   "Total": 7917,
+   "Republican": 4589,
+   "Democratic": 2174,
+   "Libertarian": 14,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 1140
+  }
+ ],
+ "Rock": [
+  {
+   "Total": 1185,
+   "Republican": 871,
+   "Democratic": 237,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 76
+  }
+ ],
+ "Saline": [
+  {
+   "Total": 8461,
+   "Republican": 3023,
+   "Democratic": 4442,
+   "Libertarian": 5,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 991
+  },
+  {
+   "Total": 8461,
+   "Republican": 3023,
+   "Democratic": 4442,
+   "Libertarian": 5,
+   "Natural Law": 6,
+   "Green": 0,
+   "Nonpartisan": 991
+  },
+  {
+   "Total": 8461,
+   "Republican": 3023,
+   "Democratic": 4442,
+   "Libertarian": 5,
+   "Natural Law": 9,
+   "Green": 0,
+   "Nonpartisan": 991
+  }
+ ],
+ "Sarpy": [
+  {
+   "Total": 71106,
+   "Republican": 34977,
+   "Democratic": 23457,
+   "Libertarian": 170,
+   "Natural Law": 5,
+   "Green": 11,
+   "Nonpartisan": 12486
+  }
+ ],
+ "Saunders": [
+  {
+   "Total": 13663,
+   "Republican": 6278,
+   "Democratic": 5786,
+   "Libertarian": 12,
+   "Natural Law": 4,
+   "Green": 6,
+   "Nonpartisan": 1586
+  }
+ ],
+ "Scotts Bluff": [
+  {
+   "Total": 23732,
+   "Republican": 42558,
+   "Democratic": 7720,
+   "Libertarian": 32,
+   "Natural Law": 4,
+   "Green": 2,
+   "Nonpartisan": 3419
+  },
+  {
+   "Total": 23722,
+   "Republican": 12558,
+   "Democratic": 7720,
+   "Libertarian": 32,
+   "Natural Law": 1,
+   "Green": 2,
+   "Nonpartisan": 3419
+  },
+  {
+   "Total": 23732,
+   "Republican": 12558,
+   "Democratic": 7720,
+   "Libertarian": 32,
+   "Natural Law": 4,
+   "Green": 2,
+   "Nonpartisan": 3419
+  }
+ ],
+ "Sioux": [
+  {
+   "Total": 1102,
+   "Republican": 758,
+   "Democratic": 213,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 431
+  }
+ ],
+ "Stanton": [
+  {
+   "Total": 4079,
+   "Republican": 2760,
+   "Democratic": 938,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 379
+  }
+ ],
+ "Thurston": [
+  {
+   "Total": 4117,
+   "Republican": 1354,
+   "Democratic": 2408,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 355
+  }
+ ],
+ "Valley": [
+  {
+   "Total": 3462,
+   "Republican": 2012,
+   "Democratic": 1141,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 305
+  }
+ ],
+ "York": [
+  {
+   "Total": 10590,
+   "Republican": 7105,
+   "Democratic": 2414,
+   "Libertarian": 4,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 1066
+  },
+  {
+   "Total": 10580,
+   "Republican": 7105,
+   "Democratic": 2414,
+   "Libertarian": 4,
+   "Natural Law": 1,
+   "Green": 90,
+   "Nonpartisan": 1066
+  }
+ ],
+ "Pierce": [
+  {
+   "Total": 4956,
+   "Republican": 3152,
+   "Democratic": 1364,
+   "Libertarian": 0,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 439
+  }
+ ],
+ "Morrill": [
+  {
+   "Total": 2314,
+   "Republican": 1772,
+   "Democratic": 4,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 462,
+   "Nonpartisan": 531
+  }
+ ],
+ "Sheridan": [
+  {
+   "Total": 4498,
+   "Republican": 3008,
+   "Democratic": 3733,
+   "Libertarian": 1046,
+   "Natural Law": 10,
+   "Green": 4,
+   "Nonpartisan": 1464
+  },
+  {
+   "Total": 4498,
+   "Republican": 3008,
+   "Democratic": 1046,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 438
+  }
+ ],
+ "Johnson": [
+  {
+   "Total": 3477,
+   "Republican": 1692,
+   "Democratic": 1423,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 359
+  },
+  {
+   "Total": 3477,
+   "Republican": 1892,
+   "Democratic": 1423,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 359
+  }
+ ],
+ "Madison": [
+  {
+   "Total": 21237,
+   "Republican": 412899,
+   "Democratic": 5749,
+   "Libertarian": 17,
+   "Natural Law": 41,
+   "Green": 0,
+   "Nonpartisan": 2574
+  },
+  {
+   "Total": 21237,
+   "Republican": 412899,
+   "Democratic": 5749,
+   "Libertarian": 17,
+   "Natural Law": 1,
+   "Green": 0,
+   "Nonpartisan": 2571
+  }
+ ],
+ "Nemaha": [
+  {
+   "Total": 5217,
+   "Republican": 2754,
+   "Democratic": 1850,
+   "Libertarian": 7,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 606
+  }
+ ],
+ "Washington": [
+  {
+   "Total": 42807,
+   "Republican": 7279,
+   "Democratic": 3649,
+   "Libertarian": 42,
+   "Natural Law": 2,
+   "Green": 1,
+   "Nonpartisan": 1864
+  },
+  {
+   "Total": 12807,
+   "Republican": 7279,
+   "Democratic": 3649,
+   "Libertarian": 12,
+   "Natural Law": 2,
+   "Green": 1,
+   "Nonpartisan": 1864
+  }
+ ],
+ "Wayne": [
+  {
+   "Total": 6546,
+   "Republican": 3802,
+   "Democratic": 1718,
+   "Libertarian": 7,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 1019
+  }
+ ],
+ "Wheeler": [
+  {
+   "Total": 614,
+   "Republican": 360,
+   "Democratic": 207,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 47
+  }
+ ],
+ "Richardson": [
+  {
+   "Total": 6825,
+   "Republican": 3434,
+   "Democratic": 2667,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Green": 0,
+   "Nonpartisan": 718
+  }
+ ],
+ "Seward": [
+  {
+   "Total": 10459,
+   "Republican": 5251,
+   "Democratic": 3733,
+   "Libertarian": 10,
+   "Natural Law": 0,
+   "Green": 1,
+   "Nonpartisan": 1464
+  }
+ ]
+}

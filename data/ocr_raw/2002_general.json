@@ -1,0 +1,57 @@
+{
+ "Antelope": [
+  {
+   "precincts": 43,
+   "Total": 4694,
+   "Republican": 2985,
+   "Democratic": 1344,
+   "Libertarian": 2,
+   "Nonpartisan": 363,
+   "Nebraska Party": 0
+  }
+ ],
+ "Banner": [
+  {
+   "precincts": 4,
+   "Total": 566,
+   "Republican": 464,
+   "Democratic": 61,
+   "Libertarian": 0,
+   "Nonpartisan": 41,
+   "Nebraska Party": 0
+  }
+ ],
+ "Buffalo": [
+  {
+   "precincts": 35,
+   "Total": 26733,
+   "Republican": 15481,
+   "Democratic": 7450,
+   "Libertarian": 97,
+   "Nonpartisan": 3674,
+   "Nebraska Party": 3
+  }
+ ],
+ "Garden": [
+  {
+   "precincts": 28,
+   "Total": 15997,
+   "Republican": 7762,
+   "Democratic": 5827,
+   "Libertarian": 41,
+   "Nonpartisan": 2340,
+   "Nebraska Party": 27
+  }
+ ],
+ "Boone": [
+  {
+   "precincts": 9,
+   "Total": 4169,
+   "Republican": 2468,
+   "Democratic": 1349,
+   "Libertarian": 1,
+   "Nonpartisan": 350,
+   "Nebraska Party": 1
+  }
+ ]
+}

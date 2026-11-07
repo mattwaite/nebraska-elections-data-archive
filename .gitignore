@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+# intermediate OCR page images (regenerable; the JSON candidates beside them are kept)
+data/ocr_raw*/_png/

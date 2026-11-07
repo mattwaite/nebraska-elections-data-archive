@@ -1,0 +1,1129 @@
+{
+ "Adams": [
+  {
+   "Polling Place": 11034,
+   "Military & Overseas": 5,
+   "Early/Absentee": 1607,
+   "New/Former Resident": 7,
+   "Total": 12653
+  },
+  {
+   "Polling Place": 11034,
+   "Military & Overseas": 3,
+   "Early/Absentee": 1607,
+   "New/Former Resident": 7,
+   "Total": 12653
+  }
+ ],
+ "Antelope": [
+  {
+   "Polling Place": 3083,
+   "Military & Overseas": 5,
+   "Early/Absentee": 343,
+   "New/Former Resident": 0,
+   "Total": 3431
+  },
+  {
+   "Polling Place": 3083,
+   "Military & Overseas": 3,
+   "Early/Absentee": 343,
+   "New/Former Resident": 0,
+   "Total": 3431
+  }
+ ],
+ "Blaine": [
+  {
+   "Polling Place": 293,
+   "Military & Overseas": 0,
+   "Early/Absentee": 62,
+   "New/Former Resident": 0,
+   "Total": 355
+  }
+ ],
+ "Boone": [
+  {
+   "Polling Place": 2668,
+   "Military & Overseas": 12,
+   "Early/Absentee": 345,
+   "New/Former Resident": 4,
+   "Total": 3029
+  }
+ ],
+ "Brown": [
+  {
+   "Polling Place": 1462,
+   "Military & Overseas": 0,
+   "Early/Absentee": 259,
+   "New/Former Resident": 0,
+   "Total": 1721
+  }
+ ],
+ "Buffalo": [
+  {
+   "Polling Place": 14720,
+   "Military & Overseas": 2,
+   "Early/Absentee": 1931,
+   "New/Former Resident": 10,
+   "Total": 16663
+  }
+ ],
+ "Burt": [
+  {
+   "Polling Place": 3114,
+   "Military & Overseas": 11,
+   "Early/Absentee": 322,
+   "New/Former Resident": 0,
+   "Total": 3447
+  }
+ ],
+ "Butler": [
+  {
+   "Polling Place": 3475,
+   "Military & Overseas": 2,
+   "Early/Absentee": 423,
+   "New/Former Resident": 1,
+   "Total": 3901
+  }
+ ],
+ "Cass": [
+  {
+   "Polling Place": 9390,
+   "Military & Overseas": 23,
+   "Early/Absentee": 1040,
+   "New/Former Resident": 1,
+   "Total": 10454
+  },
+  {
+   "Polling Place": 3475,
+   "Military & Overseas": 2,
+   "Early/Absentee": 1040,
+   "New/Former Resident": 423,
+   "Total": 3901
+  }
+ ],
+ "Cedar": [
+  {
+   "Polling Place": 3870,
+   "Military & Overseas": 1,
+   "Early/Absentee": 517,
+   "New/Former Resident": 0,
+   "Total": 4388
+  },
+  {
+   "Polling Place": 3870,
+   "Military & Overseas": 1,
+   "Early/Absentee": 317,
+   "New/Former Resident": 0,
+   "Total": 4388
+  }
+ ],
+ "Chase": [
+  {
+   "Polling Place": 1639,
+   "Military & Overseas": 1,
+   "Early/Absentee": 254,
+   "New/Former Resident": 0,
+   "Total": 1894
+  }
+ ],
+ "Cheyenne": [
+  {
+   "Polling Place": 3574,
+   "Military & Overseas": 6,
+   "Early/Absentee": 677,
+   "New/Former Resident": 6,
+   "Total": 4263
+  }
+ ],
+ "Clay": [
+  {
+   "Polling Place": 2916,
+   "Military & Overseas": 9,
+   "Early/Absentee": 383,
+   "New/Former Resident": 0,
+   "Total": 3308
+  }
+ ],
+ "Colfax": [
+  {
+   "Polling Place": 3112,
+   "Military & Overseas": 2,
+   "Early/Absentee": 316,
+   "New/Former Resident": 0,
+   "Total": 3430
+  }
+ ],
+ "Cuming": [
+  {
+   "Polling Place": 3821,
+   "Military & Overseas": 4,
+   "Early/Absentee": 519,
+   "New/Former Resident": 16,
+   "Total": 4360
+  },
+  {
+   "Polling Place": 312,
+   "Military & Overseas": 2,
+   "Early/Absentee": 316,
+   "New/Former Resident": 0,
+   "Total": 3430
+  }
+ ],
+ "Dakota": [
+  {
+   "Polling Place": 5520,
+   "Military & Overseas": 16,
+   "Early/Absentee": 627,
+   "New/Former Resident": 3,
+   "Total": 6166
+  },
+  {
+   "Polling Place": 4870,
+   "Military & Overseas": 0,
+   "Early/Absentee": 736,
+   "New/Former Resident": 3,
+   "Total": 5609
+  }
+ ],
+ "Dawes": [
+  {
+   "Polling Place": 3274,
+   "Military & Overseas": 2,
+   "Early/Absentee": 435,
+   "New/Former Resident": 0,
+   "Total": 3711
+  },
+  {
+   "Polling Place": 3520,
+   "Military & Overseas": 16,
+   "Early/Absentee": 627,
+   "New/Former Resident": 3,
+   "Total": 6166
+  },
+  {
+   "Polling Place": 3520,
+   "Military & Overseas": 16,
+   "Early/Absentee": 27,
+   "New/Former Resident": 3,
+   "Total": 6166
+  }
+ ],
+ "Dawson": [
+  {
+   "Polling Place": 6967,
+   "Military & Overseas": 0,
+   "Early/Absentee": 662,
+   "New/Former Resident": 10,
+   "Total": 7639
+  }
+ ],
+ "Dixon": [
+  {
+   "Polling Place": 2565,
+   "Military & Overseas": 5,
+   "Early/Absentee": 285,
+   "New/Former Resident": 2,
+   "Total": 2857
+  },
+  {
+   "Polling Place": 2565,
+   "Military & Overseas": 3,
+   "Early/Absentee": 285,
+   "New/Former Resident": 2,
+   "Total": 2857
+  }
+ ],
+ "Dodge": [
+  {
+   "Polling Place": 13127,
+   "Military & Overseas": 2,
+   "Early/Absentee": 1717,
+   "New/Former Resident": 4,
+   "Total": 14850
+  },
+  {
+   "Polling Place": 2565,
+   "Military & Overseas": 5,
+   "Early/Absentee": 285,
+   "New/Former Resident": 2,
+   "Total": 2857
+  }
+ ],
+ "Douglas": [
+  {
+   "Polling Place": 165353,
+   "Military & Overseas": 27,
+   "Early/Absentee": 19914,
+   "New/Former Resident": 30,
+   "Total": 185324
+  },
+  {
+   "Polling Place": 13127,
+   "Military & Overseas": 2,
+   "Early/Absentee": 177,
+   "New/Former Resident": 4,
+   "Total": 14850
+  }
+ ],
+ "Dundy": [
+  {
+   "Polling Place": 902,
+   "Military & Overseas": 0,
+   "Early/Absentee": 137,
+   "New/Former Resident": 0,
+   "Total": 1039
+  }
+ ],
+ "Fillmore": [
+  {
+   "Polling Place": 2810,
+   "Military & Overseas": 4,
+   "Early/Absentee": 243,
+   "New/Former Resident": 2,
+   "Total": 3059
+  }
+ ],
+ "Franklin": [
+  {
+   "Polling Place": 1507,
+   "Military & Overseas": 1,
+   "Early/Absentee": 226,
+   "New/Former Resident": 0,
+   "Total": 1734
+  }
+ ],
+ "Frontier": [
+  {
+   "Polling Place": 1283,
+   "Military & Overseas": 2,
+   "Early/Absentee": 126,
+   "New/Former Resident": 0,
+   "Total": 1411
+  },
+  {
+   "Polling Place": 1507,
+   "Military & Overseas": 1,
+   "Early/Absentee": 226,
+   "New/Former Resident": 0,
+   "Total": 1734
+  }
+ ],
+ "Furnas": [
+  {
+   "Polling Place": 2257,
+   "Military & Overseas": 0,
+   "Early/Absentee": 275,
+   "New/Former Resident": 2,
+   "Total": 2534
+  }
+ ],
+ "Gage": [
+  {
+   "Polling Place": 8604,
+   "Military & Overseas": 6,
+   "Early/Absentee": 1035,
+   "New/Former Resident": 9,
+   "Total": 9645
+  },
+  {
+   "Polling Place": 8604,
+   "Military & Overseas": 6,
+   "Early/Absentee": 1035,
+   "New/Former Resident": 0,
+   "Total": 9645
+  }
+ ],
+ "Garden": [
+  {
+   "Polling Place": 1056,
+   "Military & Overseas": 0,
+   "Early/Absentee": 204,
+   "New/Former Resident": 0,
+   "Total": 1260
+  }
+ ],
+ "Garfield": [
+  {
+   "Polling Place": 994,
+   "Military & Overseas": 0,
+   "Early/Absentee": 98,
+   "New/Former Resident": 0,
+   "Total": 1092
+  }
+ ],
+ "Gosper": [
+  {
+   "Polling Place": 923,
+   "Military & Overseas": 0,
+   "Early/Absentee": 108,
+   "New/Former Resident": 0,
+   "Total": 1031
+  }
+ ],
+ "Greeley": [
+  {
+   "Polling Place": 1190,
+   "Military & Overseas": 0,
+   "Early/Absentee": 178,
+   "New/Former Resident": 0,
+   "Total": 1368
+  }
+ ],
+ "Hall": [
+  {
+   "Polling Place": 16458,
+   "Military & Overseas": 41,
+   "Early/Absentee": 2543,
+   "New/Former Resident": 2,
+   "Total": 19044
+  }
+ ],
+ "Harlan": [
+  {
+   "Polling Place": 1686,
+   "Military & Overseas": 0,
+   "Early/Absentee": 200,
+   "New/Former Resident": 6,
+   "Total": 1886
+  },
+  {
+   "Polling Place": 1686,
+   "Military & Overseas": 0,
+   "Early/Absentee": 200,
+   "New/Former Resident": 0,
+   "Total": 1886
+  }
+ ],
+ "Hayes": [
+  {
+   "Polling Place": 480,
+   "Military & Overseas": 0,
+   "Early/Absentee": 101,
+   "New/Former Resident": 0,
+   "Total": 581
+  },
+  {
+   "Polling Place": 480,
+   "Military & Overseas": 9,
+   "Early/Absentee": 101,
+   "New/Former Resident": 0,
+   "Total": 581
+  }
+ ],
+ "Holt": [
+  {
+   "Polling Place": 4536,
+   "Military & Overseas": 3,
+   "Early/Absentee": 604,
+   "New/Former Resident": 0,
+   "Total": 3143
+  },
+  {
+   "Polling Place": 4536,
+   "Military & Overseas": 3,
+   "Early/Absentee": 604,
+   "New/Former Resident": 0,
+   "Total": 5143
+  }
+ ],
+ "Arthur": [
+  {
+   "Polling Place": 231,
+   "Military & Overseas": 0,
+   "Early/Absentee": 44,
+   "New/Former Resident": 0,
+   "Total": 275
+  }
+ ],
+ "Banner": [
+  {
+   "Polling Place": 400,
+   "Military & Overseas": 0,
+   "Early/Absentee": 62,
+   "New/Former Resident": 0,
+   "Total": 462
+  }
+ ],
+ "Boyd": [
+  {
+   "Polling Place": 1104,
+   "Military & Overseas": 0,
+   "Early/Absentee": 153,
+   "New/Former Resident": 4,
+   "Total": 1261
+  }
+ ],
+ "Cherry": [
+  {
+   "Polling Place": 2433,
+   "Military & Overseas": 2,
+   "Early/Absentee": 448,
+   "New/Former Resident": 0,
+   "Total": 2883
+  }
+ ],
+ "Deuel": [
+  {
+   "Polling Place": 922,
+   "Military & Overseas": 4,
+   "Early/Absentee": 144,
+   "New/Former Resident": 0,
+   "Total": 1070
+  }
+ ],
+ "Hitchcock": [
+  {
+   "Polling Place": 1336,
+   "Military & Overseas": 1,
+   "Early/Absentee": 185,
+   "New/Former Resident": 0,
+   "Total": 1522
+  }
+ ],
+ "Custer": [
+  {
+   "Polling Place": 3821,
+   "Military & Overseas": 4,
+   "Early/Absentee": 519,
+   "New/Former Resident": 16,
+   "Total": 4360
+  }
+ ],
+ "Grant": [
+  {
+   "Polling Place": 350,
+   "Military & Overseas": 0,
+   "Early/Absentee": 41,
+   "New/Former Resident": 0,
+   "Total": 391
+  }
+ ],
+ "Hamilton": [
+  {
+   "Polling Place": 3962,
+   "Military & Overseas": 1,
+   "Early/Absentee": 622,
+   "New/Former Resident": 16,
+   "Total": 4601
+  }
+ ],
+ "Statewide": [
+  {
+   "Polling Place": 625557,
+   "Military & Overseas": 851,
+   "Early/Absentee": 80452,
+   "New/Former Resident": 363,
+   "Total": 707223
+  },
+  {
+   "Polling Place": 625557,
+   "Military & Overseas": 9851,
+   "Early/Absentee": 80452,
+   "New/Former Resident": 363,
+   "Total": 707223
+  }
+ ],
+ "Howard": [
+  {
+   "Polling Place": 2462,
+   "Military & Overseas": 4,
+   "Early/Absentee": 388,
+   "New/Former Resident": 1,
+   "Total": 2855
+  }
+ ],
+ "Jefferson": [
+  {
+   "Polling Place": 3370,
+   "Military & Overseas": 14,
+   "Early/Absentee": 548,
+   "New/Former Resident": 0,
+   "Total": 3932
+  },
+  {
+   "Polling Place": 3370,
+   "Military & Overseas": 14,
+   "Early/Absentee": 548,
+   "New/Former Resident": 7,
+   "Total": 3932
+  },
+  {
+   "Polling Place": 3370,
+   "Military & Overseas": 14,
+   "Early/Absentee": 348,
+   "New/Former Resident": 0,
+   "Total": 3932
+  }
+ ],
+ "Kearney": [
+  {
+   "Polling Place": 2806,
+   "Military & Overseas": 20,
+   "Early/Absentee": 331,
+   "New/Former Resident": 0,
+   "Total": 3157
+  }
+ ],
+ "Keith": [
+  {
+   "Polling Place": 3400,
+   "Military & Overseas": 0,
+   "Early/Absentee": 487,
+   "New/Former Resident": 14,
+   "Total": 3901
+  }
+ ],
+ "Keya Paha": [
+  {
+   "Polling Place": 470,
+   "Military & Overseas": 1,
+   "Early/Absentee": 54,
+   "New/Former Resident": 1,
+   "Total": 526
+  }
+ ],
+ "Kimball": [
+  {
+   "Polling Place": 1602,
+   "Military & Overseas": 4,
+   "Early/Absentee": 242,
+   "New/Former Resident": 2,
+   "Total": 1850
+  }
+ ],
+ "Lancaster": [
+  {
+   "Polling Place": 95930,
+   "Military & Overseas": 356,
+   "Early/Absentee": 11537,
+   "New/Former Resident": 48,
+   "Total": 107871
+  },
+  {
+   "Polling Place": 3637,
+   "Military & Overseas": 432,
+   "Early/Absentee": 48,
+   "New/Former Resident": 2,
+   "Total": 4082
+  }
+ ],
+ "Lincoln": [
+  {
+   "Polling Place": 12956,
+   "Military & Overseas": 40,
+   "Early/Absentee": 2360,
+   "New/Former Resident": 13,
+   "Total": 15369
+  }
+ ],
+ "Logan": [
+  {
+   "Polling Place": 358,
+   "Military & Overseas": 0,
+   "Early/Absentee": 57,
+   "New/Former Resident": 0,
+   "Total": 415
+  },
+  {
+   "Polling Place": 358,
+   "Military & Overseas": 0,
+   "Early/Absentee": 37,
+   "New/Former Resident": 0,
+   "Total": 415
+  }
+ ],
+ "Loup": [
+  {
+   "Polling Place": 331,
+   "Military & Overseas": 0,
+   "Early/Absentee": 52,
+   "New/Former Resident": 0,
+   "Total": 383
+  },
+  {
+   "Polling Place": 331,
+   "Military & Overseas": 0,
+   "Early/Absentee": 32,
+   "New/Former Resident": 0,
+   "Total": 383
+  }
+ ],
+ "Madison": [
+  {
+   "Polling Place": 11373,
+   "Military & Overseas": 21,
+   "Early/Absentee": 1633,
+   "New/Former Resident": 4,
+   "Total": 13031
+  }
+ ],
+ "McPherson": [
+  {
+   "Polling Place": 257,
+   "Military & Overseas": 0,
+   "Early/Absentee": 47,
+   "New/Former Resident": 1,
+   "Total": 305
+  },
+  {
+   "Polling Place": 11373,
+   "Military & Overseas": 21,
+   "Early/Absentee": 1633,
+   "New/Former Resident": 4,
+   "Total": 13031
+  }
+ ],
+ "Merrick": [
+  {
+   "Polling Place": 3003,
+   "Military & Overseas": 7,
+   "Early/Absentee": 380,
+   "New/Former Resident": 1,
+   "Total": 3391
+  },
+  {
+   "Polling Place": 3003,
+   "Military & Overseas": 7,
+   "Early/Absentee": 380,
+   "New/Former Resident": 1,
+   "Total": 3395
+  },
+  {
+   "Polling Place": 3003,
+   "Military & Overseas": 257,
+   "Early/Absentee": 0,
+   "New/Former Resident": 47,
+   "Total": 305
+  }
+ ],
+ "Morrill": [
+  {
+   "Polling Place": 1865,
+   "Military & Overseas": 1,
+   "Early/Absentee": 267,
+   "New/Former Resident": 2,
+   "Total": 2135
+  }
+ ],
+ "Nance": [
+  {
+   "Polling Place": 1482,
+   "Military & Overseas": 5,
+   "Early/Absentee": 250,
+   "New/Former Resident": 9,
+   "Total": 1737
+  },
+  {
+   "Polling Place": 1865,
+   "Military & Overseas": 1,
+   "Early/Absentee": 267,
+   "New/Former Resident": 2,
+   "Total": 2135
+  },
+  {
+   "Polling Place": 1482,
+   "Military & Overseas": 3,
+   "Early/Absentee": 250,
+   "New/Former Resident": 9,
+   "Total": 1737
+  }
+ ],
+ "Nuckolls": [
+  {
+   "Polling Place": 2171,
+   "Military & Overseas": 0,
+   "Early/Absentee": 335,
+   "New/Former Resident": 0,
+   "Total": 2506
+  }
+ ],
+ "Otoe": [
+  {
+   "Polling Place": 6070,
+   "Military & Overseas": 0,
+   "Early/Absentee": 696,
+   "New/Former Resident": 0,
+   "Total": 6766
+  }
+ ],
+ "Pawnee": [
+  {
+   "Polling Place": 1402,
+   "Military & Overseas": 0,
+   "Early/Absentee": 143,
+   "New/Former Resident": 0,
+   "Total": 1545
+  }
+ ],
+ "Perkins": [
+  {
+   "Polling Place": 1300,
+   "Military & Overseas": 0,
+   "Early/Absentee": 142,
+   "New/Former Resident": 0,
+   "Total": 1442
+  },
+  {
+   "Polling Place": 1300,
+   "Military & Overseas": 0,
+   "Early/Absentee": 42,
+   "New/Former Resident": 0,
+   "Total": 1442
+  }
+ ],
+ "Phelps": [
+  {
+   "Polling Place": 4121,
+   "Military & Overseas": 6,
+   "Early/Absentee": 578,
+   "New/Former Resident": 2,
+   "Total": 4707
+  }
+ ],
+ "Pierce": [
+  {
+   "Polling Place": 2905,
+   "Military & Overseas": 0,
+   "Early/Absentee": 359,
+   "New/Former Resident": 2,
+   "Total": 3266
+  },
+  {
+   "Polling Place": 2905,
+   "Military & Overseas": 0,
+   "Early/Absentee": 359,
+   "New/Former Resident": 20,
+   "Total": 3266
+  }
+ ],
+ "Red Willow": [
+  {
+   "Polling Place": 4494,
+   "Military & Overseas": 4,
+   "Early/Absentee": 589,
+   "New/Former Resident": 2,
+   "Total": 5089
+  },
+  {
+   "Polling Place": 4494,
+   "Military & Overseas": 4,
+   "Early/Absentee": 5890,
+   "New/Former Resident": 2,
+   "Total": 5089
+  }
+ ],
+ "Richardson": [
+  {
+   "Polling Place": 3691,
+   "Military & Overseas": 0,
+   "Early/Absentee": 554,
+   "New/Former Resident": 4,
+   "Total": 4249
+  },
+  {
+   "Polling Place": 3691,
+   "Military & Overseas": 0,
+   "Early/Absentee": 354,
+   "New/Former Resident": 4,
+   "Total": 4249
+  },
+  {
+   "Polling Place": 3691,
+   "Military & Overseas": 9,
+   "Early/Absentee": 554,
+   "New/Former Resident": 4,
+   "Total": 4249
+  }
+ ],
+ "Rock": [
+  {
+   "Polling Place": 789,
+   "Military & Overseas": 0,
+   "Early/Absentee": 118,
+   "New/Former Resident": 0,
+   "Total": 907
+  }
+ ],
+ "Saline": [
+  {
+   "Polling Place": 4695,
+   "Military & Overseas": 2,
+   "Early/Absentee": 526,
+   "New/Former Resident": 0,
+   "Total": 5223
+  }
+ ],
+ "Sarpy": [
+  {
+   "Polling Place": 40706,
+   "Military & Overseas": 76,
+   "Early/Absentee": 4748,
+   "New/Former Resident": 9,
+   "Total": 45539
+  },
+  {
+   "Polling Place": 4695,
+   "Military & Overseas": 2,
+   "Early/Absentee": 526,
+   "New/Former Resident": 0,
+   "Total": 3223
+  }
+ ],
+ "Saunders": [
+  {
+   "Polling Place": 8158,
+   "Military & Overseas": 6,
+   "Early/Absentee": 896,
+   "New/Former Resident": 0,
+   "Total": 9060
+  }
+ ],
+ "Scotts Bluff": [
+  {
+   "Polling Place": 11793,
+   "Military & Overseas": 3,
+   "Early/Absentee": 2153,
+   "New/Former Resident": 3,
+   "Total": 13952
+  }
+ ],
+ "Seward": [
+  {
+   "Polling Place": 6263,
+   "Military & Overseas": 0,
+   "Early/Absentee": 873,
+   "New/Former Resident": 2,
+   "Total": 7138
+  }
+ ],
+ "Sheridan": [
+  {
+   "Polling Place": 2383,
+   "Military & Overseas": 4,
+   "Early/Absentee": 210,
+   "New/Former Resident": 0,
+   "Total": 2597
+  },
+  {
+   "Polling Place": 6263,
+   "Military & Overseas": 0,
+   "Early/Absentee": 873,
+   "New/Former Resident": 2,
+   "Total": 7138
+  }
+ ],
+ "Sherman": [
+  {
+   "Polling Place": 1560,
+   "Military & Overseas": 2,
+   "Early/Absentee": 173,
+   "New/Former Resident": 0,
+   "Total": 1735
+  },
+  {
+   "Polling Place": 2383,
+   "Military & Overseas": 4,
+   "Early/Absentee": 210,
+   "New/Former Resident": 0,
+   "Total": 2597
+  }
+ ],
+ "Sioux": [
+  {
+   "Polling Place": 668,
+   "Military & Overseas": 0,
+   "Early/Absentee": 93,
+   "New/Former Resident": 0,
+   "Total": 761
+  },
+  {
+   "Polling Place": 668,
+   "Military & Overseas": 0,
+   "Early/Absentee": 3,
+   "New/Former Resident": 0,
+   "Total": 761
+  },
+  {
+   "Polling Place": 1560,
+   "Military & Overseas": 2,
+   "Early/Absentee": 13,
+   "New/Former Resident": 0,
+   "Total": 1735
+  },
+  {
+   "Polling Place": 1560,
+   "Military & Overseas": 2,
+   "Early/Absentee": 173,
+   "New/Former Resident": 0,
+   "Total": 1735
+  }
+ ],
+ "Stanton": [
+  {
+   "Polling Place": 2184,
+   "Military & Overseas": 0,
+   "Early/Absentee": 326,
+   "New/Former Resident": 18,
+   "Total": 2528
+  },
+  {
+   "Polling Place": 2184,
+   "Military & Overseas": 326,
+   "Early/Absentee": 18,
+   "New/Former Resident": 2528,
+   "Total": 7
+  },
+  {
+   "Polling Place": 668,
+   "Military & Overseas": 0,
+   "Early/Absentee": 38,
+   "New/Former Resident": 0,
+   "Total": 761
+  }
+ ],
+ "Thomas": [
+  {
+   "Polling Place": 361,
+   "Military & Overseas": 0,
+   "Early/Absentee": 40,
+   "New/Former Resident": 0,
+   "Total": 401
+  }
+ ],
+ "Valley": [
+  {
+   "Polling Place": 2077,
+   "Military & Overseas": 4,
+   "Early/Absentee": 252,
+   "New/Former Resident": 0,
+   "Total": 2333
+  }
+ ],
+ "Webster": [
+  {
+   "Polling Place": 1795,
+   "Military & Overseas": 2,
+   "Early/Absentee": 195,
+   "New/Former Resident": 0,
+   "Total": 1992
+  }
+ ],
+ "Wheeler": [
+  {
+   "Polling Place": 392,
+   "Military & Overseas": 0,
+   "Early/Absentee": 68,
+   "New/Former Resident": 0,
+   "Total": 460
+  }
+ ],
+ "York": [
+  {
+   "Polling Place": 5681,
+   "Military & Overseas": 5,
+   "Early/Absentee": 838,
+   "New/Former Resident": 0,
+   "Total": 6524
+  },
+  {
+   "Polling Place": 392,
+   "Military & Overseas": 0,
+   "Early/Absentee": 68,
+   "New/Former Resident": 0,
+   "Total": 460
+  }
+ ],
+ "Johnson": [
+  {
+   "Polling Place": 2002,
+   "Military & Overseas": 3,
+   "Early/Absentee": 150,
+   "New/Former Resident": 1,
+   "Total": 2156
+  }
+ ],
+ "Knox": [
+  {
+   "Polling Place": 3637,
+   "Military & Overseas": 11,
+   "Early/Absentee": 432,
+   "New/Former Resident": 2,
+   "Total": 4082
+  }
+ ],
+ "Nemaha": [
+  {
+   "Polling Place": 3042,
+   "Military & Overseas": 1,
+   "Early/Absentee": 404,
+   "New/Former Resident": 6,
+   "Total": 3453
+  }
+ ],
+ "Platte": [
+  {
+   "Polling Place": 11237,
+   "Military & Overseas": 39,
+   "Early/Absentee": 1661,
+   "New/Former Resident": 64,
+   "Total": 13001
+  },
+  {
+   "Polling Place": 0,
+   "Military & Overseas": 359,
+   "Early/Absentee": 64,
+   "New/Former Resident": 2,
+   "Total": 3266
+  }
+ ],
+ "Washington": [
+  {
+   "Polling Place": 7743,
+   "Military & Overseas": 1,
+   "Early/Absentee": 978,
+   "New/Former Resident": 32,
+   "Total": 8754
+  },
+  {
+   "Polling Place": 7143,
+   "Military & Overseas": 1,
+   "Early/Absentee": 978,
+   "New/Former Resident": 32,
+   "Total": 8754
+  }
+ ],
+ "Hooker": [
+  {
+   "Polling Place": 361,
+   "Military & Overseas": 0,
+   "Early/Absentee": 66,
+   "New/Former Resident": 3,
+   "Total": 430
+  }
+ ],
+ "Polk": [
+  {
+   "Polling Place": 4494,
+   "Military & Overseas": 2,
+   "Early/Absentee": 331,
+   "New/Former Resident": 1,
+   "Total": 2656
+  },
+  {
+   "Polling Place": 2322,
+   "Military & Overseas": 2,
+   "Early/Absentee": 331,
+   "New/Former Resident": 1,
+   "Total": 2656
+  }
+ ],
+ "Wayne": [
+  {
+   "Polling Place": 7743,
+   "Military & Overseas": 978,
+   "Early/Absentee": 32,
+   "New/Former Resident": 4002,
+   "Total": 8754
+  }
+ ]
+}

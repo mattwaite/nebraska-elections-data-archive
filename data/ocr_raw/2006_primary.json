@@ -1,0 +1,1176 @@
+{
+ "Statewide": [
+  {
+   "precincts": 1637,
+   "Total": 1140741,
+   "Republican": 578916,
+   "Democratic": 371037,
+   "Nonpartisan": 184119,
+   "Green": 361,
+   "Nebraska Party": 6308
+  }
+ ],
+ "Adams": [
+  {
+   "precincts": 27,
+   "Total": 20102,
+   "Republican": 11075,
+   "Democratic": 6057,
+   "Nonpartisan": 2888,
+   "Green": 0,
+   "Nebraska Party": 82
+  }
+ ],
+ "Antelope": [
+  {
+   "precincts": 18,
+   "Total": 4761,
+   "Republican": 3076,
+   "Democratic": 1233,
+   "Nonpartisan": 441,
+   "Green": 0,
+   "Nebraska Party": 11
+  }
+ ],
+ "Arthur": [
+  {
+   "precincts": 1,
+   "Total": 344,
+   "Republican": 270,
+   "Democratic": 58,
+   "Nonpartisan": 16,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Blaine": [
+  {
+   "precincts": 1,
+   "Total": 380,
+   "Republican": 244,
+   "Democratic": 120,
+   "Nonpartisan": 16,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Boone": [
+  {
+   "precincts": 9,
+   "Total": 4088,
+   "Republican": 2610,
+   "Democratic": 41417,
+   "Nonpartisan": 361,
+   "Green": 0,
+   "Nebraska Party": 9
+  },
+  {
+   "precincts": 3,
+   "Total": 4088,
+   "Republican": 2610,
+   "Democratic": 4417,
+   "Nonpartisan": 361,
+   "Green": 0,
+   "Nebraska Party": 0
+  },
+  {
+   "precincts": 3,
+   "Total": 4088,
+   "Republican": 2610,
+   "Democratic": 1117,
+   "Nonpartisan": 361,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Box Butte": [
+  {
+   "precincts": 9,
+   "Total": 7938,
+   "Republican": 4405,
+   "Democratic": 2391,
+   "Nonpartisan": 1083,
+   "Green": 0,
+   "Nebraska Party": 59
+  }
+ ],
+ "Boyd": [
+  {
+   "precincts": 3,
+   "Total": 1583,
+   "Republican": 1043,
+   "Democratic": 414,
+   "Nonpartisan": 125,
+   "Green": 0,
+   "Nebraska Party": 1
+  }
+ ],
+ "Brown": [
+  {
+   "precincts": 3,
+   "Total": 2483,
+   "Republican": 1820,
+   "Democratic": 423,
+   "Nonpartisan": 234,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Buffalo": [
+  {
+   "precincts": 34,
+   "Total": 26439,
+   "Republican": 15754,
+   "Democratic": 6623,
+   "Nonpartisan": 3914,
+   "Green": 0,
+   "Nebraska Party": 148
+  }
+ ],
+ "Butler": [
+  {
+   "precincts": 20,
+   "Total": 6570,
+   "Republican": 3370,
+   "Democratic": 2275,
+   "Nonpartisan": 910,
+   "Green": 0,
+   "Nebraska Party": 15
+  }
+ ],
+ "Cass": [
+  {
+   "precincts": 29,
+   "Total": 17953,
+   "Republican": 8787,
+   "Democratic": 5613,
+   "Nonpartisan": 3441,
+   "Green": 3,
+   "Nebraska Party": 109
+  }
+ ],
+ "Cedar": [
+  {
+   "precincts": 16,
+   "Total": 6396,
+   "Republican": 3010,
+   "Democratic": 2625,
+   "Nonpartisan": 759,
+   "Green": 0,
+   "Nebraska Party": 2
+  }
+ ],
+ "Chase": [
+  {
+   "precincts": 5,
+   "Total": 2876,
+   "Republican": 1913,
+   "Democratic": 706,
+   "Nonpartisan": 253,
+   "Green": 0,
+   "Nebraska Party": 4
+  }
+ ],
+ "Cherry": [
+  {
+   "precincts": 15,
+   "Total": 4777,
+   "Republican": 3341,
+   "Democratic": 988,
+   "Nonpartisan": 442,
+   "Green": 0,
+   "Nebraska Party": 6
+  },
+  {
+   "precincts": 16,
+   "Total": 4777,
+   "Republican": 3341,
+   "Democratic": 988,
+   "Nonpartisan": 442,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Cheyenne": [
+  {
+   "precincts": 9,
+   "Total": 7100,
+   "Republican": 4318,
+   "Democratic": 1688,
+   "Nonpartisan": 1049,
+   "Green": 0,
+   "Nebraska Party": 45
+  }
+ ],
+ "Clay": [
+  {
+   "precincts": 11,
+   "Total": 4761,
+   "Republican": 2964,
+   "Democratic": 1207,
+   "Nonpartisan": 570,
+   "Green": 0,
+   "Nebraska Party": 20
+  },
+  {
+   "precincts": 1,
+   "Total": 4761,
+   "Republican": 2964,
+   "Democratic": 1207,
+   "Nonpartisan": 570,
+   "Green": 0,
+   "Nebraska Party": 20
+  }
+ ],
+ "Colfax": [
+  {
+   "precincts": 6,
+   "Total": 5429,
+   "Republican": 2662,
+   "Democratic": 2228,
+   "Nonpartisan": 529,
+   "Green": 0,
+   "Nebraska Party": 10
+  }
+ ],
+ "Cuming": [
+  {
+   "precincts": 7,
+   "Total": 6100,
+   "Republican": 3865,
+   "Democratic": 1610,
+   "Nonpartisan": 609,
+   "Green": 0,
+   "Nebraska Party": 16
+  }
+ ],
+ "Custer": [
+  {
+   "precincts": 39,
+   "Total": 8903,
+   "Republican": 5823,
+   "Democratic": 2091,
+   "Nonpartisan": 970,
+   "Green": 0,
+   "Nebraska Party": 19
+  }
+ ],
+ "Dakota": [
+  {
+   "precincts": 13,
+   "Total": 10797,
+   "Republican": 4098,
+   "Democratic": 4446,
+   "Nonpartisan": 2228,
+   "Green": 3,
+   "Nebraska Party": 22
+  }
+ ],
+ "Dawes": [
+  {
+   "precincts": 11,
+   "Total": 5770,
+   "Republican": 3566,
+   "Democratic": 1329,
+   "Nonpartisan": 837,
+   "Green": 0,
+   "Nebraska Party": 38
+  }
+ ],
+ "Dawson": [
+  {
+   "precincts": 20,
+   "Total": 13497,
+   "Republican": 7753,
+   "Democratic": 3737,
+   "Nonpartisan": 1905,
+   "Green": 0,
+   "Nebraska Party": 102
+  },
+  {
+   "precincts": 20,
+   "Total": 13497,
+   "Republican": 7753,
+   "Democratic": 3737,
+   "Nonpartisan": 7905,
+   "Green": 0,
+   "Nebraska Party": 102
+  }
+ ],
+ "Deuel": [
+  {
+   "precincts": 3,
+   "Total": 1480,
+   "Republican": 1081,
+   "Democratic": 216,
+   "Nonpartisan": 178,
+   "Green": 0,
+   "Nebraska Party": 5
+  }
+ ],
+ "Dixon": [
+  {
+   "precincts": 13,
+   "Total": 4130,
+   "Republican": 2096,
+   "Democratic": 1386,
+   "Nonpartisan": 639,
+   "Green": 0,
+   "Nebraska Party": 9
+  }
+ ],
+ "Dodge": [
+  {
+   "precincts": 33,
+   "Total": 21997,
+   "Republican": 11615,
+   "Democratic": 6835,
+   "Nonpartisan": 3411,
+   "Green": 1,
+   "Nebraska Party": 135
+  }
+ ],
+ "Douglas": [
+  {
+   "precincts": 354,
+   "Total": 303817,
+   "Republican": 129449,
+   "Democratic": 114596,
+   "Nonpartisan": 57344,
+   "Green": 11,
+   "Nebraska Party": 2417
+  },
+  {
+   "precincts": 354,
+   "Total": 303817,
+   "Republican": 129449,
+   "Democratic": 114596,
+   "Nonpartisan": 57344,
+   "Green": 1,
+   "Nebraska Party": 2417
+  }
+ ],
+ "Dundy": [
+  {
+   "precincts": 4,
+   "Total": 1419,
+   "Republican": 1056,
+   "Democratic": 253,
+   "Nonpartisan": 108,
+   "Green": 0,
+   "Nebraska Party": 2
+  }
+ ],
+ "Fillmore": [
+  {
+   "precincts": 10,
+   "Total": 4456,
+   "Republican": 2502,
+   "Democratic": 1398,
+   "Nonpartisan": 535,
+   "Green": 0,
+   "Nebraska Party": 21
+  }
+ ],
+ "Franklin": [
+  {
+   "precincts": 4,
+   "Total": 2447,
+   "Republican": 1475,
+   "Democratic": 680,
+   "Nonpartisan": 286,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Frontier": [
+  {
+   "precincts": 5,
+   "Total": 2070,
+   "Republican": 1445,
+   "Democratic": 414,
+   "Nonpartisan": 207,
+   "Green": 0,
+   "Nebraska Party": 4
+  }
+ ],
+ "Furnas": [
+  {
+   "precincts": 8,
+   "Total": 3588,
+   "Republican": 2277,
+   "Democratic": 877,
+   "Nonpartisan": 414,
+   "Green": 0,
+   "Nebraska Party": 20
+  }
+ ],
+ "Gage": [
+  {
+   "precincts": 28,
+   "Total": 17131,
+   "Republican": 8579,
+   "Democratic": 5622,
+   "Nonpartisan": 2808,
+   "Green": 3,
+   "Nebraska Party": 119
+  }
+ ],
+ "Garden": [
+  {
+   "precincts": 4,
+   "Total": 1656,
+   "Republican": 1261,
+   "Democratic": 268,
+   "Nonpartisan": 126,
+   "Green": 0,
+   "Nebraska Party": 1
+  }
+ ],
+ "Garfield": [
+  {
+   "precincts": 3,
+   "Total": 1297,
+   "Republican": 979,
+   "Democratic": 226,
+   "Nonpartisan": 92,
+   "Green": 0,
+   "Nebraska Party": 0
+  },
+  {
+   "precincts": 3,
+   "Total": 1297,
+   "Republican": 979,
+   "Democratic": 226,
+   "Nonpartisan": 92,
+   "Green": 7,
+   "Nebraska Party": 0
+  }
+ ],
+ "Gosper": [
+  {
+   "precincts": 4,
+   "Total": 1618,
+   "Republican": 1111,
+   "Democratic": 333,
+   "Nonpartisan": 174,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Grant": [
+  {
+   "precincts": 1,
+   "Total": 498,
+   "Republican": 395,
+   "Democratic": 75,
+   "Nonpartisan": 27,
+   "Green": 0,
+   "Nebraska Party": 4
+  }
+ ],
+ "Greeley": [
+  {
+   "precincts": 4,
+   "Total": 1802,
+   "Republican": 652,
+   "Democratic": 1030,
+   "Nonpartisan": 118,
+   "Green": 0,
+   "Nebraska Party": 2
+  }
+ ],
+ "Hall": [
+  {
+   "precincts": 38,
+   "Total": 32332,
+   "Republican": 16820,
+   "Democratic": 9994,
+   "Nonpartisan": 5405,
+   "Green": 0,
+   "Nebraska Party": 113
+  }
+ ],
+ "Hamilton": [
+  {
+   "precincts": 114,
+   "Total": 6900,
+   "Republican": 4444,
+   "Democratic": 1562,
+   "Nonpartisan": 869,
+   "Green": 0,
+   "Nebraska Party": 25
+  },
+  {
+   "precincts": 11,
+   "Total": 6900,
+   "Republican": 4444,
+   "Democratic": 1562,
+   "Nonpartisan": 869,
+   "Green": 0,
+   "Nebraska Party": 25
+  }
+ ],
+ "Harlan": [
+  {
+   "precincts": 8,
+   "Total": 2566,
+   "Republican": 1566,
+   "Democratic": 737,
+   "Nonpartisan": 255,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ],
+ "Hayes": [
+  {
+   "precincts": 3,
+   "Total": 812,
+   "Republican": 610,
+   "Democratic": 133,
+   "Nonpartisan": 63,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Hitchcock": [
+  {
+   "precincts": 4,
+   "Total": 1998,
+   "Republican": 1223,
+   "Democratic": 535,
+   "Nonpartisan": 228,
+   "Green": 0,
+   "Nebraska Party": 12
+  }
+ ],
+ "Holt": [
+  {
+   "precincts": 13,
+   "Total": 7995,
+   "Republican": 5651,
+   "Democratic": 1605,
+   "Nonpartisan": 731,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ],
+ "Hooker": [
+  {
+   "precincts": 1,
+   "Total": 613,
+   "Republican": 492,
+   "Democratic": 91,
+   "Nonpartisan": 28,
+   "Green": 0,
+   "Nebraska Party": 2
+  },
+  {
+   "precincts": 1,
+   "Total": 613,
+   "Republican": 492,
+   "Democratic": 1,
+   "Nonpartisan": 28,
+   "Green": 0,
+   "Nebraska Party": 2
+  }
+ ],
+ "Howard": [
+  {
+   "precincts": 8,
+   "Total": 4794,
+   "Republican": 2417,
+   "Democratic": 1851,
+   "Nonpartisan": 516,
+   "Green": 0,
+   "Nebraska Party": 10
+  }
+ ],
+ "Burt": [
+  {
+   "precincts": 11,
+   "Total": 5602,
+   "Republican": 2897,
+   "Democratic": 1886,
+   "Nonpartisan": 812,
+   "Green": 1,
+   "Nebraska Party": 6
+  }
+ ],
+ "Jefferson": [
+  {
+   "precincts": 9,
+   "Total": 5862,
+   "Republican": 3077,
+   "Democratic": 1926,
+   "Nonpartisan": 851,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ],
+ "Johnson": [
+  {
+   "precincts": 8,
+   "Total": 3322,
+   "Republican": 1772,
+   "Democratic": 1175,
+   "Nonpartisan": 372,
+   "Green": 0,
+   "Nebraska Party": 3
+  }
+ ],
+ "Keith": [
+  {
+   "precincts": 11,
+   "Total": 6494,
+   "Republican": 4062,
+   "Democratic": 1451,
+   "Nonpartisan": 970,
+   "Green": 0,
+   "Nebraska Party": 11
+  }
+ ],
+ "Keya Paha": [
+  {
+   "precincts": 4,
+   "Total": 742,
+   "Republican": 629,
+   "Democratic": 92,
+   "Nonpartisan": 21,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Kimball": [
+  {
+   "precincts": 5,
+   "Total": 2931,
+   "Republican": 1936,
+   "Democratic": 606,
+   "Nonpartisan": 373,
+   "Green": 0,
+   "Nebraska Party": 16
+  }
+ ],
+ "Knox": [
+  {
+   "precincts": 8,
+   "Total": 6222,
+   "Republican": 3161,
+   "Democratic": 2272,
+   "Nonpartisan": 770,
+   "Green": 0,
+   "Nebraska Party": 19
+  }
+ ],
+ "Lancaster": [
+  {
+   "precincts": 218,
+   "Total": 172463,
+   "Republican": 77743,
+   "Democratic": 62070,
+   "Nonpartisan": 31159,
+   "Green": 306,
+   "Nebraska Party": 1185
+  }
+ ],
+ "Lincoln": [
+  {
+   "precincts": 27,
+   "Total": 24970,
+   "Republican": 13284,
+   "Democratic": 8107,
+   "Nonpartisan": 3523,
+   "Green": 0,
+   "Nebraska Party": 56
+  }
+ ],
+ "Logan": [
+  {
+   "precincts": 1,
+   "Total": 551,
+   "Republican": 418,
+   "Democratic": 96,
+   "Nonpartisan": 37,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Madison": [
+  {
+   "precincts": 24,
+   "Total": 21736,
+   "Republican": 13108,
+   "Democratic": 5491,
+   "Nonpartisan": 3040,
+   "Green": 2,
+   "Nebraska Party": 95
+  }
+ ],
+ "McPherson": [
+  {
+   "precincts": 1,
+   "Total": 387,
+   "Republican": 294,
+   "Democratic": 74,
+   "Nonpartisan": 19,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Merrick": [
+  {
+   "precincts": 15,
+   "Total": 5753,
+   "Republican": 3434,
+   "Democratic": 1617,
+   "Nonpartisan": 699,
+   "Green": 0,
+   "Nebraska Party": 3
+  }
+ ],
+ "Morrill": [
+  {
+   "precincts": 9,
+   "Total": 3529,
+   "Republican": 2236,
+   "Democratic": 809,
+   "Nonpartisan": 476,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ],
+ "Nance": [
+  {
+   "precincts": 6,
+   "Total": 2532,
+   "Republican": 1250,
+   "Democratic": 1018,
+   "Nonpartisan": 259,
+   "Green": 0,
+   "Nebraska Party": 5
+  }
+ ],
+ "Nemaha": [
+  {
+   "precincts": 11,
+   "Total": 5253,
+   "Republican": 2846,
+   "Democratic": 1679,
+   "Nonpartisan": 705,
+   "Green": 0,
+   "Nebraska Party": 23
+  },
+  {
+   "precincts": 11,
+   "Total": 5253,
+   "Republican": 2846,
+   "Democratic": 18679,
+   "Nonpartisan": 705,
+   "Green": 0,
+   "Nebraska Party": 23
+  }
+ ],
+ "Nuckolls": [
+  {
+   "precincts": 8,
+   "Total": 3559,
+   "Republican": 1973,
+   "Democratic": 1225,
+   "Nonpartisan": 335,
+   "Green": 0,
+   "Nebraska Party": 26
+  }
+ ],
+ "Otoe": [
+  {
+   "precincts": 16,
+   "Total": 11332,
+   "Republican": 5849,
+   "Democratic": 3557,
+   "Nonpartisan": 1897,
+   "Green": 9,
+   "Nebraska Party": 20
+  }
+ ],
+ "Pawnee": [
+  {
+   "precincts": 5,
+   "Total": 2011,
+   "Republican": 1117,
+   "Democratic": 690,
+   "Nonpartisan": 191,
+   "Green": 0,
+   "Nebraska Party": 13
+  },
+  {
+   "precincts": 5,
+   "Total": 2017,
+   "Republican": 1117,
+   "Democratic": 690,
+   "Nonpartisan": 191,
+   "Green": 0,
+   "Nebraska Party": 13
+  },
+  {
+   "precincts": 5,
+   "Total": 2014,
+   "Republican": 17,
+   "Democratic": 690,
+   "Nonpartisan": 191,
+   "Green": 0,
+   "Nebraska Party": 13
+  }
+ ],
+ "Perkins": [
+  {
+   "precincts": 3,
+   "Total": 2100,
+   "Republican": 1332,
+   "Democratic": 531,
+   "Nonpartisan": 227,
+   "Green": 0,
+   "Nebraska Party": 10
+  }
+ ],
+ "Phelps": [
+  {
+   "precincts": 13,
+   "Total": 6796,
+   "Republican": 4490,
+   "Democratic": 1534,
+   "Nonpartisan": 766,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Pierce": [
+  {
+   "precincts": 5,
+   "Total": 4938,
+   "Republican": 3284,
+   "Democratic": 4110,
+   "Nonpartisan": 534,
+   "Green": 0,
+   "Nebraska Party": 10
+  },
+  {
+   "precincts": 5,
+   "Total": 4938,
+   "Republican": 3284,
+   "Democratic": 1110,
+   "Nonpartisan": 534,
+   "Green": 0,
+   "Nebraska Party": 10
+  }
+ ],
+ "Platte": [
+  {
+   "precincts": 30,
+   "Total": 20219,
+   "Republican": 11625,
+   "Democratic": 5995,
+   "Nonpartisan": 2490,
+   "Green": 0,
+   "Nebraska Party": 109
+  }
+ ],
+ "Polk": [
+  {
+   "precincts": 6,
+   "Total": 3778,
+   "Republican": 2374,
+   "Democratic": 964,
+   "Nonpartisan": 414,
+   "Green": 0,
+   "Nebraska Party": 26
+  }
+ ],
+ "Red Willow": [
+  {
+   "precincts": 16,
+   "Total": 7774,
+   "Republican": 4649,
+   "Democratic": 1867,
+   "Nonpartisan": 1205,
+   "Green": 0,
+   "Nebraska Party": 53
+  },
+  {
+   "precincts": 16,
+   "Total": 1774,
+   "Republican": 4649,
+   "Democratic": 1867,
+   "Nonpartisan": 1205,
+   "Green": 0,
+   "Nebraska Party": 53
+  }
+ ],
+ "Richardson": [
+  {
+   "precincts": 15,
+   "Total": 6652,
+   "Republican": 3497,
+   "Democratic": 2388,
+   "Nonpartisan": 740,
+   "Green": 0,
+   "Nebraska Party": 27
+  }
+ ],
+ "Saline": [
+  {
+   "precincts": 12,
+   "Total": 8791,
+   "Republican": 3311,
+   "Democratic": 4182,
+   "Nonpartisan": 1236,
+   "Green": 0,
+   "Nebraska Party": 62
+  },
+  {
+   "precincts": 12,
+   "Total": 8791,
+   "Republican": 3314,
+   "Democratic": 4182,
+   "Nonpartisan": 1236,
+   "Green": 0,
+   "Nebraska Party": 62
+  },
+  {
+   "precincts": 12,
+   "Total": 8791,
+   "Republican": 33114,
+   "Democratic": 4182,
+   "Nonpartisan": 1236,
+   "Green": 0,
+   "Nebraska Party": 62
+  }
+ ],
+ "Sarpy": [
+  {
+   "precincts": 86,
+   "Total": 83964,
+   "Republican": 42308,
+   "Democratic": 24161,
+   "Nonpartisan": 17014,
+   "Green": 6,
+   "Nebraska Party": 475
+  }
+ ],
+ "Saunders": [
+  {
+   "precincts": 18,
+   "Total": 14501,
+   "Republican": 7664,
+   "Democratic": 4907,
+   "Nonpartisan": 1867,
+   "Green": 7,
+   "Nebraska Party": 56
+  },
+  {
+   "precincts": 18,
+   "Total": 14501,
+   "Republican": 7664,
+   "Democratic": 4307,
+   "Nonpartisan": 1867,
+   "Green": 7,
+   "Nebraska Party": 56
+  }
+ ],
+ "Scotts Bluff": [
+  {
+   "precincts": 30,
+   "Total": 22589,
+   "Republican": 12660,
+   "Democratic": 6521,
+   "Nonpartisan": 3278,
+   "Green": 0,
+   "Nebraska Party": 130
+  }
+ ],
+ "Seward": [
+  {
+   "precincts": 16,
+   "Total": 11823,
+   "Republican": 6337,
+   "Democratic": 3657,
+   "Nonpartisan": 1768,
+   "Green": 3,
+   "Nebraska Party": 58
+  }
+ ],
+ "Sheridan": [
+  {
+   "precincts": 8,
+   "Total": 4576,
+   "Republican": 3054,
+   "Democratic": 975,
+   "Nonpartisan": 541,
+   "Green": 0,
+   "Nebraska Party": 6
+  }
+ ],
+ "Sherman": [
+  {
+   "precincts": 6,
+   "Total": 2259,
+   "Republican": 970,
+   "Democratic": 1136,
+   "Nonpartisan": 145,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ],
+ "Sioux": [
+  {
+   "precincts": 2,
+   "Total": 937,
+   "Republican": 680,
+   "Democratic": 150,
+   "Nonpartisan": 107,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Stanton": [
+  {
+   "precincts": 15,
+   "Total": 4098,
+   "Republican": 2761,
+   "Democratic": 862,
+   "Nonpartisan": 457,
+   "Green": 0,
+   "Nebraska Party": 18
+  }
+ ],
+ "Thomas": [
+  {
+   "precincts": 1,
+   "Total": 553,
+   "Republican": 430,
+   "Democratic": 81,
+   "Nonpartisan": 38,
+   "Green": 0,
+   "Nebraska Party": 4
+  }
+ ],
+ "Thurston": [
+  {
+   "precincts": 9,
+   "Total": 4571,
+   "Republican": 1409,
+   "Democratic": 2684,
+   "Nonpartisan": 473,
+   "Green": 0,
+   "Nebraska Party": 5
+  }
+ ],
+ "Valley": [
+  {
+   "precincts": 7,
+   "Total": 3425,
+   "Republican": 2081,
+   "Democratic": 1019,
+   "Nonpartisan": 306,
+   "Green": 0,
+   "Nebraska Party": 19
+  },
+  {
+   "precincts": 3425,
+   "Total": 4571,
+   "Republican": 2081,
+   "Democratic": 1409,
+   "Nonpartisan": 306,
+   "Green": 0,
+   "Nebraska Party": 5
+  }
+ ],
+ "Washington": [
+  {
+   "precincts": 15,
+   "Total": 13734,
+   "Republican": 7901,
+   "Democratic": 3568,
+   "Nonpartisan": 2244,
+   "Green": 5,
+   "Nebraska Party": 16
+  }
+ ],
+ "Wayne": [
+  {
+   "precincts": 10,
+   "Total": 5642,
+   "Republican": 3536,
+   "Democratic": 1295,
+   "Nonpartisan": 798,
+   "Green": 1,
+   "Nebraska Party": 12
+  }
+ ],
+ "Webster": [
+  {
+   "precincts": 5,
+   "Total": 2675,
+   "Republican": 1545,
+   "Democratic": 821,
+   "Nonpartisan": 304,
+   "Green": 0,
+   "Nebraska Party": 5
+  }
+ ],
+ "Wheeler": [
+  {
+   "precincts": 2,
+   "Total": 614,
+   "Republican": 421,
+   "Democratic": 152,
+   "Nonpartisan": 41,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "York": [
+  {
+   "precincts": 14,
+   "Total": 11183,
+   "Republican": 7531,
+   "Democratic": 2310,
+   "Nonpartisan": 1314,
+   "Green": 0,
+   "Nebraska Party": 28
+  }
+ ],
+ "Loup": [
+  {
+   "precincts": 1,
+   "Total": 510,
+   "Republican": 420,
+   "Democratic": 68,
+   "Nonpartisan": 22,
+   "Green": 0,
+   "Nebraska Party": 0
+  }
+ ],
+ "Rock": [
+  {
+   "precincts": 5,
+   "Total": 1100,
+   "Republican": 854,
+   "Democratic": 178,
+   "Nonpartisan": 64,
+   "Green": 0,
+   "Nebraska Party": 4
+  }
+ ],
+ "Thayer": [
+  {
+   "precincts": 7,
+   "Total": 3956,
+   "Republican": 2334,
+   "Democratic": 1165,
+   "Nonpartisan": 449,
+   "Green": 0,
+   "Nebraska Party": 8
+  }
+ ]
+}

@@ -1,0 +1,1543 @@
+{
+ "Antelope": [
+  {
+   "Total": 2068,
+   "Republican": 1346,
+   "Democratic": 641,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 81,
+   "Polling Place": 1998,
+   "Military & Overseas": 0,
+   "Early/Absentee": 70
+  }
+ ],
+ "Arthur": [
+  {
+   "Total": 236,
+   "Republican": 181,
+   "Democratic": 47,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 8,
+   "Polling Place": 224,
+   "Military & Overseas": 0,
+   "Early/Absentee": 12
+  }
+ ],
+ "Banner": [
+  {
+   "Total": 347,
+   "Republican": 291,
+   "Democratic": 47,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 9,
+   "Polling Place": 334,
+   "Military & Overseas": 0,
+   "Early/Absentee": 13
+  }
+ ],
+ "Blaine": [
+  {
+   "Total": 204,
+   "Republican": 156,
+   "Democratic": 38,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 10,
+   "Polling Place": 190,
+   "Military & Overseas": 0,
+   "Early/Absentee": 14
+  }
+ ],
+ "Boone": [
+  {
+   "Total": 1372,
+   "Republican": 909,
+   "Democratic": 438,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 25,
+   "Polling Place": 1305,
+   "Military & Overseas": 5,
+   "Early/Absentee": 62
+  },
+  {
+   "Total": 1372,
+   "Republican": 909,
+   "Democratic": 438,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 25,
+   "Polling Place": 1305,
+   "Military & Overseas": 5,
+   "Early/Absentee": 62
+  }
+ ],
+ "Boyd": [
+  {
+   "Total": 654,
+   "Republican": 459,
+   "Democratic": 183,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 12,
+   "Polling Place": 637,
+   "Military & Overseas": 0,
+   "Early/Absentee": 17
+  },
+  {
+   "Total": 654,
+   "Republican": 459,
+   "Democratic": 183,
+   "Libertarian": 9,
+   "Natural Law": 0,
+   "Nonpartisan": 12,
+   "Polling Place": 637,
+   "Military & Overseas": 0,
+   "Early/Absentee": 17
+  }
+ ],
+ "Brown": [
+  {
+   "Total": 1176,
+   "Republican": 960,
+   "Democratic": 178,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 32,
+   "Polling Place": 1106,
+   "Military & Overseas": 0,
+   "Early/Absentee": 64
+  },
+  {
+   "Total": 1170,
+   "Republican": 960,
+   "Democratic": 178,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 32,
+   "Polling Place": 1106,
+   "Military & Overseas": 0,
+   "Early/Absentee": 64
+  }
+ ],
+ "Buffalo": [
+  {
+   "Total": 6127,
+   "Republican": 4306,
+   "Democratic": 1571,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Nonpartisan": 247,
+   "Polling Place": 5866,
+   "Military & Overseas": 5,
+   "Early/Absentee": 256
+  }
+ ],
+ "Butler": [
+  {
+   "Total": 1988,
+   "Republican": 839,
+   "Democratic": 1062,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 86,
+   "Polling Place": 1935,
+   "Military & Overseas": 0,
+   "Early/Absentee": 53
+  }
+ ],
+ "Chase": [
+  {
+   "Total": 1073,
+   "Republican": 745,
+   "Democratic": 292,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 1022,
+   "Military & Overseas": 0,
+   "Early/Absentee": 31
+  },
+  {
+   "Total": 1073,
+   "Republican": 745,
+   "Democratic": 292,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 1022,
+   "Military & Overseas": 0,
+   "Early/Absentee": 51
+  }
+ ],
+ "Cherry": [
+  {
+   "Total": 1957,
+   "Republican": 1486,
+   "Democratic": 425,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 46,
+   "Polling Place": 1805,
+   "Military & Overseas": 0,
+   "Early/Absentee": 152
+  },
+  {
+   "Total": 1957,
+   "Republican": 1486,
+   "Democratic": 425,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 46,
+   "Polling Place": 1805,
+   "Military & Overseas": 9,
+   "Early/Absentee": 152
+  }
+ ],
+ "Clay": [
+  {
+   "Total": 1738,
+   "Republican": 1157,
+   "Democratic": 494,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 87,
+   "Polling Place": 1679,
+   "Military & Overseas": 0,
+   "Early/Absentee": 59
+  }
+ ],
+ "Cuming": [
+  {
+   "Total": 1525,
+   "Republican": 1055,
+   "Democratic": 428,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 42,
+   "Polling Place": 1429,
+   "Military & Overseas": 2,
+   "Early/Absentee": 94
+  }
+ ],
+ "Custer": [
+  {
+   "Total": 2787,
+   "Republican": 2067,
+   "Democratic": 651,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 69,
+   "Polling Place": 2678,
+   "Military & Overseas": 6,
+   "Early/Absentee": 103
+  },
+  {
+   "Total": 2787,
+   "Republican": 2067,
+   "Democratic": 653,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 69,
+   "Polling Place": 2678,
+   "Military & Overseas": 6,
+   "Early/Absentee": 103
+  },
+  {
+   "Total": 2787,
+   "Republican": 2067,
+   "Democratic": 651,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 69,
+   "Polling Place": 2678,
+   "Military & Overseas": 6,
+   "Early/Absentee": 103
+  }
+ ],
+ "Dawes": [
+  {
+   "Total": 1368,
+   "Republican": 1033,
+   "Democratic": 290,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 45,
+   "Polling Place": 1306,
+   "Military & Overseas": 2,
+   "Early/Absentee": 60
+  }
+ ],
+ "Deuel": [
+  {
+   "Total": 600,
+   "Republican": 462,
+   "Democratic": 105,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 33,
+   "Polling Place": 567,
+   "Military & Overseas": 0,
+   "Early/Absentee": 33
+  },
+  {
+   "Total": 600,
+   "Republican": 462,
+   "Democratic": 105,
+   "Libertarian": 6,
+   "Natural Law": 0,
+   "Nonpartisan": 33,
+   "Polling Place": 567,
+   "Military & Overseas": 0,
+   "Early/Absentee": 33
+  }
+ ],
+ "Dodge": [
+  {
+   "Total": 5006,
+   "Republican": 3126,
+   "Democratic": 1676,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 203,
+   "Polling Place": 4853,
+   "Military & Overseas": 12,
+   "Early/Absentee": 141
+  }
+ ],
+ "Frontier": [
+  {
+   "Total": 935,
+   "Republican": 608,
+   "Democratic": 202,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 25,
+   "Polling Place": 818,
+   "Military & Overseas": 0,
+   "Early/Absentee": 17
+  },
+  {
+   "Total": 835,
+   "Republican": 608,
+   "Democratic": 202,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 25,
+   "Polling Place": 818,
+   "Military & Overseas": 0,
+   "Early/Absentee": 17
+  },
+  {
+   "Total": 835,
+   "Republican": 608,
+   "Democratic": 202,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 25,
+   "Polling Place": 818,
+   "Military & Overseas": 9,
+   "Early/Absentee": 17
+  }
+ ],
+ "Furnas": [
+  {
+   "Total": 1356,
+   "Republican": 934,
+   "Democratic": 378,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 44,
+   "Polling Place": 1320,
+   "Military & Overseas": 0,
+   "Early/Absentee": 36
+  },
+  {
+   "Total": 1356,
+   "Republican": 934,
+   "Democratic": 378,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 44,
+   "Polling Place": 1320,
+   "Military & Overseas": 9,
+   "Early/Absentee": 36
+  }
+ ],
+ "Gage": [
+  {
+   "Total": 3242,
+   "Republican": 1943,
+   "Democratic": 1182,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 115,
+   "Polling Place": 3146,
+   "Military & Overseas": 1,
+   "Early/Absentee": 95
+  }
+ ],
+ "Grant": [
+  {
+   "Total": 342,
+   "Republican": 267,
+   "Democratic": 67,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 8,
+   "Polling Place": 319,
+   "Military & Overseas": 0,
+   "Early/Absentee": 23
+  },
+  {
+   "Total": 342,
+   "Republican": 267,
+   "Democratic": 67,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 8,
+   "Polling Place": 319,
+   "Military & Overseas": 9,
+   "Early/Absentee": 23
+  }
+ ],
+ "Hamilton": [
+  {
+   "Total": 1783,
+   "Republican": 1336,
+   "Democratic": 402,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 44,
+   "Polling Place": 1705,
+   "Military & Overseas": 3,
+   "Early/Absentee": 5
+  },
+  {
+   "Total": 1783,
+   "Republican": 1336,
+   "Democratic": 402,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 44,
+   "Polling Place": 1705,
+   "Military & Overseas": 3,
+   "Early/Absentee": 75
+  },
+  {
+   "Total": 1783,
+   "Republican": 1336,
+   "Democratic": 402,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 44,
+   "Polling Place": 1705,
+   "Military & Overseas": 3,
+   "Early/Absentee": 15
+  }
+ ],
+ "Hitchcock": [
+  {
+   "Total": 761,
+   "Republican": 537,
+   "Democratic": 196,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 28,
+   "Polling Place": 736,
+   "Military & Overseas": 1,
+   "Early/Absentee": 24
+  },
+  {
+   "Total": 161,
+   "Republican": 537,
+   "Democratic": 196,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 28,
+   "Polling Place": 736,
+   "Military & Overseas": 1,
+   "Early/Absentee": 24
+  }
+ ],
+ "Howard": [
+  {
+   "Total": 1722,
+   "Republican": 886,
+   "Democratic": 777,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 59,
+   "Polling Place": 1647,
+   "Military & Overseas": 1,
+   "Early/Absentee": 74
+  },
+  {
+   "Total": 1722,
+   "Republican": 886,
+   "Democratic": 717,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 59,
+   "Polling Place": 1647,
+   "Military & Overseas": 1,
+   "Early/Absentee": 14
+  },
+  {
+   "Total": 1722,
+   "Republican": 886,
+   "Democratic": 777,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 59,
+   "Polling Place": 1647,
+   "Military & Overseas": 1,
+   "Early/Absentee": 74
+  }
+ ],
+ "Box Butte": [
+  {
+   "Total": 2203,
+   "Republican": 1400,
+   "Democratic": 671,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 132,
+   "Polling Place": 2086,
+   "Military & Overseas": 0,
+   "Early/Absentee": 117
+  },
+  {
+   "Total": 2203,
+   "Republican": 1400,
+   "Democratic": 671,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 132,
+   "Polling Place": 2086,
+   "Military & Overseas": 0,
+   "Early/Absentee": 7
+  }
+ ],
+ "Colfax": [
+  {
+   "Total": 1501,
+   "Republican": 808,
+   "Democratic": 662,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 31,
+   "Polling Place": 1445,
+   "Military & Overseas": 0,
+   "Early/Absentee": 56
+  },
+  {
+   "Total": 1501,
+   "Republican": 808,
+   "Democratic": 662,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 31,
+   "Polling Place": 1445,
+   "Military & Overseas": 9,
+   "Early/Absentee": 56
+  }
+ ],
+ "Dakota": [
+  {
+   "Total": 1729,
+   "Republican": 955,
+   "Democratic": 701,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 71,
+   "Polling Place": 1692,
+   "Military & Overseas": 1,
+   "Early/Absentee": 36
+  }
+ ],
+ "Dawson": [
+  {
+   "Total": 3366,
+   "Republican": 2501,
+   "Democratic": 865,
+   "Libertarian": 0,
+   "Natural Law": 6,
+   "Nonpartisan": 6,
+   "Polling Place": 3288,
+   "Military & Overseas": 0,
+   "Early/Absentee": 78
+  }
+ ],
+ "Dixon": [
+  {
+   "Total": 1529,
+   "Republican": 895,
+   "Democratic": 542,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 92,
+   "Polling Place": 1469,
+   "Military & Overseas": 4,
+   "Early/Absentee": 56
+  }
+ ],
+ "Douglas": [
+  {
+   "Total": 101371,
+   "Republican": 48447,
+   "Democratic": 42261,
+   "Libertarian": 86,
+   "Natural Law": 3,
+   "Nonpartisan": 10574,
+   "Polling Place": 98131,
+   "Military & Overseas": 77,
+   "Early/Absentee": 3163
+  },
+  {
+   "Total": 101371,
+   "Republican": 48447,
+   "Democratic": 42261,
+   "Libertarian": 86,
+   "Natural Law": 3,
+   "Nonpartisan": 10574,
+   "Polling Place": 98131,
+   "Military & Overseas": 7,
+   "Early/Absentee": 3163
+  }
+ ],
+ "Dundy": [
+  {
+   "Total": 537,
+   "Republican": 419,
+   "Democratic": 103,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 15,
+   "Polling Place": 508,
+   "Military & Overseas": 1,
+   "Early/Absentee": 28
+  }
+ ],
+ "Fillmore": [
+  {
+   "Total": 1438,
+   "Republican": 879,
+   "Democratic": 509,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 50,
+   "Polling Place": 1389,
+   "Military & Overseas": 0,
+   "Early/Absentee": 49
+  }
+ ],
+ "Franklin": [
+  {
+   "Total": 856,
+   "Republican": 567,
+   "Democratic": 247,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 814,
+   "Military & Overseas": 3,
+   "Early/Absentee": 33
+  },
+  {
+   "Total": 850,
+   "Republican": 567,
+   "Democratic": 247,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 814,
+   "Military & Overseas": 3,
+   "Early/Absentee": 33
+  }
+ ],
+ "Garden": [
+  {
+   "Total": 786,
+   "Republican": 631,
+   "Democratic": 129,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 26,
+   "Polling Place": 731,
+   "Military & Overseas": 0,
+   "Early/Absentee": 55
+  },
+  {
+   "Total": 786,
+   "Republican": 631,
+   "Democratic": 129,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 26,
+   "Polling Place": 731,
+   "Military & Overseas": 9,
+   "Early/Absentee": 55
+  }
+ ],
+ "Gosper": [
+  {
+   "Total": 449,
+   "Republican": 327,
+   "Democratic": 112,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 10,
+   "Polling Place": 438,
+   "Military & Overseas": 0,
+   "Early/Absentee": 11
+  }
+ ],
+ "Greeley": [
+  {
+   "Total": 734,
+   "Republican": 274,
+   "Democratic": 447,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 13,
+   "Polling Place": 709,
+   "Military & Overseas": 1,
+   "Early/Absentee": 24
+  }
+ ],
+ "Hall": [
+  {
+   "Total": 10403,
+   "Republican": 6119,
+   "Democratic": 3572,
+   "Libertarian": 7,
+   "Natural Law": 1,
+   "Nonpartisan": 704,
+   "Polling Place": 9824,
+   "Military & Overseas": 5,
+   "Early/Absentee": 574
+  }
+ ],
+ "Holt": [
+  {
+   "Total": 2415,
+   "Republican": 1735,
+   "Democratic": 615,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 65,
+   "Polling Place": 2359,
+   "Military & Overseas": 0,
+   "Early/Absentee": 56
+  }
+ ],
+ "Adams": [
+  {
+   "Total": 6640,
+   "Republican": 4132,
+   "Democratic": 2167,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Nonpartisan": 333,
+   "Polling Place": 6376,
+   "Military & Overseas": 3,
+   "Early/Absentee": 254
+  },
+  {
+   "Total": 6640,
+   "Republican": 4132,
+   "Democratic": 2167,
+   "Libertarian": 8,
+   "Natural Law": 0,
+   "Nonpartisan": 333,
+   "Polling Place": 6378,
+   "Military & Overseas": 8,
+   "Early/Absentee": 254
+  }
+ ],
+ "Hayes": [
+  {
+   "Total": 365,
+   "Republican": 307,
+   "Democratic": 49,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 9,
+   "Polling Place": 349,
+   "Military & Overseas": 0,
+   "Early/Absentee": 16
+  }
+ ],
+ "Garfield": [
+  {
+   "Total": 592,
+   "Republican": 458,
+   "Democratic": 122,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 12,
+   "Polling Place": 580,
+   "Military & Overseas": 0,
+   "Early/Absentee": 12
+  }
+ ],
+ "Johnson": [
+  {
+   "Total": 977,
+   "Republican": 588,
+   "Democratic": 359,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 30,
+   "Polling Place": 949,
+   "Military & Overseas": 1,
+   "Early/Absentee": 27
+  },
+  {
+   "Total": 977,
+   "Republican": 583,
+   "Democratic": 359,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 30,
+   "Polling Place": 949,
+   "Military & Overseas": 1,
+   "Early/Absentee": 27
+  }
+ ],
+ "Kearney": [
+  {
+   "Total": 1533,
+   "Republican": 1000,
+   "Democratic": 461,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 72,
+   "Polling Place": 1492,
+   "Military & Overseas": 5,
+   "Early/Absentee": 36
+  },
+  {
+   "Total": 1533,
+   "Republican": 1000,
+   "Democratic": 461,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 72,
+   "Polling Place": 1492,
+   "Military & Overseas": 3,
+   "Early/Absentee": 36
+  }
+ ],
+ "Keith": [
+  {
+   "Total": 2551,
+   "Republican": 1810,
+   "Democratic": 565,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 176,
+   "Polling Place": 2457,
+   "Military & Overseas": 0,
+   "Early/Absentee": 94
+  }
+ ],
+ "Keya Paha": [
+  {
+   "Total": 444,
+   "Republican": 340,
+   "Democratic": 94,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 10,
+   "Polling Place": 426,
+   "Military & Overseas": 0,
+   "Early/Absentee": 18
+  }
+ ],
+ "Kimball": [
+  {
+   "Total": 966,
+   "Republican": 764,
+   "Democratic": 182,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 20,
+   "Polling Place": 930,
+   "Military & Overseas": 0,
+   "Early/Absentee": 36
+  },
+  {
+   "Total": 966,
+   "Republican": 764,
+   "Democratic": 182,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 20,
+   "Polling Place": 930,
+   "Military & Overseas": 0,
+   "Early/Absentee": 360
+  }
+ ],
+ "Knox": [
+  {
+   "Total": 1763,
+   "Republican": 1106,
+   "Democratic": 590,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 67,
+   "Polling Place": 1741,
+   "Military & Overseas": 0,
+   "Early/Absentee": 22
+  },
+  {
+   "Total": 1763,
+   "Republican": 1106,
+   "Democratic": 590,
+   "Libertarian": 9,
+   "Natural Law": 0,
+   "Nonpartisan": 67,
+   "Polling Place": 1741,
+   "Military & Overseas": 0,
+   "Early/Absentee": 22
+  }
+ ],
+ "Lancaster": [
+  {
+   "Total": 37299,
+   "Republican": 20837,
+   "Democratic": 14368,
+   "Libertarian": 20,
+   "Natural Law": 2,
+   "Nonpartisan": 2072,
+   "Polling Place": 35099,
+   "Military & Overseas": 84,
+   "Early/Absentee": 2116
+  }
+ ],
+ "Loup": [
+  {
+   "Total": 168,
+   "Republican": 130,
+   "Democratic": 36,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 2,
+   "Polling Place": 159,
+   "Military & Overseas": 0,
+   "Early/Absentee": 9
+  },
+  {
+   "Total": 245,
+   "Republican": 168,
+   "Democratic": 203,
+   "Libertarian": 35,
+   "Natural Law": 0,
+   "Nonpartisan": 7,
+   "Polling Place": 235,
+   "Military & Overseas": 0,
+   "Early/Absentee": 10
+  }
+ ],
+ "Madison": [
+  {
+   "Total": 6155,
+   "Republican": 4361,
+   "Democratic": 1524,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 270,
+   "Polling Place": 5999,
+   "Military & Overseas": 0,
+   "Early/Absentee": 156
+  },
+  {
+   "Total": 6155,
+   "Republican": 4361,
+   "Democratic": 1524,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 270,
+   "Polling Place": 5999,
+   "Military & Overseas": 0,
+   "Early/Absentee": 156
+  }
+ ],
+ "McPherson": [
+  {
+   "Total": 247,
+   "Republican": 184,
+   "Democratic": 60,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 1,
+   "Polling Place": 222,
+   "Military & Overseas": 0,
+   "Early/Absentee": 25
+  }
+ ],
+ "Morrill": [
+  {
+   "Total": 936,
+   "Republican": 769,
+   "Democratic": 182,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 35,
+   "Polling Place": 947,
+   "Military & Overseas": 0,
+   "Early/Absentee": 39
+  }
+ ],
+ "Nance": [
+  {
+   "Total": 714,
+   "Republican": 387,
+   "Democratic": 303,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 24,
+   "Polling Place": 677,
+   "Military & Overseas": 3,
+   "Early/Absentee": 34
+  },
+  {
+   "Total": 714,
+   "Republican": 387,
+   "Democratic": 303,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 24,
+   "Polling Place": 677,
+   "Military & Overseas": 3,
+   "Early/Absentee": 34
+  },
+  {
+   "Total": 744,
+   "Republican": 387,
+   "Democratic": 303,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 24,
+   "Polling Place": 677,
+   "Military & Overseas": 3,
+   "Early/Absentee": 34
+  }
+ ],
+ "Nemaha": [
+  {
+   "Total": 1306,
+   "Republican": 828,
+   "Democratic": 431,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 47,
+   "Polling Place": 1246,
+   "Military & Overseas": 0,
+   "Early/Absentee": 60
+  }
+ ],
+ "Nuckolls": [
+  {
+   "Total": 1122,
+   "Republican": 646,
+   "Democratic": 457,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 19,
+   "Polling Place": 1094,
+   "Military & Overseas": 0,
+   "Early/Absentee": 28
+  },
+  {
+   "Total": 1122,
+   "Republican": 646,
+   "Democratic": 457,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 19,
+   "Polling Place": 1094,
+   "Military & Overseas": 0,
+   "Early/Absentee": 60
+  }
+ ],
+ "Otoe": [
+  {
+   "Total": 2662,
+   "Republican": 1698,
+   "Democratic": 888,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 76,
+   "Polling Place": 2575,
+   "Military & Overseas": 0,
+   "Early/Absentee": 87
+  }
+ ],
+ "Pawnee": [
+  {
+   "Total": 718,
+   "Republican": 415,
+   "Democratic": 275,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 28,
+   "Polling Place": 693,
+   "Military & Overseas": 0,
+   "Early/Absentee": 25
+  }
+ ],
+ "Perkins": [
+  {
+   "Total": 813,
+   "Republican": 544,
+   "Democratic": 239,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 35,
+   "Polling Place": 787,
+   "Military & Overseas": 0,
+   "Early/Absentee": 31
+  },
+  {
+   "Total": 818,
+   "Republican": 544,
+   "Democratic": 239,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 35,
+   "Polling Place": 787,
+   "Military & Overseas": 0,
+   "Early/Absentee": 31
+  }
+ ],
+ "Phelps": [
+  {
+   "Total": 2138,
+   "Republican": 1586,
+   "Democratic": 497,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 54,
+   "Polling Place": 2039,
+   "Military & Overseas": 0,
+   "Early/Absentee": 99
+  }
+ ],
+ "Platte": [
+  {
+   "Total": 5544,
+   "Republican": 3445,
+   "Democratic": 1901,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 196,
+   "Polling Place": 5353,
+   "Military & Overseas": 5,
+   "Early/Absentee": 186
+  }
+ ],
+ "Polk": [
+  {
+   "Total": 1287,
+   "Republican": 914,
+   "Democratic": 326,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 47,
+   "Polling Place": 1257,
+   "Military & Overseas": 0,
+   "Early/Absentee": 30
+  }
+ ],
+ "Richardson": [
+  {
+   "Total": 1717,
+   "Republican": 1046,
+   "Democratic": 618,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 51,
+   "Polling Place": 1633,
+   "Military & Overseas": 0,
+   "Early/Absentee": 84
+  },
+  {
+   "Total": 1717,
+   "Republican": 1046,
+   "Democratic": 618,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 51,
+   "Polling Place": 1633,
+   "Military & Overseas": 1,
+   "Early/Absentee": 133
+  }
+ ],
+ "Rock": [
+  {
+   "Total": 677,
+   "Republican": 526,
+   "Democratic": 137,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 14,
+   "Polling Place": 631,
+   "Military & Overseas": 0,
+   "Early/Absentee": 46
+  }
+ ],
+ "Saline": [
+  {
+   "Total": 2588,
+   "Republican": 956,
+   "Democratic": 1471,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 161,
+   "Polling Place": 2526,
+   "Military & Overseas": 0,
+   "Early/Absentee": 62
+  },
+  {
+   "Total": 2588,
+   "Republican": 956,
+   "Democratic": 1471,
+   "Libertarian": 0,
+   "Natural Law": 161,
+   "Nonpartisan": 2526,
+   "Polling Place": 0,
+   "Military & Overseas": 46,
+   "Early/Absentee": 62
+  }
+ ],
+ "Sarpy": [
+  {
+   "Total": 17366,
+   "Republican": 9847,
+   "Democratic": 5924,
+   "Libertarian": 12,
+   "Natural Law": 0,
+   "Nonpartisan": 1579,
+   "Polling Place": 16498,
+   "Military & Overseas": 53,
+   "Early/Absentee": 815
+  }
+ ],
+ "Scotts Bluff": [
+  {
+   "Total": 5934,
+   "Republican": 4321,
+   "Democratic": 1480,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 131,
+   "Polling Place": 5567,
+   "Military & Overseas": 10,
+   "Early/Absentee": 357
+  }
+ ],
+ "Seward": [
+  {
+   "Total": 3082,
+   "Republican": 1871,
+   "Democratic": 1026,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 185,
+   "Polling Place": 2998,
+   "Military & Overseas": 0,
+   "Early/Absentee": 84
+  },
+  {
+   "Total": 3082,
+   "Republican": 1871,
+   "Democratic": 1026,
+   "Libertarian": 9,
+   "Natural Law": 0,
+   "Nonpartisan": 485,
+   "Polling Place": 2998,
+   "Military & Overseas": 0,
+   "Early/Absentee": 84
+  },
+  {
+   "Total": 3082,
+   "Republican": 1871,
+   "Democratic": 1026,
+   "Libertarian": 9,
+   "Natural Law": 9,
+   "Nonpartisan": 185,
+   "Polling Place": 2998,
+   "Military & Overseas": 9,
+   "Early/Absentee": 84
+  }
+ ],
+ "Sheridan": [
+  {
+   "Total": 1194,
+   "Republican": 929,
+   "Democratic": 226,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 38,
+   "Polling Place": 1169,
+   "Military & Overseas": 0,
+   "Early/Absentee": 25
+  }
+ ],
+ "Sherman": [
+  {
+   "Total": 1049,
+   "Republican": 414,
+   "Democratic": 596,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 1020,
+   "Military & Overseas": 1,
+   "Early/Absentee": 28
+  },
+  {
+   "Total": 3049,
+   "Republican": 414,
+   "Democratic": 596,
+   "Libertarian": 3,
+   "Natural Law": 0,
+   "Nonpartisan": 36,
+   "Polling Place": 1020,
+   "Military & Overseas": 1,
+   "Early/Absentee": 23
+  }
+ ],
+ "Stanton": [
+  {
+   "Total": 1154,
+   "Republican": 897,
+   "Democratic": 232,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 25,
+   "Polling Place": 1107,
+   "Military & Overseas": 0,
+   "Early/Absentee": 47
+  }
+ ],
+ "Thayer": [
+  {
+   "Total": 1633,
+   "Republican": 1030,
+   "Democratic": 540,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 63,
+   "Polling Place": 1573,
+   "Military & Overseas": 0,
+   "Early/Absentee": 60
+  },
+  {
+   "Total": 1633,
+   "Republican": 1030,
+   "Democratic": 540,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 63,
+   "Polling Place": 1573,
+   "Military & Overseas": 0,
+   "Early/Absentee": 60
+  }
+ ],
+ "Thomas": [
+  {
+   "Total": 220,
+   "Republican": 193,
+   "Democratic": 23,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 4,
+   "Polling Place": 206,
+   "Military & Overseas": 0,
+   "Early/Absentee": 14
+  }
+ ],
+ "Valley": [
+  {
+   "Total": 1126,
+   "Republican": 747,
+   "Democratic": 354,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 23,
+   "Polling Place": 1074,
+   "Military & Overseas": 0,
+   "Early/Absentee": 52
+  }
+ ],
+ "Washington": [
+  {
+   "Total": 2987,
+   "Republican": 2147,
+   "Democratic": 701,
+   "Libertarian": 2,
+   "Natural Law": 0,
+   "Nonpartisan": 137,
+   "Polling Place": 2899,
+   "Military & Overseas": 2,
+   "Early/Absentee": 86
+  },
+  {
+   "Total": 2987,
+   "Republican": 2147,
+   "Democratic": 701,
+   "Libertarian": 2,
+   "Natural Law": 9,
+   "Nonpartisan": 137,
+   "Polling Place": 2899,
+   "Military & Overseas": 2,
+   "Early/Absentee": 86
+  }
+ ],
+ "Wayne": [
+  {
+   "Total": 2257,
+   "Republican": 1509,
+   "Democratic": 586,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 162,
+   "Polling Place": 2153,
+   "Military & Overseas": 0,
+   "Early/Absentee": 104
+  },
+  {
+   "Total": 2287,
+   "Republican": 1509,
+   "Democratic": 586,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 162,
+   "Polling Place": 2153,
+   "Military & Overseas": 0,
+   "Early/Absentee": 104
+  },
+  {
+   "Total": 2257,
+   "Republican": 1509,
+   "Democratic": 586,
+   "Libertarian": 0,
+   "Natural Law": 9,
+   "Nonpartisan": 162,
+   "Polling Place": 2153,
+   "Military & Overseas": 0,
+   "Early/Absentee": 104
+  }
+ ],
+ "Wheeler": [
+  {
+   "Total": 267,
+   "Republican": 188,
+   "Democratic": 71,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 8,
+   "Polling Place": 256,
+   "Military & Overseas": 0,
+   "Early/Absentee": 11
+  }
+ ],
+ "Statewide": [
+  {
+   "Total": 324903,
+   "Republican": 189375,
+   "Democratic": 114481,
+   "Libertarian": 169,
+   "Natural Law": 7,
+   "Nonpartisan": 20867,
+   "Polling Place": 312005,
+   "Military & Overseas": 325,
+   "Early/Absentee": 12573
+  }
+ ],
+ "Sioux": [
+  {
+   "Total": 517,
+   "Republican": 414,
+   "Democratic": 75,
+   "Libertarian": 0,
+   "Natural Law": 0,
+   "Nonpartisan": 28,
+   "Polling Place": 475,
+   "Military & Overseas": 0,
+   "Early/Absentee": 4
+  }
+ ],
+ "Webster": [
+  {
+   "Total": 1195,
+   "Republican": 714,
+   "Democratic": 0,
+   "Libertarian": 0,
+   "Natural Law": 162,
+   "Nonpartisan": 67,
+   "Polling Place": 1163,
+   "Military & Overseas": 0,
+   "Early/Absentee": 104
+  }
+ ],
+ "Red Willow": [
+  {
+   "Total": 3180,
+   "Republican": 2031,
+   "Democratic": 916,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 232,
+   "Polling Place": 3046,
+   "Military & Overseas": 1,
+   "Early/Absentee": 133
+  }
+ ],
+ "Saunders": [
+  {
+   "Total": 3378,
+   "Republican": 1909,
+   "Democratic": 1360,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 108,
+   "Polling Place": 3275,
+   "Military & Overseas": 0,
+   "Early/Absentee": 103
+  }
+ ],
+ "Lincoln": [
+  {
+   "Total": 8058,
+   "Republican": 4858,
+   "Democratic": 2863,
+   "Libertarian": 1,
+   "Natural Law": 0,
+   "Nonpartisan": 336,
+   "Polling Place": 7680,
+   "Military & Overseas": 2,
+   "Early/Absentee": 376
+  }
+ ],
+ "York": [
+  {
+   "Total": 3082,
+   "Republican": 2494,
+   "Democratic": 534,
+   "Libertarian": 0,
+   "Natural Law": 1,
+   "Nonpartisan": 53,
+   "Polling Place": 2992,
+   "Military & Overseas": 3,
+   "Early/Absentee": 87
+  }
+ ]
+}

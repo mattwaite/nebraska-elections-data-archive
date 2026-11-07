@@ -122,4 +122,7 @@ only restructures them. If you find an error, please open an issue with the elec
 
 ## License
 
-To be decided. The source documents are public records published by the State of Nebraska.
+* Code: [MIT](LICENSE).
+* Data (`data/`, `corrections/`): [CC0](LICENSE-DATA.md), public domain.
+* The source PDFs in `pdfs/` are public records published by the State of Nebraska and are not covered by
+  either license.

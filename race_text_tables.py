@@ -46,6 +46,28 @@ def assign_groups(tokens, centers, rights, blank_cost=45.0):
     return list(reversed(groups))
 
 
+def merge_precinct_lines(lines):
+    """'Cedar*' on one line and '5 precincts 1029 388 ...' on the next are one county row."""
+    out = []
+    SECOND = {"Red": "Willow", "Scotts": "Bluff", "Keya": "Paha", "Box": "Butte"}
+    for ln in lines:
+        txt = [w["text"] for w in ln]
+        # a two-word county name wrapped onto two lines: "Red" / "Willow 3190 ..."
+        if out and len(txt) == 1 and out[-1] and SECOND.get(out[-1][0]["text"]) == txt[0] and len(out[-1]) > 1:
+            out[-1] = [out[-1][0], ln[0]] + out[-1][1:]  # "Red 4129 ..." then "Willow" on the next line
+            continue
+        if out and [w["text"] for w in out[-1]] and len(out[-1]) == 1 and SECOND.get(out[-1][0]["text"]) == txt[0]:
+            out[-1] = out[-1] + ln
+            continue
+        if (out and len(txt) >= 3 and txt[0].isdigit() and txt[1].lower().startswith("precinct")
+                and all(NUM.match(x) for x in txt[2:])
+                and not any(NUM.match(w["text"]) for w in out[-1]) and len(out[-1]) <= 3):
+            out[-1] = out[-1] + [{**ln[0], "text": "(%s precincts)" % txt[0]}] + ln[2:]
+            continue
+        out.append(ln)
+    return out
+
+
 def slot_starts(words):
     xs = sorted(w["x0"] for w in words if w["text"] == "County")
     out = []
@@ -62,20 +84,36 @@ def text_tables(page, grid_tables, all_words):
 
     words = [w for w in all_words if not inside(w)]
     starts = slot_starts(words) or [0]
-    bounds = [s - 3 for s in starts] + [page.width + 1]
+    mid = page.width / 2
+    if any(s < mid - 60 for s in starts) and any(s > mid - 60 for s in starts):
+        right = min(s for s in starts if s > mid - 60)
+        starts, bounds = [0, right], [0, min(mid, right - 3), page.width + 1]  # two tables side by side
+    else:
+        starts, bounds = [0], [0, page.width + 1]  # one (possibly wide) table per band
     out = []
     for bi in range(len(starts)):
         lo, hi = bounds[bi], bounds[bi + 1]
         seg = [w for w in words if lo <= w["x0"] < hi]
         pre, rows, run = [], [], None
-        lines = cluster_lines(seg)
+        lines = merge_precinct_lines(cluster_lines(seg))
         for ln in lines + [None]:
             r = parse_row(ln) if ln else None
             txt = " ".join(w["text"] for w in ln) if ln else ""
+            segs = [sg for sg in split_segments(ln) if parse_row(sg)] if (ln and not r) else []
+            if len(segs) >= 2 and len({len(parse_row(sg)[1]) for sg in segs}) == 1:
+                # two county/value column groups side by side: the same table continued in the right half
+                if run is None:
+                    run = {"pre": pre, "rows": [], "lines": [], "seg": []}
+                for k, sg in enumerate(segs):
+                    run["rows"].append(parse_row(sg))
+                    run["seg"].append(k)
+                run["lines"].append(segs[0])
+                continue
             if r:
                 if run is None:
-                    run = {"pre": pre, "rows": [], "lines": []}
+                    run = {"pre": pre, "rows": [], "lines": [], "seg": []}
                 run["rows"].append(r)
+                run["seg"].append(0)
                 run["lines"].append(ln)
                 continue
             if run is not None and ln and PRECINCT_LINE.match(txt):
@@ -95,7 +133,7 @@ def build(page, run, x0, lo, hi):
     from ocr_registration import COUNTIES
     names = [re.sub(r"\s*\(.*", "", r[0]) for r in run["rows"]]
     known = sum(1 for n in names if n in COUNTIES or n.lower() in ("total", "totals", "statewide"))
-    if known < 0.7 * len(names) or len(names) < 2:
+    if known < 0.7 * len(names) or len(names) < 1:
         return None
     pre = run["pre"]
     ci = None
@@ -131,7 +169,10 @@ def build(page, run, x0, lo, hi):
         labels = [" ".join(w["text"] for w in ln) for _, ln in pre[:ci]]
     # column centres: median number centre per column over the rows
     ncol = max(len(r[1]) for r in run["rows"])
-    full = [r for r in run["rows"] if len(r[1]) == ncol]
+    segs0 = run.get("seg") or [0] * len(run["rows"])
+    full = [r for r, k in zip(run["rows"], segs0) if len(r[1]) == ncol and k == 0]
+    if not full:
+        full = [r for r in run["rows"] if len(r[1]) == ncol]
     centers, rights = [], []
     for c in range(ncol):
         xs = sorted(center_x(r[1][c]) for r in full)
@@ -153,7 +194,7 @@ def build(page, run, x0, lo, hi):
     rows = []
     for name, nums in run["rows"]:
         prec = PREC_RE.search(name)
-        name = PREC_RE.sub("", name).strip()
+        name = PREC_RE.sub("", name).replace("*", "").strip()
         pm = re.search(r"\((\d+)\s+precincts?\)", name)
         vals = {}
         if len(nums) == ncol:
@@ -166,6 +207,7 @@ def build(page, run, x0, lo, hi):
         rows.append((name, int(prec.group(1)) if prec else None, vals))
     y_top = pre[ci][0] if ci < len(pre) else (center_y(run["lines"][0][0]) - 6)
     y_bot = center_y(run["lines"][-1][0])
-    return {"bbox": (lo, y_top, hi if hi < page.width else page.width, y_bot), "edges": edges, "header": header,
+    sx = (lo + min(hi, page.width)) / 2
+    return {"phrases": [(sx, l) for l in labels], "bbox": (lo, y_top, hi if hi < page.width else page.width, y_bot), "edges": edges, "header": header,
             "rows": rows, "labels": labels, "header_lines": [" ".join(w["text"] for w in ln) for ln in header_lines],
             "text_only": True}

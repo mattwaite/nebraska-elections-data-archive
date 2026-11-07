@@ -21,7 +21,7 @@ from collections import defaultdict
 import pdfplumber
 
 from extract_voter_registration import ELECTIONS, SCANNED, PDF_DIR, ROOT
-from race_blocks import page_tables, TOTAL_RE
+from race_blocks import page_tables, TOTAL_RE, label_phrases, cluster_lines, center_y
 from ocr_registration import COUNTIES
 
 # (regex on a title line, canonical office, level). First match wins.
@@ -47,12 +47,12 @@ OUT_OF_SCOPE = re.compile(
     r"city of|school district|county (clerk|treasurer|sheriff|attorney|assessor)|"
     r"proposed amendments|amendment|initiative|referendum|ballot (question|measure)|"
     r"voting statistics|registered voters|total voting|reported problems|table of contents", re.I)
-DISTRICT_RE = re.compile(r"((?:Legislative |Congressional )?District\s+(?:\d+|[A-Za-z]+))", re.I)
+DISTRICT_RE = re.compile(r"((?:Legislative |Congressional )?District\s+(?:\d+|[A-Za-z]+(?:-[A-Za-z]+)?))", re.I)
 TERM_RE = re.compile(r"(unexpired[^–\-]*|(?:two|four|six|2|4|6)[ -]year term|\d+ year term)", re.I)
 PARTY_RE = re.compile(r"\(([^()]*)\)\s*$")
 BALLOT_RE = re.compile(r"(republican|democratic|democrat|libertarian|green|nonpartisan|nebraska)\s+(party\s+)?"
                        r"(nomination|primary|ballot|candidates)", re.I)
-VG_RE = re.compile(r"(nonpartisan\s+)?(republican|democratic|democrat)(?:\s+party)?\s+voters", re.I)
+VG_RE = re.compile(r"(nonpartisan\s+)?(republican|democratic|democrat|libertarian|green|nebraska)(?:\s+party)?\s+voters", re.I)
 VG2_RE = re.compile(r"^(nonpartisan\s+)?(republican|democratic|democrat|libertarian)\s+party$", re.I)  # 2002 primary
 PARTY_NORM = {"republican": "Republican", "democratic": "Democratic", "democrat": "Democratic",
               "libertarian": "Libertarian", "legal marijuana now": "Legal Marijuana NOW",
@@ -71,6 +71,8 @@ NOISE_HEADER = re.compile(r"^(rep|dem|np|lib|total|total all votes|republican vo
 
 def office_of(line):
     t = line.lower()
+    if t.startswith("*"):  # footnote ("*Please see Reported Problems.")
+        return None
     if OUT_OF_SCOPE.search(t):
         return "OUT"
     for rx, name, level in OFFICES:
@@ -82,9 +84,15 @@ def office_of(line):
 def parse_candidate(cell_lines):
     cell_lines = list(cell_lines)
     party_line = ""
-    if len(cell_lines) > 1 and PARTY_WORDS.match(cell_lines[-1].strip("() ")):
+    if len(cell_lines) > 1 and cell_lines[-1].strip().lower().rstrip(")") == "petition" and re.search(r"(^|\s)By$", cell_lines[-2].strip()):
+        cell_lines = cell_lines[:-2] + [re.sub(r"(^|\s)By$", "", cell_lines[-2].strip()).strip()]  # "... By" / "Petition"
+        cell_lines = [c for c in cell_lines if c]
+        party_line = "By Petition"
+    elif len(cell_lines) > 1 and PARTY_WORDS.match(cell_lines[-1].strip("() ")):
         party_line = cell_lines.pop().strip("() ")
     text = " ".join(cell_lines)
+    if not party_line and re.search(r"\bBy Petition$", text):
+        text, party_line = re.sub(r"\s*\bBy Petition$", "", text), "By Petition"
     winner = "✔" in text
     text = re.sub(r"\s+", " ", text.replace("✔", "")).strip()
     party = ""
@@ -100,10 +108,48 @@ def parse_candidate(cell_lines):
             "noise": bool(NOISE_HEADER.match(text.strip()))}
 
 
+NOT_A_LABEL = re.compile(r"did not|nomination\b.*\(", re.I)  # footnotes that mention a district in passing
+
+
+def phrase_district(t):
+    """The "District N" phrase nearest above the table whose horizontal extent covers the table's. Tables side by
+    side share one line ("District Fifteen      District Seventeen"), so each phrase is matched by position."""
+    x0, top, x1, _ = t["bbox"]
+    best = None
+    for px, py, text, a, b in t.get("page_phrases", []):
+        if py >= top - 1 or NOT_A_LABEL.search(text):
+            continue
+        if b < x0 - 10 or a > x1 + 10:  # the phrase must sit over this table
+            continue
+        m = DISTRICT_RE.search(text)
+        if m:
+            key = (top - py, abs(px - (x0 + x1) / 2))
+            if best is None or key < best[0]:
+                best = (key, m.group(1))
+    return re.sub(r"\s+", " ", best[1]).strip() if best else ""
+
+
+def phrase_ballot(t):
+    """The "<Party> Party Nomination" heading printed over this table (neighbours may share the line)."""
+    x0, top, x1, _ = t["bbox"]
+    best = None
+    for px, py, text, a, b in t.get("page_phrases", []):
+        if py >= top - 1 or b < x0 - 10 or a > x1 + 10:
+            continue
+        m = BALLOT_RE.search(text)
+        if m:
+            key = (top - py, abs(px - (x0 + x1) / 2))
+            if best is None or key < best[0]:
+                best = (key, m)
+    return best[1] if best else None
+
+
 def district_and_term(sources):
     district, term = "", ""
     for source in sources:
         for ln in reversed(source):
+            if NOT_A_LABEL.search(ln):
+                continue
             m = DISTRICT_RE.search(ln)
             if m and not district:
                 district = re.sub(r"\s+", " ", m.group(1)).strip()
@@ -148,6 +194,15 @@ def norm_term(t):
     return t
 
 
+def page_phrase_rows(page):
+    words = page.extract_words()
+    out = []
+    for ln in cluster_lines(words):
+        y = sum(center_y(w) for w in ln) / len(ln)
+        out.append((y, label_phrases(ln)))
+    return out
+
+
 def collect(stem):
     """All tables of a book in reading order, annotated with office/district/term titles."""
     tables = []
@@ -155,6 +210,9 @@ def collect(stem):
         for pno, page in enumerate(pdf.pages, start=1):
             tabs, lines = page_tables(page)
             tabs = [t for t in tabs if any(r[0] in COUNTIES for r in t["rows"])]  # drops summary tables
+            pphr = [(px, py, tx, a, b) for py, ph in page_phrase_rows(page) for px, tx, a, b in ph]
+            for t in tabs:
+                t["page_phrases"] = pphr
             ordered, band_top = [], None
             for t in sorted(tabs, key=lambda t: t["bbox"][1]):
                 if band_top is None or t["bbox"][1] - band_top > 20:
@@ -187,8 +245,11 @@ def collect(stem):
 
 
 def same_header(a, b):
-    return bool(a["header"]) and [tuple(a["header"].get(c, [])) for c in range(1, len(a["edges"]))] == \
-        [tuple(b["header"].get(c, [])) for c in range(1, len(b["edges"]))]
+    """Same candidate columns (party lines may be missing on a continuation page's repeated header)."""
+    if not a["header"] or not b["header"]:
+        return False
+    ca, cb = candidate_columns(a), candidate_columns(b)
+    return len(ca) == len(cb) and [c["name"] for c in ca.values()] == [c["name"] for c in cb.values()]
 
 
 def build_races(stem, tables):
@@ -205,11 +266,20 @@ def build_races(stem, tables):
                 cur["tables"].append(t)
             continue
         district, term = district_and_term([t["labels"], t["ctx"], [t["printed"] or ""]])
+        inline_d = ""
+        for s_ in t.get("inline", []):
+            m_ = DISTRICT_RE.search(s_)
+            if m_:
+                inline_d = re.sub(r"\s+", " ", m_.group(1)).strip()
+        district = inline_d or phrase_district(t) or district
         ballot_src = " ".join(t["labels"] + t["ctx"] + [t["printed"] or ""])
-        mb = BALLOT_RE.search(ballot_src)
+        mb = phrase_ballot(t) or BALLOT_RE.search(ballot_src)
         ballot = PARTY_NORM.get(mb.group(1).lower(), mb.group(1).title()) if mb else ""
-        mv = VG_RE.search(ballot_src)
-        if not mv:
+        mv = VG_RE.search(" ".join(t["labels"]))  # this table's own half of the page first
+        bare_np = any(re.fullmatch(r"nonpartisan voters", s.strip(), re.I) for s in t["labels"])
+        if not mv and not bare_np:
+            mv = VG_RE.search(ballot_src)
+        if not mv and not bare_np and not mb:  # 2002-style bare "Republican Party" headings
             for cl in (t["labels"], t["ctx"]):
                 for i in range(len(cl) - 1, -1, -1):
                     ln = cl[i].strip()
@@ -221,6 +291,8 @@ def build_races(stem, tables):
                 if mv:
                     break
         vgroup = ""
+        if not mv and ballot and (bare_np or any(re.fullmatch(r"nonpartisan voters", s.strip(), re.I) for s in t["ctx"][-3:])):
+            vgroup = "Nonpartisan voters (%s ballot)" % ballot  # "Nonpartisan Voters" under a party nomination heading
         if mv:  # the 2012 primary prints each partisan race once per kind of voter
             ballot = PARTY_NORM[mv.group(2).lower()]
             vgroup = ("Nonpartisan voters (%s ballot)" % ballot) if mv.group(1) else ("%s voters" % ballot)
@@ -257,6 +329,7 @@ def build_races(stem, tables):
                 r["tables"].append(t)
                 break
     keyset = {(r["office"], r["district"], r["term"], r["ballot"]) for r in races if r["vgroup"].startswith("Nonpartisan")}
+    infer_districts(races)
     for r in races:
         if not r["vgroup"] and (r["office"], r["district"], r["term"], r["ballot"]) in keyset:
             r["vgroup"] = "%s voters" % r["ballot"]
@@ -291,11 +364,31 @@ def candidate_columns(t0):
     return {c: parse_candidate(header.get(c, [])) for c in range(1, ncol + 1)}
 
 
+def infer_districts(races):
+    """U.S. House races printed without a district label: assign the one congressional district whose counties
+    (taken from labelled House races in the same book) contain all of the race's counties."""
+    ref = {}
+    for r in races:
+        if r["office"] == "U.S. House" and r["district"]:
+            ref.setdefault(norm_district(r["district"]), set()).update(
+                row[0] for tb in r["tables"] for row in tb["rows"] if row[0] in COUNTIES)
+    for r in races:
+        r["inferred"] = False
+        if r["office"] == "U.S. House" and not r["district"] and ref:
+            cs = {row[0] for tb in r["tables"] for row in tb["rows"] if row[0] in COUNTIES}
+            fits = [d for d, s in ref.items() if cs and cs <= s]
+            if len(fits) == 1:
+                r["district"], r["inferred"] = fits[0], True
+
+
 def race_rows(stem, race):
     date, etype = ELECTIONS[stem], stem.split("_")[1]
     office = race["office"]
     t0 = race["tables"][0]
     cands = candidate_columns(t0)
+    named = [c["name"].strip() for c in cands.values() if c["name"].strip()]
+    if named and all(re.fullmatch(r"for|against|yes|no|retain|repeal", n, re.I) for n in named):
+        return [], []  # a ballot measure or retention question, out of scope
     out, issues = [], []
     for t in race["tables"]:
         if t is not t0 and t["header"] and not any(re.search(r"\bcont(inued|\.)?\b", " ".join(v), re.I)
@@ -319,7 +412,7 @@ def race_rows(stem, race):
                 out.append({
                     "election_date": date, "election_type": etype, "office": office,
                     "office_level": LEVEL[office], "office_as_printed": race["printed"],
-                    "district": norm_district(race["district"]), "term": norm_term(race["term"]),
+                    "district": norm_district(race["district"]), "district_inferred": race.get("inferred", False), "term": norm_term(race["term"]),
                     "primary_ballot": race["ballot"], "voter_group": race["vgroup"], "is_recount": race["recount"], "jurisdiction": "Total" if total else name,
                     "jurisdiction_type": "race_total" if total else "county",
                     "partial_county_precincts": prec if prec is not None else "",
@@ -394,8 +487,9 @@ KNOWN_SOURCE_ISSUES = {
 # Elections included in the published CSV (all checks pass apart from KNOWN_SOURCE_ISSUES).
 PUBLISH = ["2024_general", "2024_primary", "2022_general", "2022_primary", "2020_general", "2020_primary",
            "2018_general", "2018_primary", "2016_general", "2016_primary", "2014_general", "2014_primary", "2012_general", "2012_primary",
-           "2010_general", "2010_primary", "2002_primary"]
+           "2010_general", "2010_primary", "2008_general", "2004_general", "2004_primary", "2002_primary"]
 COLUMNS = ["election_date", "election_type", "race_id", "office", "office_level", "office_as_printed", "district",
+           "district_inferred",
            "term", "primary_ballot", "voter_group", "is_recount", "jurisdiction", "jurisdiction_type", "partial_county_precincts",
            "candidate", "party", "candidate_as_printed", "is_write_in", "winner", "votes", "total_derived"]
 

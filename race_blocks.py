@@ -146,6 +146,24 @@ def cell_of(x, edges):
     return None
 
 
+def label_phrases(words, gap=18):
+    """Text lines above a table cut into phrases at wide gaps: [(x_centre, text, x0, x1)]. Two tables side by side
+    share one line such as "District Fifteen        District Seventeen"; the phrases keep them apart."""
+    out = []
+    for ln in cluster_lines(words):
+        cur = [ln[0]]
+        groups = []
+        for w in ln[1:]:
+            if w["x0"] - cur[-1]["x1"] > gap:
+                groups.append(cur)
+                cur = []
+            cur.append(w)
+        groups.append(cur)
+        for g in groups:
+            out.append(((g[0]["x0"] + g[-1]["x1"]) / 2, " ".join(x["text"] for x in g), g[0]["x0"], g[-1]["x1"]))
+    return out
+
+
 def split_segments(ln):
     """A line holding two (name, numbers) pairs side by side -> list of word lists."""
     segs, cur, seen_num = [], [], False
@@ -213,7 +231,7 @@ def parse_table(page, t, words, prev_tables):
                 continue
             name, nums = r
             prec = PREC_RE.search(name)
-            name = PREC_RE.sub("", name).strip()
+            name = PREC_RE.sub("", name).replace("*", "").strip()
             vals = {}
             for j, w in enumerate(nums):
                 c = (j + 1) if doubled else cell_of(center_x(w), edges)
@@ -230,9 +248,13 @@ def parse_table(page, t, words, prev_tables):
         px0, ptop, px1, pbot = p["bbox"]
         if px1 > lo and px0 < hi and pbot <= top:
             floor = max(floor, pbot)
+    if not wide:  # keep only label text centred over this table (a neighbour's "District 15" is not ours)
+        lo, hi = max(lo, x0 - 20), min(hi, x1 + 20)
     lab_words = [w for w in words if floor <= w["top"] and w["bottom"] <= top + 1 and lo <= center_x(w) < hi]
     labels = inline + [" ".join(w["text"] for w in ln) for ln in cluster_lines(lab_words)]
-    return {"bbox": t["bbox"], "edges": edges, "header": header, "rows": rows, "labels": labels,
+    near = [w for w in words if floor <= w["top"] and w["bottom"] <= top + 1 and w["top"] >= top - 90]
+    phrases = label_phrases(near)
+    return {"bbox": t["bbox"], "edges": edges, "header": header, "rows": rows, "labels": labels, "phrases": phrases, "inline": inline,
             "header_lines": [" ".join(w["text"] for w in ln) for ln in lines[:first_row]]}
 
 

@@ -1,15 +1,15 @@
 # ERRATA: `race_results.csv`
 
 Read this before using the dataset. It records the schema, what is and is not covered, every judgment call
-and every known limitation. **This dataset is partial: 17 of 26 elections, and only statewide, federal and
+and every known limitation. **This dataset is partial: 20 of 26 elections, and only statewide, federal and
 legislative offices.** The coverage section says exactly which, and why.
 
 ## What the dataset is
 
 County-level results for each race, from the "Federal Offices" and "State Offices" sections of the Secretary
 of State canvass books (archived in `pdfs/`). The books print each race as a wide table with candidates as
-column headings; this file has one row per election × race × jurisdiction × candidate. 42,112 rows,
-757 races.
+column headings; this file has one row per election × race × jurisdiction × candidate. 48,138 rows,
+933 races.
 
 | column | meaning |
 |---|---|
@@ -19,9 +19,10 @@ column headings; this file has one row per election × race × jurisdiction × c
 | `office_level` | `federal`, `state` or `legislative` |
 | `office_as_printed` | the title line the book used |
 | `district` | `District 3`, or empty for statewide offices. Words and leading zeros are normalized ("District Three", "District 03" → `District 3`). For `President`, a district value means the by-congressional-district tabulation |
+| `district_inferred` | `True` where the book prints no district label for a U.S. House race and I assigned the one congressional district whose counties (taken from the labelled House races in the same book) contain all of the race's counties. This affects the 2002 and 2004 primaries and some Democratic and Libertarian House primaries in 2018-2024. Treat these districts as inferred, not printed |
 | `term` | `Two Year Term`, `Four Year Term`, `Six Year Term`, or empty when the book doesn't say |
 | `primary_ballot` | for primaries, the party whose nomination the race decides (`Republican`, `Democratic`, `Libertarian`, `Nonpartisan`); empty in general elections |
-| `voter_group` | only in the 2002 and 2012 primaries, which print each partisan race once for registered party voters and again for nonpartisans who took that party's ballot: `Republican voters`, `Democratic voters`, `Libertarian voters` (2002 only), `Nonpartisan voters (Republican ballot)`, and so on. **These are separate tables of the same race; a candidate's full vote is the sum of the two groups** (the book prints no combined county table). Empty everywhere else |
+| `voter_group` | only in the 2002, 2004 and 2012 primaries, which print each partisan race once for registered party voters and again for nonpartisans who took that party's ballot: `Republican voters`, `Democratic voters`, `Libertarian voters`, `Green voters`, `Nebraska Party voters`, `Nonpartisan voters (Republican ballot)`, and so on. **These are separate tables of the same race; a candidate's full vote is the sum of the two groups** (the book prints no combined county table). Empty everywhere else |
 | `is_recount` | `True` for the separate recount table some books print (2022 primary Legislative District 18). Recounts are separate races in this file; don't add them to the original |
 | `jurisdiction` | county name, or `Total` for the race total |
 | `jurisdiction_type` | `county` or `race_total` |
@@ -53,15 +54,15 @@ boards, and ballot measures. Special elections are not in the archive at all.
 
 Included (every check passes, apart from the five source issues listed below):
 
-2002 primary; 2010 primary and general; 2012 primary and general; 2014 primary and general; 2016, 2018, 2020,
-2022 and 2024 primaries and generals.
+2002 primary; 2004 primary and general; 2008 general; 2010 primary and general; 2012 primary and general; 2014
+primary and general; 2016, 2018, 2020, 2022 and 2024 primaries and generals.
 
 **Not yet included**, and why:
 
 | election | reason |
 |---|---|
-| 2000 primary and general, 2002 general, 2006 primary and general | scanned images; no text layer. Needs the same OCR-plus-hand-correction process as the earlier datasets |
-| 2004 and 2008 primaries and generals | no grid lines; the text-position parser exists but races in every one of these books fail validation or are missing |
+| 2000 primary and general, 2002 general, 2006 primary and general (five scanned books) | scanned images; no text layer. Needs the same OCR-plus-hand-correction process as the earlier datasets |
+| 2008 primary | the U.S. House pages interleave a continuing county list in the right column with new tables in the left; the text-position parser mis-groups them and 23 candidate totals fail validation |
 
 Nothing from those books is in the CSV. Their absence says nothing about the results.
 
@@ -81,10 +82,24 @@ Nothing from those books is in the CSV. Their absence says nothing about the res
    Total sub-column is the candidate's vote.
 4. **Validate** (`extract_races.py`; the CSV is not written unless everything passes): each candidate's
    county rows sum to the race Total; exactly one Total per candidate; no county appears twice in a race.
-5. Where one grid holds several different tables (2010 general State Board of Education and Regents pages),
+5. 2004 and 2008 (and the occasional half page elsewhere) have no grid; their tables are found from the word
+   "County" in each header and the names are matched to columns by a small dynamic program.
+6. Where one grid holds several different tables (2010 general State Board of Education and Regents pages),
    the tables are read from text positions instead.
-6. Where a page has result rows outside any grid (2016 general, half-page tables), `race_text_tables.py` reads
+7. Where a page has result rows outside any grid (2016 general, half-page tables), `race_text_tables.py` reads
    them from text positions instead.
+
+## Corrections to earlier releases
+
+Three defects in the first published versions of this file were found and fixed:
+
+* **2010 general:** a ballot measure (For / Against) was filed under `State Treasurer`; those 188 rows are removed.
+* **Voter groups:** a label fragment such as "Democratic Party" in 2014-2024 primaries was mistaken for a voter-group
+  heading, giving those races a spurious `voter_group` (and a different `race_id`). `voter_group` is now empty
+  outside the 2002, 2004 and 2012 primaries.
+* **District labels:** side-by-side tables share one line of labels ("District Fifteen   District Seventeen"), and some
+  were given their neighbour's district (2016 and 2010 legislative and Regents races, 2024 House primaries). Labels
+  are now matched to tables by position, and I checked that no two different races share a `race_id`.
 
 ## Judgment calls
 

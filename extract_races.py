@@ -53,6 +53,7 @@ PARTY_RE = re.compile(r"\(([^()]*)\)\s*$")
 BALLOT_RE = re.compile(r"(republican|democratic|democrat|libertarian|green|nonpartisan|nebraska)\s+(party\s+)?"
                        r"(nomination|primary|ballot|candidates)", re.I)
 VG_RE = re.compile(r"(nonpartisan\s+)?(republican|democratic|democrat)(?:\s+party)?\s+voters", re.I)
+VG2_RE = re.compile(r"^(nonpartisan\s+)?(republican|democratic|democrat|libertarian)\s+party$", re.I)  # 2002 primary
 PARTY_NORM = {"republican": "Republican", "democratic": "Democratic", "democrat": "Democratic",
               "libertarian": "Libertarian", "legal marijuana now": "Legal Marijuana NOW",
               "nonpartisan": "Nonpartisan", "by petition": "By Petition", "green": "Green",
@@ -208,6 +209,17 @@ def build_races(stem, tables):
         mb = BALLOT_RE.search(ballot_src)
         ballot = PARTY_NORM.get(mb.group(1).lower(), mb.group(1).title()) if mb else ""
         mv = VG_RE.search(ballot_src)
+        if not mv:
+            for cl in (t["labels"], t["ctx"]):
+                for i in range(len(cl) - 1, -1, -1):
+                    ln = cl[i].strip()
+                    if any(x.strip().lower() == "nonpartisan" for x in cl[max(0, i - 2):i]):  # heading wrapped over lines
+                        ln = "Nonpartisan " + ln
+                    mv = VG2_RE.match(ln)
+                    if mv:
+                        break
+                if mv:
+                    break
         vgroup = ""
         if mv:  # the 2012 primary prints each partisan race once per kind of voter
             ballot = PARTY_NORM[mv.group(2).lower()]
@@ -372,6 +384,8 @@ KNOWN_SOURCE_ISSUES = {
         "county rows sum to 3,375 but the printed district Total is 3,374",
     ("2016_primary", "President", "", "John McAfee"):
         "county rows sum to 124 but the printed Total is 123",
+    ("2002_primary", "U.S. Senate", "", "Charlie A. Matulka"):
+        "Democratic ballot, nonpartisan voters: county rows sum to 562 but the printed Total is 561",
     ("2014_primary", "Auditor of Public Accounts", "", "Charlie Janssen"):
         "county rows sum to 93,262 but the printed Total is 93,212",
     ("2016_primary", "University Regents", "District 7", "Bob Phares"):
@@ -380,7 +394,7 @@ KNOWN_SOURCE_ISSUES = {
 # Elections included in the published CSV (all checks pass apart from KNOWN_SOURCE_ISSUES).
 PUBLISH = ["2024_general", "2024_primary", "2022_general", "2022_primary", "2020_general", "2020_primary",
            "2018_general", "2018_primary", "2016_general", "2016_primary", "2014_general", "2014_primary", "2012_general", "2012_primary",
-           "2010_primary"]
+           "2010_general", "2010_primary", "2002_primary"]
 COLUMNS = ["election_date", "election_type", "race_id", "office", "office_level", "office_as_printed", "district",
            "term", "primary_ballot", "voter_group", "is_recount", "jurisdiction", "jurisdiction_type", "partial_county_precincts",
            "candidate", "party", "candidate_as_printed", "is_write_in", "winner", "votes", "total_derived"]

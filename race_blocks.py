@@ -71,6 +71,24 @@ def parse_row(ws):
     return name, nums
 
 
+def merged_tables(inside):
+    """True when one grid component holds more than one distinct table (different 'County' headers)."""
+    lines = cluster_lines(inside)
+    heads = []
+    for ln in lines:
+        idx = [i for i, w in enumerate(ln) if w["text"] == "County"]
+        if not idx:
+            continue
+        parts = []
+        for a, i in enumerate(idx):
+            j = idx[a + 1] if a + 1 < len(idx) else len(ln)
+            parts.append(tuple(w["text"] for w in ln[i + 1:j]))
+        heads.append(parts)
+    if len(heads) >= 2:  # County headers on different lines: stacked tables
+        return True
+    return bool(heads) and len(set(heads[0])) > 1  # side by side with different candidates
+
+
 def find_tables(page):
     """Connected components of thin grid rectangles that contain the word 'County'."""
     rects = [r for r in page.rects if (r["width"] <= 2.5 or r["height"] <= 2.5) and max(r["width"], r["height"]) >= 3]
@@ -110,6 +128,8 @@ def find_tables(page):
         inside = [w for w in words if x0 - 1 <= center_x(w) <= x1 + 1 and top - 2 <= center_y(w) <= bottom + 2]
         if not any(parse_row(sg) for ln in cluster_lines(inside) for sg in split_segments(ln)):
             continue
+        if merged_tables(inside):
+            continue  # several different tables share one grid: read them from text positions instead
         vx = sorted(r["x0"] for r in rs if r["width"] <= 2.5 and r["height"] >= 4)
         edges = []
         for x in vx:

@@ -1,15 +1,15 @@
 # ERRATA: `race_results.csv`
 
 Read this before using the dataset. It records the schema, what is and is not covered, every judgment call
-and every known limitation. **This dataset is partial: 15 of 26 elections, and only statewide, federal and
+and every known limitation. **This dataset is partial: 17 of 26 elections, and only statewide, federal and
 legislative offices.** The coverage section says exactly which, and why.
 
 ## What the dataset is
 
 County-level results for each race, from the "Federal Offices" and "State Offices" sections of the Secretary
 of State canvass books (archived in `pdfs/`). The books print each race as a wide table with candidates as
-column headings; this file has one row per election × race × jurisdiction × candidate. 37,157 rows,
-663 races.
+column headings; this file has one row per election × race × jurisdiction × candidate. 42,112 rows,
+757 races.
 
 | column | meaning |
 |---|---|
@@ -21,7 +21,7 @@ column headings; this file has one row per election × race × jurisdiction × c
 | `district` | `District 3`, or empty for statewide offices. Words and leading zeros are normalized ("District Three", "District 03" → `District 3`). For `President`, a district value means the by-congressional-district tabulation |
 | `term` | `Two Year Term`, `Four Year Term`, `Six Year Term`, or empty when the book doesn't say |
 | `primary_ballot` | for primaries, the party whose nomination the race decides (`Republican`, `Democratic`, `Libertarian`, `Nonpartisan`); empty in general elections |
-| `voter_group` | only in the 2012 primary, which prints each partisan race once for registered party voters and again for nonpartisans who took that party's ballot: `Republican voters`, `Democratic voters`, `Nonpartisan voters (Republican ballot)`, `Nonpartisan voters (Democratic ballot)`. **These are separate tables of the same race; a candidate's full vote is the sum of the two groups** (the book prints no combined county table). Empty everywhere else |
+| `voter_group` | only in the 2002 and 2012 primaries, which print each partisan race once for registered party voters and again for nonpartisans who took that party's ballot: `Republican voters`, `Democratic voters`, `Libertarian voters` (2002 only), `Nonpartisan voters (Republican ballot)`, and so on. **These are separate tables of the same race; a candidate's full vote is the sum of the two groups** (the book prints no combined county table). Empty everywhere else |
 | `is_recount` | `True` for the separate recount table some books print (2022 primary Legislative District 18). Recounts are separate races in this file; don't add them to the original |
 | `jurisdiction` | county name, or `Total` for the race total |
 | `jurisdiction_type` | `county` or `race_total` |
@@ -51,19 +51,17 @@ boards, and ballot measures. Special elections are not in the archive at all.
 
 ## Coverage
 
-Included (every check passes, apart from the four source issues listed below):
+Included (every check passes, apart from the five source issues listed below):
 
-2010 primary; 2012 primary and general; 2014 primary and general; 2016, 2018, 2020, 2022 and 2024 primaries
-and generals.
+2002 primary; 2010 primary and general; 2012 primary and general; 2014 primary and general; 2016, 2018, 2020,
+2022 and 2024 primaries and generals.
 
 **Not yet included**, and why:
 
 | election | reason |
 |---|---|
 | 2000 primary and general, 2002 general, 2006 primary and general | scanned images; no text layer. Needs the same OCR-plus-hand-correction process as the earlier datasets |
-| 2002 primary | text layer, but some races fail validation (U.S. Senate and U.S. House county sums don't reconcile) |
 | 2004 and 2008 primaries and generals | no grid lines; the text-position parser exists but races in every one of these books fail validation or are missing |
-| 2010 general | the University Regents District 6 table is laid out transposed (counties as columns); State Board of Education District 5 has no Total row |
 
 Nothing from those books is in the CSV. Their absence says nothing about the results.
 
@@ -83,7 +81,9 @@ Nothing from those books is in the CSV. Their absence says nothing about the res
    Total sub-column is the candidate's vote.
 4. **Validate** (`extract_races.py`; the CSV is not written unless everything passes): each candidate's
    county rows sum to the race Total; exactly one Total per candidate; no county appears twice in a race.
-5. Where a page has result rows outside any grid (2016 general, half-page tables), `race_text_tables.py` reads
+5. Where one grid holds several different tables (2010 general State Board of Education and Regents pages),
+   the tables are read from text positions instead.
+6. Where a page has result rows outside any grid (2016 general, half-page tables), `race_text_tables.py` reads
    them from text positions instead.
 
 ## Judgment calls
@@ -108,6 +108,7 @@ Nothing from those books is in the CSV. Their absence says nothing about the res
 |---|---|---|
 | 2016 general | President, District 1, Jill Stein & Ajamu Baraka | county rows sum to 3,375, printed Total is 3,374 |
 | 2016 primary | President, Libertarian, John McAfee | county rows sum to 124, printed Total is 123 |
+| 2002 primary | U.S. Senate, Democratic ballot, nonpartisan voters, Charlie A. Matulka | county rows sum to 562, printed Total is 561 |
 | 2014 primary | Auditor of Public Accounts, Republican, Charlie Janssen | county rows sum to 93,262, printed Total is 93,212 |
 | 2016 primary | University Regents District 7, Bob Phares | county rows sum to 35,549, printed Total is 33,549 (a digit may be wrong in the Total or in a county; not resolved) |
 

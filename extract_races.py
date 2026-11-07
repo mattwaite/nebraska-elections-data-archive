@@ -22,6 +22,7 @@ import pdfplumber
 
 from extract_voter_registration import ELECTIONS, SCANNED, PDF_DIR, ROOT
 from race_blocks import page_tables, TOTAL_RE
+from ocr_registration import COUNTIES
 
 # (regex on a title line, canonical office, level). First match wins.
 OFFICES = [
@@ -51,6 +52,7 @@ TERM_RE = re.compile(r"(unexpired[^–\-]*|(?:two|four|six|2|4|6)[ -]year term|\
 PARTY_RE = re.compile(r"\(([^()]*)\)\s*$")
 BALLOT_RE = re.compile(r"(republican|democratic|democrat|libertarian|green|nonpartisan|nebraska)\s+(party\s+)?"
                        r"(nomination|primary|ballot|candidates)", re.I)
+VG_RE = re.compile(r"(nonpartisan\s+)?(republican|democratic|democrat)(?:\s+party)?\s+voters", re.I)
 PARTY_NORM = {"republican": "Republican", "democratic": "Democratic", "democrat": "Democratic",
               "libertarian": "Libertarian", "legal marijuana now": "Legal Marijuana NOW",
               "nonpartisan": "Nonpartisan", "by petition": "By Petition", "green": "Green",
@@ -114,7 +116,25 @@ def district_and_term(sources):
 
 def norm_district(d):
     d = d.title().replace("Legislative ", "").replace("Congressional ", "")
-    words = {"One": "1", "Two": "2", "Three": "3", "Four": "4", "Five": "5", "Six": "6", "Seven": "7", "Eight": "8"}
+    units = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
+             "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
+    tens = {"Twenty": 20, "Thirty": 30, "Forty": 40}
+    words = {w: str(i + 1) for i, w in enumerate(units)}
+    parts_ = d.replace("-", " ").split()
+    out_ = []
+    i_ = 0
+    while i_ < len(parts_):
+        p_ = parts_[i_]
+        if p_ in tens:
+            n_ = tens[p_]
+            if i_ + 1 < len(parts_) and parts_[i_ + 1] in units[:9]:
+                n_ += units.index(parts_[i_ + 1]) + 1
+                i_ += 1
+            out_.append(str(n_))
+        else:
+            out_.append(p_)
+        i_ += 1
+    d = " ".join(out_)
     parts = [words.get(p, p) for p in d.split()]
     parts = [str(int(p)) if p.isdigit() else p for p in parts]  # "District 06" -> "District 6"
     return " ".join(parts).strip()
@@ -133,6 +153,7 @@ def collect(stem):
     with pdfplumber.open(PDF_DIR / f"{stem}.pdf") as pdf:
         for pno, page in enumerate(pdf.pages, start=1):
             tabs, lines = page_tables(page)
+            tabs = [t for t in tabs if any(r[0] in COUNTIES for r in t["rows"])]  # drops summary tables
             ordered, band_top = [], None
             for t in sorted(tabs, key=lambda t: t["bbox"][1]):
                 if band_top is None or t["bbox"][1] - band_top > 20:
@@ -170,10 +191,14 @@ def same_header(a, b):
 
 
 def build_races(stem, tables):
-    races, cur = [], None
+    races, cur, pending = [], None, []
     for t in tables:
-        has_header = bool(t["header"]) and not any(re.search(r"\bcont(inued|\.)?\b", " ".join(v), re.I)
-                                                    for v in t["header"].values())
+        is_cont_hdr = bool(t["header"]) and any(re.search(r"\bcont(inued|\.)?\b", " ".join(v), re.I)
+                                                for v in t["header"].values())
+        if is_cont_hdr:  # "Smith cont.": continues the race with those candidates, wherever it sits on the page
+            pending.append(t)
+            continue
+        has_header = bool(t["header"])
         if not has_header:
             if cur is not None:
                 cur["tables"].append(t)
@@ -182,6 +207,14 @@ def build_races(stem, tables):
         ballot_src = " ".join(t["labels"] + t["ctx"] + [t["printed"] or ""])
         mb = BALLOT_RE.search(ballot_src)
         ballot = PARTY_NORM.get(mb.group(1).lower(), mb.group(1).title()) if mb else ""
+        mv = VG_RE.search(ballot_src)
+        vgroup = ""
+        if mv:  # the 2012 primary prints each partisan race once per kind of voter
+            ballot = PARTY_NORM[mv.group(2).lower()]
+            vgroup = ("Nonpartisan voters (%s ballot)" % ballot) if mv.group(1) else ("%s voters" % ballot)
+        if not mv and not mb and cur is not None and cur["vgroup"] and t["page"] - cur["tables"][-1]["page"] <= 1 \
+                and district and district != cur["district"]:
+            ballot, vgroup = cur["ballot"], cur["vgroup"]  # "District Two" under a "Nonpartisan ... Voters" heading
         recount = bool(re.search(r"recount", ballot_src, re.I))
         prev = cur["tables"][-1] if cur else None
         own_labels = [s for s in t["labels"] if not re.match(r"^page\b", s, re.I)]
@@ -195,14 +228,26 @@ def build_races(stem, tables):
         total_in = lambda tb: any(TOTAL_RE.match(r[0]) for r in tb["rows"])
         if (cur is not None and same_header(prev, t) and not (district and district != cur["district"])
                 and (not cur["has_total"] or not total_in(t)) and t["page"] - prev["page"] <= 1
-                and (t["office"] in (None, cur["office"])) and recount == cur["recount"]):
+                and (t["office"] in (None, cur["office"])) and recount == cur["recount"] and (vgroup == cur["vgroup"] or not mv)):
             cur["tables"].append(t)
             cur["has_total"] = cur["has_total"] or total_in(t)
             continue
         cur = {"office": t["office"] or (cur["office"] if cur else None), "printed": t["printed"],
-               "district": district, "term": term, "ballot": ballot, "recount": recount, "tables": [t], "has_total": total_in(t),
+               "district": district, "term": term, "ballot": ballot, "recount": recount, "vgroup": vgroup, "tables": [t], "has_total": total_in(t),
                "page": t["page"]}
         races.append(cur)
+    for t in pending:
+        words = {w.lower().strip(".,") for v in t["header"].values() for ln in v for w in ln.split()} - {"cont", "continued"}
+        for r in reversed(races):
+            first = r["tables"][0]
+            names = " ".join(" ".join(v) for v in first["header"].values()).lower()
+            if r["office"] and words and all(w in names for w in words) and abs(r["page"] - t["page"]) <= 1:
+                r["tables"].append(t)
+                break
+    keyset = {(r["office"], r["district"], r["term"], r["ballot"]) for r in races if r["vgroup"].startswith("Nonpartisan")}
+    for r in races:
+        if not r["vgroup"] and (r["office"], r["district"], r["term"], r["ballot"]) in keyset:
+            r["vgroup"] = "%s voters" % r["ballot"]
     return races
 
 
@@ -263,7 +308,7 @@ def race_rows(stem, race):
                     "election_date": date, "election_type": etype, "office": office,
                     "office_level": LEVEL[office], "office_as_printed": race["printed"],
                     "district": norm_district(race["district"]), "term": norm_term(race["term"]),
-                    "primary_ballot": race["ballot"], "is_recount": race["recount"], "jurisdiction": "Total" if total else name,
+                    "primary_ballot": race["ballot"], "voter_group": race["vgroup"], "is_recount": race["recount"], "jurisdiction": "Total" if total else name,
                     "jurisdiction_type": "race_total" if total else "county",
                     "partial_county_precincts": prec if prec is not None else "",
                     "candidate": cand["name"],
@@ -287,7 +332,7 @@ def validate(stem, races, rows):
     problems = []
     by = defaultdict(list)
     for r in rows:
-        by[(r["office"], r["district"], r["term"], r["primary_ballot"], r["is_recount"], r["candidate_as_printed"])].append(r)
+        by[(r["office"], r["district"], r["term"], r["primary_ballot"], r["voter_group"], r["is_recount"], r["candidate_as_printed"])].append(r)
     for k, rs in by.items():
         tot = [r["votes"] for r in rs if r["jurisdiction_type"] == "race_total"]
         cty = [r for r in rs if r["jurisdiction_type"] == "county"]
@@ -327,14 +372,17 @@ KNOWN_SOURCE_ISSUES = {
         "county rows sum to 3,375 but the printed district Total is 3,374",
     ("2016_primary", "President", "", "John McAfee"):
         "county rows sum to 124 but the printed Total is 123",
+    ("2014_primary", "Auditor of Public Accounts", "", "Charlie Janssen"):
+        "county rows sum to 93,262 but the printed Total is 93,212",
     ("2016_primary", "University Regents", "District 7", "Bob Phares"):
         "county rows sum to 35,549 but the printed Total is 33,549",
 }
 # Elections included in the published CSV (all checks pass apart from KNOWN_SOURCE_ISSUES).
 PUBLISH = ["2024_general", "2024_primary", "2022_general", "2022_primary", "2020_general", "2020_primary",
-           "2018_general", "2018_primary", "2016_general", "2016_primary", "2014_general", "2010_primary"]
+           "2018_general", "2018_primary", "2016_general", "2016_primary", "2014_general", "2014_primary", "2012_general", "2012_primary",
+           "2010_primary"]
 COLUMNS = ["election_date", "election_type", "race_id", "office", "office_level", "office_as_printed", "district",
-           "term", "primary_ballot", "is_recount", "jurisdiction", "jurisdiction_type", "partial_county_precincts",
+           "term", "primary_ballot", "voter_group", "is_recount", "jurisdiction", "jurisdiction_type", "partial_county_precincts",
            "candidate", "party", "candidate_as_printed", "is_write_in", "winner", "votes", "total_derived"]
 
 
@@ -353,12 +401,12 @@ def main():
         problems = validate(stem, races, rows)
         known, real = [], []
         for k, msg in problems:
-            why = KNOWN_SOURCE_ISSUES.get((stem, k[0], k[1], k[5]))
+            why = KNOWN_SOURCE_ISSUES.get((stem, k[0], k[1], k[6]))
             (known if why else real).append((k, msg))
         print(f"{stem}: {len(races)} races, {len(rows)} rows, {len(real)} problems, {len(known)} known source "
               f"issues, {len(issues)} issues, unknown-title tables on pages {sorted(set(skipped))[:8]}")
         for k, msg in real[: (40 if verbose else 6)]:
-            print("   PROBLEM", k[:5], k[5][:40], msg)
+            print("   PROBLEM", k[:6], k[6][:40], msg)
         for i in issues[:4]:
             print("   ISSUE", i)
         ok &= not real and not issues
@@ -367,7 +415,7 @@ def main():
                 r["winner"] = ""
         for r in rows:
             r["race_id"] = "-".join(filter(None, [r["election_date"], slug(r["office"]), slug(r["district"]),
-                                                  slug(r["term"]), slug(r["primary_ballot"]),
+                                                  slug(r["term"]), slug(r["primary_ballot"]), slug(r["voter_group"]),
                                                   "recount" if r["is_recount"] else ""]))
         allrows += rows
     if write:

@@ -13,7 +13,7 @@ import re
 
 NUM = re.compile(r"^[\d,]+$")
 TOTAL_RE = re.compile(r"^(total|totals|statewide|statewide total)$", re.I)
-PREC_RE = re.compile(r"\((\d+)\s+precincts?\)", re.I)
+PREC_RE = re.compile(r"\s*[(/]\s*(\d+)\s*prec(?:incts?)?\.?\)?", re.I)
 
 
 def center_y(w):
@@ -51,9 +51,15 @@ def merge_split(nums):
 def parse_row(ws):
     """(name, number words) if the line is a data row, else None."""
     i, name = 0, []
-    while i < len(ws) and not NUM.match(ws[i]["text"]):
-        name.append(ws[i]["text"])
-        i += 1
+    while i < len(ws):
+        if not NUM.match(ws[i]["text"]):
+            name.append(ws[i]["text"])
+            i += 1
+        elif name and i + 1 < len(ws) and ws[i + 1]["text"].lower().startswith("precinct"):
+            name.append("(%s precincts)" % ws[i]["text"])  # "Sarpy 31 precincts 4459 ..."
+            i += 2
+        else:
+            break
     nums = merge_split(ws[i:])
     if not name or not nums or not all(NUM.match(w["text"]) for w in nums):
         return None

@@ -27,6 +27,29 @@ The extractors use `pdfplumber` word positions rather than table detection:
    Continuation pages without headers reuse the positions from pages that have them.
 5. Merge digits the PDF splits apart ("1", "4" → 14) and fix the letter O printed for zero.
 
+## Race results
+
+Races are the hardest topic: a page holds up to a dozen small tables, laid out in two columns, with candidate
+names wrapped over several lines above each. The extractor (`extract_races.py`) works in layers:
+
+1. **Tables from grid lines** (`race_blocks.py`). In 2010 and later each table is drawn with thin rectangles.
+   Connected groups of them are the tables and their vertical lines are the column edges. Header words and
+   numbers are assigned to columns by those edges, which is more reliable than text position (names are
+   centred over a column, numbers right-aligned).
+2. **Tables from text positions** (`race_text_tables.py`) for pages with no grid. Header names are cut into
+   one group per column by a small dynamic program that matches each group to the column's centre or right
+   edge.
+3. **Races from tables.** A table without candidate headings continues the previous table; so does one with the
+   same candidates and no new district label; a table with the same counties but different candidates adds
+   columns to the same race.
+4. **Office, district, term** come from the title lines above each table (first the table's half of the page,
+   then the full-width lines).
+5. **Validation:** county rows must sum to the race Total for every candidate, with one Total per candidate and
+   no duplicate counties. The CSV is only written for elections that pass.
+
+Because some layouts need page-specific handling, the CSV includes only the elections that pass; the ERRATA
+lists the rest.
+
 ## Scanned PDFs
 
 The 2000 primary and general, 2002 general, and 2006 primary and general books are images. For each:

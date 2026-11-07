@@ -1,0 +1,129 @@
+# ERRATA: `race_results.csv`
+
+Read this before using the dataset. It records the schema, what is and is not covered, every judgment call
+and every known limitation. **This dataset is partial: 12 of 26 elections, and only statewide, federal and
+legislative offices.** The coverage section says exactly which, and why.
+
+## What the dataset is
+
+County-level results for each race, from the "Federal Offices" and "State Offices" sections of the Secretary
+of State canvass books (archived in `pdfs/`). The books print each race as a wide table with candidates as
+column headings; this file has one row per election × race × jurisdiction × candidate. 27,772 rows,
+520 races.
+
+| column | meaning |
+|---|---|
+| `election_date`, `election_type` | as in the other datasets (`primary` or `general`) |
+| `race_id` | stable identifier for one race: date, office, district, term, party ballot, recount flag |
+| `office` | standardized office (list below) |
+| `office_level` | `federal`, `state` or `legislative` |
+| `office_as_printed` | the title line the book used |
+| `district` | `District 3`, or empty for statewide offices. Words and leading zeros are normalized ("District Three", "District 03" → `District 3`). For `President`, a district value means the by-congressional-district tabulation |
+| `term` | `Two Year Term`, `Four Year Term`, `Six Year Term`, or empty when the book doesn't say |
+| `primary_ballot` | for primaries, the party whose nomination the race decides (`Republican`, `Democratic`, `Libertarian`, `Nonpartisan`); empty in general elections |
+| `is_recount` | `True` for the separate recount table some books print (2022 primary Legislative District 18). Recounts are separate races in this file; don't add them to the original |
+| `jurisdiction` | county name, or `Total` for the race total |
+| `jurisdiction_type` | `county` or `race_total` |
+| `partial_county_precincts` | when a county is split between districts the book writes "Sarpy (57 precincts)"; this is that number |
+| `candidate` | candidate name as printed, with the party label and the winner mark removed. Presidential tickets are one candidate ("Donald J. Trump & JD Vance") |
+| `party` | the candidate's party as printed (`Republican`, `Democratic`, `Libertarian`, `By Petition`, ...); empty for nonpartisan offices (Legislature, Regents, State Board of Education) and write-ins. **In primaries, where the book prints no per-candidate party, it is set to the `primary_ballot`** |
+| `candidate_as_printed` | the heading text for that column, kept so you can re-derive the above |
+| `is_write_in` | `True` for "Write-In Scatterings" rows. These are the sum of all write-in votes, not a person |
+| `winner` | `True`/`False` only in the 2024 general, the one book that marks winners (a check mark). **Empty in every other election; empty means unknown, not "lost"** |
+| `votes` | votes |
+| `total_derived` | `True` for 57 rows where the book prints no Total row (see below) |
+
+**`Total` is a row, not a column.** To get a race result, filter `jurisdiction_type == "race_total"`. Never
+sum across `jurisdiction` without excluding `Total`, and never sum across `candidate` rows of different
+`race_id`.
+
+## Offices included
+
+`President`, `U.S. Senate`, `U.S. House`, `Governor`, `Lieutenant Governor`, `Secretary of State`, `Auditor of
+Public Accounts`, `State Treasurer`, `Attorney General`, `Public Service Commissioner`, `Legislature`,
+`State Board of Education`, `University Regents`. (Governor and Lieutenant Governor are one ticket in the
+books, so there are no `Lieutenant Governor` rows.)
+
+**Not included:** judicial retention, community college boards, school and Educational Service Unit boards,
+Natural Resources Districts, public power and utility districts, reclamation districts, learning community
+boards, and ballot measures. Special elections are not in the archive at all.
+
+## Coverage
+
+Included (every check passes, apart from the three source issues listed below):
+
+2010 primary; 2014 general; 2016 primary and general; 2018 primary and general; 2020 primary and general;
+2022 primary and general; 2024 primary and general.
+
+**Not yet included**, and why:
+
+| election | reason |
+|---|---|
+| 2000 primary and general, 2002 general, 2006 primary and general | scanned images; no text layer. Needs the same OCR-plus-hand-correction process as the earlier datasets |
+| 2002 primary | text layer, but some races fail validation (U.S. Senate and U.S. House county sums don't reconcile) |
+| 2004 and 2008 primaries and generals | no grid lines; the text-position parser exists but races in every one of these books fail validation or are missing |
+| 2010 general | the University Regents District 6 table is laid out transposed (counties as columns); State Board of Education District 5 has no Total row |
+| 2012 primary and general | Senate primary tables are duplicated; U.S. House pages use a layout the parser mis-groups |
+| 2014 primary | candidates have Dem/NP/Total sub-columns split across pages; House county sums don't reconcile |
+
+Nothing from those books is in the CSV. Their absence says nothing about the results.
+
+## How it was built
+
+1. **Find tables from the grid lines.** In 2010 and later (and the 2002 primary) every result table is drawn
+   with thin rectangles. Connected groups of them are the tables, and their vertical lines are the column
+   edges, so a candidate's header words and a county's numbers land in the same column by position.
+   (Candidate names are centred over their columns and numbers are right-aligned, so matching by text
+   position alone is unreliable.) A page can hold up to a dozen tables side by side and stacked.
+2. **Group tables into races.** A table without a candidate header continues the previous one; so does one
+   with the same candidates and no new district label. A table that prints the same county list with different
+   candidates (2010 primary) is more candidate columns of the same race. The office comes from the title
+   above, the district and term from the labels above or inside the table.
+3. **Parse candidates.** Names, parties in parentheses or on a following line, the winner mark, and
+   write-in columns; summary sub-columns ("Dem / NP / Total", "Republican Votes ...") are dropped and the
+   Total sub-column is the candidate's vote.
+4. **Validate** (`extract_races.py`; the CSV is not written unless everything passes): each candidate's
+   county rows sum to the race Total; exactly one Total per candidate; no county appears twice in a race.
+5. Where a page has result rows outside any grid (2016 general, half-page tables), `race_text_tables.py` reads
+   them from text positions instead.
+
+## Judgment calls
+
+* **Single-county races print no Total.** When a district lies within one county the book omits the Total
+  row. The county row is copied as the Total with `total_derived = True` (57 rows).
+* **`Total` for a district means the district.** A race that spans parts of several counties is the sum of
+  those county parts (`partial_county_precincts` shows when a county is split).
+* **Primary `party`** is filled from the ballot, not from the book (the book prints it only in the section
+  title).
+* **Winner:** see above. I did not compute winners from the votes, because ranked and multi-seat rules differ.
+* **District and term labels are normalized**; `office_as_printed` keeps the title.
+* **Write-in rows** are kept as ordinary rows with `is_write_in = True`.
+
+## Source inconsistencies (kept as printed)
+
+| election | race | what the book prints |
+|---|---|---|
+| 2016 general | President, District 1, Jill Stein & Ajamu Baraka | county rows sum to 3,375, printed Total is 3,374 |
+| 2016 primary | President, Libertarian, John McAfee | county rows sum to 124, printed Total is 123 |
+| 2016 primary | University Regents District 7, Bob Phares | county rows sum to 35,549, printed Total is 33,549 (a digit may be wrong in the Total or in a county; not resolved) |
+
+## Limits
+
+* **Column assignment of names is not independently checked.** The sum checks catch a wrong number, a missing
+  row and a wrong table. They cannot catch two adjacent candidates' names being swapped. I checked this on the
+  2024 general (where the winner mark must be on the top vote-getter: all 44 races) and spot-checked other
+  years against the PDFs, but I did not hand-verify every name.
+* **Completeness is checked by census, not proof.** I tabulated races per office per election and looked for
+  gaps. A race the parser never found would not trigger a sum failure.
+* **Ballot-measure, judicial and local races are absent** (see above).
+* **Candidate identity is the printed name.** The same person can be spelled differently across years; there
+  is no candidate ID.
+* **Over- and undervotes are not in the books.** These are votes for candidates only.
+
+## Reproducing
+
+```
+python3 extract_races.py            # report for every text-layer book
+python3 extract_races.py --write    # rebuild data/race_results.csv (fails unless the published books pass)
+```
+Requires `pdfplumber`. `PUBLISH` in `extract_races.py` lists the elections written to the CSV.

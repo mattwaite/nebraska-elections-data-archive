@@ -5,8 +5,9 @@ display-formatted tables, some of them scans of paper. This project archives tho
 tables into **tidy, analysis-ready long CSVs**, one file per topic, with every election from 2000 to 2024
 combined into each file.
 
-So far the archive covers the tables that come *before* the question of who won: who was registered, how
-people voted, and which party's primary they voted in. Race-level results are not done yet.
+The archive covers who was registered, how people voted, which party's primary they voted in, and, for 12 of
+the 26 elections so far, who got how many votes in each county for statewide, federal and legislative
+races.
 
 ## The datasets
 
@@ -15,10 +16,15 @@ people voted, and which party's primary they voted in. Race-level results are no
 | [`data/voter_registration.csv`](data/voter_registration.csv) | Registered voters by county and party, plus number of precincts | 26 (13 primary, 13 general) | 14,471 |
 | [`data/voting_by_method.csv`](data/voting_by_method.csv) | Ballots cast by county and method (polling place, early/absentee, mail, provisional, military/overseas, new/former resident) | 26 | 12,784 |
 | [`data/voting_by_party.csv`](data/voting_by_party.csv) | Ballots cast in each primary, by county and party category | 13 (primaries only) | 7,426 |
+| [`data/race_results.csv`](data/race_results.csv) | Votes by county and candidate for President, U.S. Senate and House, statewide offices, the Legislature, Regents and the State Board of Education | **12 of 26** (2010 primary; 2014 general; 2016-2024 primary and general) | 27,772 |
 
 Each dataset has an **ERRATA file next to it** (`data/<name>.ERRATA.md`). Read it before you analyze the
 data. It records the schema, the method, every judgment call, every inconsistency in the source, and every
 hand correction.
+
+**Race results are partial.** Judicial retention, local contests and ballot measures are not included, and
+14 elections are not in the file yet (2000-2008, 2010 general, 2012, 2014 primary). The ERRATA lists each
+one and why. A missing election means "not done", not "no data".
 
 ### Shape of the data
 
@@ -43,12 +49,22 @@ Common columns:
 | `*_as_printed` | the heading the book used, so you can undo or refine my standardization |
 | `count` | the number |
 
-Per-dataset columns and caveats are in the ERRATA files. The two rules that apply everywhere:
+Race results add `race_id`, `office`, `district`, `candidate`, `party` and `votes`, with the race total as a
+`Total` row (`jurisdiction_type == "race_total"`). Per-dataset columns and caveats are in the ERRATA files. The two rules that apply everywhere:
 
 * **Don't sum across `party` or `method` without excluding `Total`.**
 * **Don't sum across `jurisdiction` without excluding `Statewide`.**
 
-### Example
+### Examples
+
+Statewide U.S. Senate results, 2024 general:
+
+```python
+import pandas as pd
+rr = pd.read_csv("data/race_results.csv")
+q = rr[(rr.election_date == "2024-11-05") & (rr.office == "U.S. Senate") & (rr.jurisdiction_type == "race_total")]
+print(q[["term", "candidate", "party", "votes"]])
+```
 
 Total registered voters in Lancaster County, every general election:
 
@@ -68,7 +84,8 @@ Every election is validated, and the checks are the reason to trust the data:
 * County rows sum to the `Statewide` row for every category.
 * No two counties have identical numbers (this catches OCR attaching one county's numbers to its neighbor).
 
-Text-based PDFs were parsed from their text layer. The **scanned books (2000 primary and general, 2002 general, 2006 primary and general)** were read with OCR.
+Race results are additionally checked so that each candidate's county rows sum to the race total. Text-based
+PDFs were parsed from their text layer. The **scanned books (2000 primary and general, 2002 general, 2006 primary and general)** were read with OCR.
 A row was accepted from OCR only if its columns summed to the printed total and the county had a single
 consistent reading. Every other row was **transcribed by hand from the page image** (the files in
 [`corrections/`](corrections/) always override OCR).
@@ -90,6 +107,7 @@ data/                      the tidy CSVs and their ERRATA files
 corrections/               hand transcriptions that override OCR
 download_pdfs.py           fetches the PDFs from sos.nebraska.gov
 extract_*.py               one extractor per topic; each rebuilds its CSV and prints validation
+race_blocks.py, race_text_tables.py   table finders used by extract_races.py (grid lines; text positions)
 ocr_*.py, build_scanned_* OCR passes and assembly for the scanned books
 docs/METHODOLOGY.md        how extraction and validation work
 ```
@@ -102,6 +120,7 @@ python3 download_pdfs.py                # only if you want to re-fetch the PDFs
 python3 extract_voter_registration.py
 python3 extract_voting_by_method.py
 python3 extract_voting_by_party.py
+python3 extract_races.py --write
 ```
 
 Each extractor prints the validation results and rewrites its CSV. Re-running the OCR scripts also needs
@@ -116,8 +135,9 @@ only restructures them. If you find an error, please open an issue with the elec
 
 ## Roadmap
 
-* Race-level results (offices, candidates, county and precinct detail). The layouts vary far more across
-  years than the topics above, so the target structure is still being decided.
+* Race results for the remaining 14 elections: 2012, 2014 primary and 2010 general need parser work; 2004 and
+  2008 have no grid lines; 2000-2006 are scans that need OCR and hand correction.
+* Ballot measures, judicial retention and local contests.
 * Special elections, which this project does not yet cover.
 
 ## License

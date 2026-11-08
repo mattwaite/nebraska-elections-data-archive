@@ -11,7 +11,12 @@ column: list of text lines), rows [(name, precincts, {col: int})], page_number.
 """
 import re
 
-NUM = re.compile(r"^[\d,]+$")
+NUM = re.compile(r"^([\d,]+|\?)$")  # "?" = a cell OCR could not read
+DIGITS = re.compile(r"^[\d,]+$")
+
+
+def to_int(text):
+    return None if text == "?" else int(text.replace(",", ""))
 TOTAL_RE = re.compile(r"^(total|totals|statewide|statewide total)$", re.I)
 PREC_RE = re.compile(r"\s*[(/]\s*(\d+)\s*prec(?:incts?)?\.?\)?", re.I)
 
@@ -41,7 +46,7 @@ def cluster_lines(words, tol=3.5):
 def merge_split(nums):
     out = []
     for w in nums:
-        if out and w["x0"] - out[-1]["x1"] < 2.0 and NUM.match(out[-1]["text"]) and NUM.match(w["text"]):
+        if out and w["x0"] - out[-1]["x1"] < 2.0 and DIGITS.match(out[-1]["text"]) and DIGITS.match(w["text"]):
             p = out.pop()
             w = {**p, "text": p["text"] + w["text"], "x1": w["x1"]}
         out.append(w)
@@ -235,7 +240,7 @@ def parse_table(page, t, words, prev_tables):
             vals = {}
             for j, w in enumerate(nums):
                 c = (j + 1) if doubled else cell_of(center_x(w), edges)
-                vals.setdefault(c, []).append(int(w["text"].replace(",", "")))
+                vals.setdefault(c, []).append(to_int(w["text"]))
             rows.append((name, int(prec.group(1)) if prec else None, vals))
     if doubled:
         edges = edges[: k + 2] if len(edges) >= k + 2 else [edges[0] + i * 80 for i in range(k + 2)]

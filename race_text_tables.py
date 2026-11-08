@@ -9,7 +9,7 @@ between each group's centre and the column's centre (blank columns allowed).
 """
 import re
 
-from race_blocks import NUM, PREC_RE, center_x, center_y, cluster_lines, parse_row, split_segments
+from race_blocks import NUM, PREC_RE, to_int, center_x, center_y, cluster_lines, parse_row, split_segments
 
 TITLE_LINE = re.compile(r"^(member of|public service|state |united states|president|governor|secretary|attorney|"
                         r"auditor|university|page\b|general election|primary election|term|vote for|elected|"
@@ -96,7 +96,8 @@ def text_tables(page, grid_tables, all_words):
         seg = [w for w in words if lo <= w["x0"] < hi]
         pre, rows, run = [], [], None
         lines = merge_precinct_lines(cluster_lines(seg))
-        for ln in lines + [None]:
+        seq = lines + [None]
+        for li, ln in enumerate(seq):
             r = parse_row(ln) if ln else None
             txt = " ".join(w["text"] for w in ln) if ln else ""
             segs = [sg for sg in split_segments(ln) if parse_row(sg)] if (ln and not r) else []
@@ -115,6 +116,15 @@ def text_tables(page, grid_tables, all_words):
                 run["rows"].append(r)
                 run["seg"].append(0)
                 run["lines"].append(ln)
+                continue
+            nxt = seq[li + 1] if li + 1 < len(seq) else None
+            if (getattr(page, "is_ocr", False) and run is not None and ln and nxt and parse_row(nxt) and any(re.fullmatch(r"[\d,]+", w["text"]) for w in ln)
+                    and center_y(ln[0]) - center_y(run["lines"][-1][0]) <= 18):
+                # a row whose county name OCR lost: keep it, with a placeholder name, so its numbers still count
+                run["rows"].append(("#", None))
+                run["seg"].append(0)
+                run["lines"].append(ln)
+                run.setdefault("noisy_lines", {})[len(run["rows"]) - 1] = ln
                 continue
             if run is not None and ln and PRECINCT_LINE.match(txt):
                 run["rows"][-1] = (run["rows"][-1][0] + " (" + txt + ")", run["rows"][-1][1])
@@ -167,18 +177,26 @@ def build(page, run, x0, lo, hi):
     else:
         header_lines = [ln for _, ln in pre[ci:]]
         labels = [" ".join(w["text"] for w in ln) for _, ln in pre[:ci]]
-    # column centres: median number centre per column over the rows
-    ncol = max(len(r[1]) for r in run["rows"])
-    segs0 = run.get("seg") or [0] * len(run["rows"])
-    full = [r for r, k in zip(run["rows"], segs0) if len(r[1]) == ncol and k == 0]
-    if not full:
-        full = [r for r in run["rows"] if len(r[1]) == ncol]
+    noisy = [i for i, r in enumerate(run["rows"]) if r[1] is None]
+    seg_all = run.get("seg") or [0] * len(run["rows"])
+    real = [(r, k) for r, k in zip(run["rows"], seg_all) if r[1] is not None]
+    ncol = max(len(r[1]) for r, _ in real)
+    full = [r for r, k in real if len(r[1]) == ncol and k == 0] or [r for r, _ in real if len(r[1]) == ncol]
     centers, rights = [], []
     for c in range(ncol):
         xs = sorted(center_x(r[1][c]) for r in full)
         centers.append(xs[len(xs) // 2])
         xr = sorted(r[1][c]["x1"] for r in full)
         rights.append(xr[len(xr) // 2])
+    for i in noisy:  # lines whose county name was lost: numbers sitting under a column's right edge belong to it
+        cells = [None] * ncol
+        for w in run["noisy_lines"][i]:
+            if re.fullmatch(r"[\d,]+", w["text"]):
+                j = min(range(ncol), key=lambda k: abs(w["x1"] - rights[k]))
+                if abs(w["x1"] - rights[j]) <= 9:
+                    cells[j] = w
+        run["rows"][i] = ("#", [c if c is not None else {"text": "?", "x0": rights[j] - 6, "x1": rights[j], "top": run["noisy_lines"][i][0]["top"],
+                                                          "bottom": run["noisy_lines"][i][0]["bottom"]} for j, c in enumerate(cells)])
     mids = [(centers[i] + centers[i + 1]) / 2 for i in range(ncol - 1)]
     spacing = (centers[-1] - centers[0]) / (ncol - 1) if ncol > 1 else 80
     edges = [lo, centers[0] - spacing / 2] + mids + [centers[-1] + spacing / 2]
@@ -191,23 +209,26 @@ def build(page, run, x0, lo, hi):
         for j, grp in enumerate(assign_groups(toks, centers, rights)):
             if grp:
                 header.setdefault(j + 1, []).append(" ".join(w["text"] for w in grp))
-    rows = []
+    rows, boxes = [], []
     for name, nums in run["rows"]:
         prec = PREC_RE.search(name)
         name = PREC_RE.sub("", name).replace("*", "").strip()
         pm = re.search(r"\((\d+)\s+precincts?\)", name)
-        vals = {}
+        vals, box = {}, {}
         if len(nums) == ncol:
             for j, w in enumerate(nums):
-                vals[j + 1] = [int(w["text"].replace(",", ""))]
+                vals[j + 1] = [to_int(w["text"])]
+                box[j + 1] = (w["x0"], w["top"], w["x1"], w["bottom"])
         else:  # blank cells: place by nearest column centre
             for w in nums:
                 j = min(range(ncol), key=lambda k: abs(center_x(w) - centers[k]))
-                vals.setdefault(j + 1, []).append(int(w["text"].replace(",", "")))
+                vals.setdefault(j + 1, []).append(to_int(w["text"]))
+                box[j + 1] = (w["x0"], w["top"], w["x1"], w["bottom"])
         rows.append((name, int(prec.group(1)) if prec else None, vals))
+        boxes.append(box)
     y_top = pre[ci][0] if ci < len(pre) else (center_y(run["lines"][0][0]) - 6)
     y_bot = center_y(run["lines"][-1][0])
     sx = (lo + min(hi, page.width)) / 2
     return {"phrases": [(sx, l) for l in labels], "bbox": (lo, y_top, hi if hi < page.width else page.width, y_bot), "edges": edges, "header": header,
-            "rows": rows, "labels": labels, "header_lines": [" ".join(w["text"] for w in ln) for ln in header_lines],
+            "rows": rows, "boxes": boxes, "labels": labels, "header_lines": [" ".join(w["text"] for w in ln) for ln in header_lines],
             "text_only": True}

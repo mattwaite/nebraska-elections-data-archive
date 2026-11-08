@@ -206,8 +206,20 @@ def page_phrase_rows(page):
 def collect(stem):
     """All tables of a book in reading order, annotated with office/district/term titles."""
     tables = []
-    with pdfplumber.open(PDF_DIR / f"{stem}.pdf") as pdf:
-        for pno, page in enumerate(pdf.pages, start=1):
+    if stem.split("@")[0] in SCANNED:
+        from ocr_pages import ocr_pages
+        pages = [(p.page_number, p) for p in ocr_pages(stem)]
+        pdf = None
+    else:
+        pdf = pdfplumber.open(PDF_DIR / f"{stem}.pdf")
+        pages = list(enumerate(pdf.pages, start=1))
+    if True:
+        manual = manual_tables(stem)
+        for pno, page in pages:
+            if pno in manual:
+                for k, blk in enumerate(manual[pno]):
+                    tables.append(synthetic_table(pno, k, blk))
+                continue
             tabs, lines = page_tables(page)
             tabs = [t for t in tabs if any(r[0] in COUNTIES for r in t["rows"])]  # drops summary tables
             pphr = [(px, py, tx, a, b) for py, ph in page_phrase_rows(page) for px, tx, a, b in ph]
@@ -218,6 +230,11 @@ def collect(stem):
                 if band_top is None or t["bbox"][1] - band_top > 20:
                     band_top = t["bbox"][1]
                 ordered.append((band_top, t["bbox"][0], t))
+            seen_slot = {}
+            for t in sorted(tabs, key=lambda t: (((t["bbox"][0] + t["bbox"][2]) / 2 > page.width / 2), t["bbox"][1])):
+                slot = int((t["bbox"][0] + t["bbox"][2]) / 2 > page.width / 2)
+                t["tkey"] = (pno, slot, seen_slot.get(slot, 0))
+                seen_slot[slot] = seen_slot.get(slot, 0) + 1
             for _, _, t in sorted(ordered, key=lambda z: (z[0], z[1])):
                 x0, top, x1, bottom = t["bbox"]
                 wide = (x1 - x0) > 0.62 * page.width or (x0 < page.width / 2 - 30 and x1 > page.width / 2 + 30)
@@ -249,7 +266,16 @@ def same_header(a, b):
     if not a["header"] or not b["header"]:
         return False
     ca, cb = candidate_columns(a), candidate_columns(b)
-    return len(ca) == len(cb) and [c["name"] for c in ca.values()] == [c["name"] for c in cb.values()]
+    if len(ca) != len(cb):
+        return False
+    import difflib
+    for x, y in zip(ca.values(), cb.values()):
+        if x["name"] == y["name"]:
+            continue
+        a, b = x["name"].lower(), y["name"].lower()
+        if not (a and b and (a in b or b in a or difflib.SequenceMatcher(None, a, b).ratio() >= 0.72)):
+            return False  # (OCR'd repeats of a header differ by a few characters)
+    return True
 
 
 def build_races(stem, tables):
@@ -261,6 +287,18 @@ def build_races(stem, tables):
             pending.append(t)
             continue
         has_header = bool(t["header"])
+        if t.get("hand_entered") and has_header:
+            f = t["force"]
+            ident = (t["office"], f.get("district", ""), f.get("term", ""), f.get("ballot", ""), f.get("vgroup", ""))
+            if cur is not None and cur.get("ident") == ident and same_header(cur["tables"][-1], t):
+                cur["tables"].append(t)  # the same race continued on the next page
+                continue
+            cur = {"office": t["office"], "printed": f.get("office"), "district": f.get("district", ""),
+                   "term": f.get("term", ""), "ballot": f.get("ballot", ""), "recount": False,
+                   "vgroup": f.get("vgroup", ""), "tables": [t], "ident": ident,
+                   "has_total": any(TOTAL_RE.match(r[0]) for r in t["rows"]), "page": t["page"]}
+            races.append(cur)
+            continue
         if not has_header:
             if cur is not None:
                 cur["tables"].append(t)
@@ -272,8 +310,14 @@ def build_races(stem, tables):
             if m_:
                 inline_d = re.sub(r"\s+", " ", m_.group(1)).strip()
         district = inline_d or phrase_district(t) or district
+        if t.get("force", {}).get("district") is not None:
+            district = t["force"]["district"]
+        if t.get("force", {}).get("term") is not None:
+            term = t["force"]["term"]
         ballot_src = " ".join(t["labels"] + t["ctx"] + [t["printed"] or ""])
         mb = phrase_ballot(t) or BALLOT_RE.search(ballot_src)
+        if t.get("force", {}).get("office"):
+            t["office"] = t["force"]["office"]
         ballot = PARTY_NORM.get(mb.group(1).lower(), mb.group(1).title()) if mb else ""
         mv = VG_RE.search(" ".join(t["labels"]))  # this table's own half of the page first
         bare_np = any(re.fullmatch(r"nonpartisan voters", s.strip(), re.I) for s in t["labels"])
@@ -382,29 +426,35 @@ def infer_districts(races):
 
 
 def race_rows(stem, race):
-    date, etype = ELECTIONS[stem], stem.split("_")[1]
+    base = stem.split("@")[0]
+    date, etype = ELECTIONS[base], base.split("_")[1]
     office = race["office"]
     t0 = race["tables"][0]
     cands = candidate_columns(t0)
+    renames = load_renames(stem)
+    for cd in cands.values():
+        for old, new_ in renames.items():
+            if cd["name"] == old or cd["as_printed"] == old:
+                cd["name"] = new_
     named = [c["name"].strip() for c in cands.values() if c["name"].strip()]
     if named and all(re.fullmatch(r"for|against|yes|no|retain|repeal", n, re.I) for n in named):
         return [], []  # a ballot measure or retention question, out of scope
     out, issues = [], []
     for t in race["tables"]:
-        if t is not t0 and t["header"] and not any(re.search(r"\bcont(inued|\.)?\b", " ".join(v), re.I)
+        if t is not t0 and t.get("extension") and t["header"] and not any(re.search(r"\bcont(inued|\.)?\b", " ".join(v), re.I)
                                                     for v in t["header"].values()):
             cands = candidate_columns(t)
         ncol = len(t["edges"]) - 1
         if ncol != len(t0["edges"]) - 1:
             issues.append(f"{stem} p{t['page']}: {ncol} columns, race has {len(t0['edges']) - 1}")
             continue
-        for name, prec, vals in t["rows"]:
+        for ri, (name, prec, vals) in enumerate(t["rows"]):
             total = bool(TOTAL_RE.match(name))
             for ci, cand in cands.items():
                 v = vals.get(ci)
                 if v is None or cand["noise"]:
                     continue
-                if len(v) == 3 and v[2] == v[0] + v[1]:  # Dem / NP / Total sub-columns in one cell
+                if len(v) == 3 and None not in v and v[2] == v[0] + v[1]:  # Dem / NP / Total sub-columns in one cell
                     v = [v[2]]
                 if len(v) != 1:
                     issues.append(f"{stem} p{t['page']}: {name} cell {ci} has {v}")
@@ -419,7 +469,9 @@ def race_rows(stem, race):
                     "candidate": cand["name"],
                     "party": cand["party"] or (race["ballot"] if etype == "primary" and not cand["write_in"] else ""),
                     "candidate_as_printed": cand["as_printed"], "is_write_in": cand["write_in"],
-                    "winner": cand["winner"], "votes": v[0], "total_derived": False, "_page": t["page"]})
+                    "winner": cand["winner"], "votes": v[0], "total_derived": False, "ocr_derived": False, "_page": t["page"],
+                    "_tkey": None if t.get("hand_entered") else t.get("tkey"), "_ci": ci, "_ri": ri,
+                    "_box": (t.get("boxes") or [{}] * (ri + 1))[ri].get(ci), "_stem": stem.split("@")[0]})
     # Races contained in a single county print no Total row; the county row is the race total.
     by = defaultdict(list)
     for r in out:
@@ -433,12 +485,194 @@ def race_rows(stem, race):
     return out, issues
 
 
+def resolve_unknowns(rows):
+    """A cell OCR could not read is recovered when it is the only unknown in its candidate's column: it equals the
+    race Total minus the other counties (or the Total equals the sum of the counties)."""
+    by = defaultdict(list)
+    for r in rows:
+        by[(r["office"], r["district"], r["term"], r["primary_ballot"], r["voter_group"], r["is_recount"],
+            r["candidate_as_printed"])].append(r)
+    for rs in by.values():
+        unknown = [r for r in rs if r["votes"] is None]
+        if len(unknown) != 1:
+            continue
+        u = unknown[0]
+        tot = [r for r in rs if r["jurisdiction_type"] == "race_total" and r["votes"] is not None]
+        cty = [r for r in rs if r["jurisdiction_type"] == "county" and r["votes"] is not None]
+        if u["jurisdiction_type"] == "race_total":
+            u["votes"] = sum(r["votes"] for r in cty)
+        elif tot:
+            u["votes"] = tot[0]["votes"] - sum(r["votes"] for r in cty)
+        else:
+            continue
+        if u["votes"] >= 0:
+            u["ocr_derived"] = True
+        else:
+            u["votes"] = None
+    return rows
+
+
+def candidate_key(r):
+    return (r["office"], r["district"], r["term"], r["primary_ballot"], r["voter_group"], r["is_recount"],
+            r["candidate_as_printed"])
+
+
+def repair_from_variants(rows, variant_rows, cell_reader=None):
+    """For each candidate column whose county rows do not add up to the Total, try replacing one or two cells with
+    the value another OCR reading gave for the same cell; accept only an unambiguous exact fix."""
+    from itertools import combinations
+    alt = defaultdict(set)
+    votes = defaultdict(list)
+    for vr in variant_rows:
+        for r in vr:
+            if r.get("_tkey") and r["votes"] is not None:
+                alt[(r["_tkey"], r["jurisdiction"], r["_ci"])].add(r["votes"])
+                votes[(r["_tkey"], r["jurisdiction"], r["_ci"])].append(r["votes"])
+    # a county row the main reading lost altogether (typically the last row, sitting on a heavy underline) comes back
+    # when at least two other readings of the same table have it
+    from collections import Counter, defaultdict as _dd
+    have = _dd(set)
+    template = {}
+    for r in rows:
+        if r.get("_tkey"):
+            have[r["_tkey"]].add(r["jurisdiction"])
+            template.setdefault((r["_tkey"], r["_ci"]), r)
+    seen = _dd(list)
+    for vr in variant_rows:
+        for r in vr:
+            if r.get("_tkey") and r["jurisdiction_type"] == "county" and r["jurisdiction"] not in have[r["_tkey"]] \
+                    and r["votes"] is not None and r["jurisdiction"] in COUNTIES:
+                seen[(r["_tkey"], r["jurisdiction"], r["_ci"])].append(r["votes"])
+    # accept a recovered row only if adding it makes every candidate column of that table add up to its Total
+    cand_rows = _dd(lambda: _dd(list))  # tkey -> jurisdiction -> [row dicts, one per ci]
+    for (tk, jur, ci), vals in seen.items():
+        tmpl = template.get((tk, ci))
+        if tmpl is not None and len(vals) >= 2:
+            cand_rows[tk][jur].append({**tmpl, "jurisdiction": jur, "jurisdiction_type": "county",
+                                       "votes": Counter(vals).most_common(1)[0][0], "ocr_derived": True, "_box": None})
+    from itertools import combinations as _comb
+    added = []
+    for tk, byj in cand_rows.items():
+        cols = sorted({r["_ci"] for r in rows if r.get("_tkey") == tk})
+        tab = [r for r in rows if r.get("_tkey") == tk]
+
+        def gaps(extra):
+            out = []
+            for ci in cols:
+                col = [r for r in tab if r["_ci"] == ci] + [x for x in extra if x["_ci"] == ci]
+                t = [r["votes"] for r in col if r["jurisdiction_type"] == "race_total"]
+                if len(t) != 1 or t[0] is None or any(r["votes"] is None for r in col):
+                    return None
+                out.append(t[0] - sum(r["votes"] for r in col if r["jurisdiction_type"] == "county"))
+            return out
+        g0 = gaps([])
+        if g0 is None or not any(g0):
+            continue
+        for n in (1, 2):
+            hit = []
+            for combo in _comb(sorted(byj), n):
+                extra = [x for j in combo for x in byj[j]]
+                if set(x["_ci"] for x in extra) >= set(cols) and gaps(extra) == [0] * len(cols):
+                    hit.append(extra)
+            if len(hit) == 1:
+                added.extend(hit[0])
+                break
+    rows.extend(added)
+    # consensus: a cell the main reading could not read, or that most other readings disagree with, takes the
+    # value at least three other readings agree on
+    from collections import Counter
+    for r in rows:
+        key = (r.get("_tkey"), r["jurisdiction"], r.get("_ci"))
+        if not key[0] or key not in votes:
+            continue
+        top = Counter(votes[key]).most_common(2)
+        v, n = top[0]
+        second = top[1][1] if len(top) > 1 else 0
+        if v != r["votes"] and n >= 3 and n > second and (r["votes"] is None or n >= 4):
+            r["votes"], r["ocr_derived"] = v, True
+    by = defaultdict(list)
+    for r in rows:
+        by[candidate_key(r)].append(r)
+    fixed = 0
+    crop_read = {}
+    for rs in by.values():
+        cells = [r for r in rs if r["jurisdiction_type"] in ("county", "race_total")]
+        tot = [r for r in cells if r["jurisdiction_type"] == "race_total"]
+        if len(tot) != 1:
+            continue
+
+        def gap():
+            t = tot[0]["votes"]
+            s = sum(r["votes"] or 0 for r in cells if r["jurisdiction_type"] == "county")
+            return None if t is None else t - s
+        if gap() == 0 and all(r["votes"] is not None for r in cells):
+            continue
+        if cell_reader:  # add a high-resolution re-reading of every cell in the failing column
+            for r in cells:
+                if r.get("_box"):
+                    vs_ = cell_reader(r["_stem"], r["_page"], r["_box"])
+                    for v in vs_:
+                        alt[(r["_tkey"], r["jurisdiction"], r["_ci"])].add(v)
+                    if len(vs_) == 1:
+                        crop_read[id(r)] = vs_[0]
+        options = []
+        for r in cells:
+            vals = {v for v in alt.get((r["_tkey"], r["jurisdiction"], r["_ci"]), ()) if v != r["votes"]}
+            if vals:
+                options.append((r, sorted(vals)))
+        solutions = []
+        mandatory = [o for o in options if o[0]["votes"] is None]
+        optional = [o for o in options if o[0]["votes"] is not None]
+        unread = [r for r in cells if r["votes"] is None]
+        if len(mandatory) == len(unread):  # every unreadable cell has at least one alternative reading
+            from itertools import product
+            for n in (0, 1, 2):
+                for combo in combinations(optional, n):
+                    group = mandatory + list(combo)
+                    for pick in product(*[o[1] for o in group]):
+                        old = [c[0]["votes"] for c in group]
+                        for c, v in zip(group, pick):
+                            c[0]["votes"] = v
+                        ok = gap() == 0 and all(r["votes"] is not None for r in cells)
+                        for c, v in zip(group, old):
+                            c[0]["votes"] = v
+                        if ok:
+                            solutions.append([(c[0], v) for c, v in zip(group, pick)])
+                if len(solutions) == 1:
+                    break
+                if solutions:
+                    solutions = []  # ambiguous at this size: leave for hand correction
+                    break
+        if len(solutions) == 1:
+            for r, v in solutions[0]:
+                r["votes"], r["ocr_derived"] = v, True
+            fixed += 1
+        elif cell_reader:
+            # several cells wrong: take the high-resolution reading wherever it differs, if that makes the column add up
+            diff = [r for r in cells if id(r) in crop_read and crop_read[id(r)] != r["votes"]]
+            if 0 < len(diff) <= 10:
+                old_v = [r["votes"] for r in diff]
+                for r in diff:
+                    r["votes"] = crop_read[id(r)]
+                if gap() == 0 and all(r["votes"] is not None for r in cells):
+                    for r in diff:
+                        r["ocr_derived"] = True
+                    fixed += 1
+                else:
+                    for r, v in zip(diff, old_v):
+                        r["votes"] = v
+    return fixed
+
+
 def validate(stem, races, rows):
     problems = []
     by = defaultdict(list)
     for r in rows:
         by[(r["office"], r["district"], r["term"], r["primary_ballot"], r["voter_group"], r["is_recount"], r["candidate_as_printed"])].append(r)
     for k, rs in by.items():
+        if any(r["votes"] is None for r in rs):
+            problems.append((k, "%d unreadable cells" % sum(r["votes"] is None for r in rs)))
+            continue
         tot = [r["votes"] for r in rs if r["jurisdiction_type"] == "race_total"]
         cty = [r for r in rs if r["jurisdiction_type"] == "county"]
         names = [r["jurisdiction"] for r in cty]
@@ -453,8 +687,142 @@ def validate(stem, races, rows):
     return problems
 
 
+def manual_tables(stem):
+    """Hand transcriptions of whole scanned pages: corrections/races_<stem>.txt.
+
+        @page 17
+        @race Legislature | District 2 | | | |
+        @cols Dave Pankonin | Jerry O. Bond
+        TOTAL 7932 3538
+        Cass 5577 2390
+
+    @race fields: office | district | term | primary ballot | voter group (blank = none). Candidate names may end
+    in "(Party)". A race that continues on the next page repeats @race and @cols. Every OCR table on a transcribed
+    page is discarded, so a page is either fully OCR or fully by hand."""
+    f = ROOT / "corrections" / f"races_{stem.split('@')[0]}.txt"
+    pages = {}
+    if not f.exists() or "@" in stem:
+        return pages
+    page, cur = None, None
+    for raw in f.read_text().splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("@page"):
+            page = int(line.split()[1])
+            pages.setdefault(page, [])
+            cur = None
+        elif line.startswith("@race"):
+            parts = [p.strip() for p in line[5:].split("|")] + [""] * 5
+            cur = {"office": parts[0], "district": parts[1], "term": parts[2], "ballot": parts[3], "vgroup": parts[4],
+                   "cols": [], "rows": [], "page": page}
+            pages[page].append(cur)
+        elif line.startswith("@cols"):
+            cur["cols"] = [c.strip() for c in line[5:].split("|")]
+        else:
+            m = re.match(r"^(.*?)\s+((?:[\d,]+\s*)+)$", line)
+            if not m:
+                raise ValueError(f"{f.name}: cannot read row {line!r}")
+            cur["rows"].append((m.group(1).strip(), [int(x.replace(",", "")) for x in m.group(2).split()]))
+    return pages
+
+
+def synthetic_table(page_no, k, blk):
+    cols = []
+    for c in blk["cols"]:
+        m = re.match(r"^(.*?)\s*\(([^()]*)\)\s*$", c)
+        cols.append((m.group(1), m.group(2)) if m else (c, ""))
+    header = {i + 1: ([n, "(%s)" % p] if p else [n]) for i, (n, p) in enumerate(cols)}
+    for name, vals in blk["rows"]:
+        if len(vals) != len(cols):
+            raise ValueError(f"page {page_no} {blk['office']} {blk['district']}: row {name} has {len(vals)} numbers, "
+                             f"{len(cols)} candidates")
+    rows = [(name, None, {i + 1: [v] for i, v in enumerate(vals)}) for name, vals in blk["rows"]]
+    office = office_of(blk["office"])
+    top = 50 + 10 * k
+    return {"bbox": (0, top, 612, top + 5 + 10 * len(rows)), "edges": [0] + [80 * (i + 1) for i in range(len(cols))] +
+            [80 * len(cols) + 80], "header": header, "rows": rows, "boxes": [{} for _ in rows], "labels": [],
+            "phrases": [], "inline": [], "header_lines": [], "page": page_no, "tkey": (page_no, 0, k), "office": office,
+            "printed": blk["office"], "ctx": [], "wide": True, "page_phrases": [],
+            "force": {"district": blk["district"], "term": blk["term"], "ballot": blk["ballot"],
+                      "vgroup": blk["vgroup"], "office": blk["office"]}, "hand_entered": True}
+
+
+def load_renames(stem):
+    import json
+    f = ROOT / "corrections" / f"races_{stem.split('@')[0]}.json"
+    if "@" in stem or not f.exists():
+        return {}
+    return json.loads(f.read_text()).get("renames", {})
+
+
+def apply_corrections(stem, tables):
+    """Hand corrections for a scanned book (corrections/races_<stem>.json), read from the page images. Keys are
+    [page, slot, ordinal-in-slot] table ids as printed by review_races.py; they override whatever OCR read."""
+    import json
+    f = ROOT / "corrections" / f"races_{stem.split('@')[0]}.json"
+    if not f.exists() or "@" in stem:
+        return tables
+    c = json.loads(f.read_text())
+    idx = {tuple(t["tkey"]): t for t in tables if t.get("tkey")}
+    for p, s, o, meta in c.get("tables", []):
+        t = idx.get((p, s, o))
+        if t is not None:
+            t.setdefault("force", {}).update(meta)
+    for p, s, o, ci, name in c.get("headers", []):
+        t = idx.get((p, s, o))
+        if t is not None:
+            t["header"][ci] = [name]
+    for p, s, o, ri, name in c.get("row_names", []):
+        t = idx.get((p, s, o))
+        if t is not None:
+            n, prec, vals = t["rows"][ri]
+            t["rows"][ri] = (name, prec, vals)
+    for p, s, o, ri, ci, v in c.get("cells", []):
+        t = idx.get((p, s, o))
+        if t is not None:
+            t["rows"][ri][2][ci] = [v]
+            t.setdefault("fixed_cells", set()).add((ri, ci))
+    for spec in c.get("replace_tables", []):
+        # a table too damaged to repair: keep its title/position, replace candidates and rows with a hand transcription
+        p, s, o = spec["table"]
+        t = idx.get((p, s, o))
+        if t is None:
+            continue
+        t["header"] = {i + 1: [n] for i, n in enumerate(spec["candidates"])}
+        t["edges"] = [t["edges"][0] + 80 * i for i in range(len(spec["candidates"]) + 2)]
+        t["rows"] = [(name, None, {i + 1: [v] for i, v in enumerate(vals)}) for name, vals in spec["rows"]]
+        t["boxes"] = [{} for _ in t["rows"]]
+        t["hand_entered"] = True
+        if spec.get("force"):
+            t.setdefault("force", {}).update(spec["force"])
+        for dp, ds, do in spec.get("drop", []):
+            d = idx.pop((dp, ds, do), None)
+            if d is not None:
+                tables = [x for x in tables if x is not d]
+    for p, s, o in c.get("drop_tables", []):
+        t = idx.pop((p, s, o), None)
+        if t is not None:
+            tables = [x for x in tables if x is not t]
+    return tables
+
+
+def process_scanned(stem, use_cells=True):
+    """Scanned book: main OCR reading + hand corrections, repaired cell by cell from the other readings
+    (data/ocr_races/<stem>@...) and from per-cell high-resolution re-reads, wherever the sums don't work."""
+    rows, issues, races, skipped = process_book(stem)
+    variants = sorted(p.name for p in (ROOT / "data" / "ocr_races").glob(f"{stem}@*"))
+    vrows = [process_book(v)[0] for v in variants]
+    reader = None
+    if use_cells:
+        from cell_ocr import read_cell
+        reader = read_cell
+    repair_from_variants(rows, vrows, reader)
+    return rows, issues, races, skipped
+
+
 def process_book(stem):
-    tables = collect(stem)
+    tables = apply_corrections(stem, collect(stem))
     races = build_races(stem, tables)
     rows, issues, skipped = [], [], []
     keep = []
@@ -467,7 +835,7 @@ def process_book(stem):
         rows += r
         issues += i
         keep.append(race)
-    return rows, issues, keep, skipped
+    return resolve_unknowns(rows), issues, keep, skipped
 
 
 # Discrepancies inside the source itself; values are kept as printed (see data/race_results.ERRATA.md).
@@ -487,11 +855,11 @@ KNOWN_SOURCE_ISSUES = {
 # Elections included in the published CSV (all checks pass apart from KNOWN_SOURCE_ISSUES).
 PUBLISH = ["2024_general", "2024_primary", "2022_general", "2022_primary", "2020_general", "2020_primary",
            "2018_general", "2018_primary", "2016_general", "2016_primary", "2014_general", "2014_primary", "2012_general", "2012_primary",
-           "2010_general", "2010_primary", "2008_general", "2004_general", "2004_primary", "2002_primary"]
+           "2010_general", "2010_primary", "2008_general", "2006_general", "2004_general", "2004_primary", "2002_primary"]
 COLUMNS = ["election_date", "election_type", "race_id", "office", "office_level", "office_as_printed", "district",
            "district_inferred",
            "term", "primary_ballot", "voter_group", "is_recount", "jurisdiction", "jurisdiction_type", "partial_county_precincts",
-           "candidate", "party", "candidate_as_printed", "is_write_in", "winner", "votes", "total_derived"]
+           "candidate", "party", "candidate_as_printed", "is_write_in", "winner", "votes", "total_derived", "ocr_derived"]
 
 
 def slug(s):
@@ -505,7 +873,7 @@ def main():
     verbose = "-v" in sys.argv
     allrows, ok = [], True
     for stem in stems:
-        rows, issues, races, skipped = process_book(stem)
+        rows, issues, races, skipped = (process_scanned(stem) if stem in SCANNED else process_book(stem))
         problems = validate(stem, races, rows)
         known, real = [], []
         for k, msg in problems:

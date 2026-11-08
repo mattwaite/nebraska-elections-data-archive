@@ -5,7 +5,7 @@ display-formatted tables, some of them scans of paper. This project archives tho
 tables into **tidy, analysis-ready long CSVs**, one file per topic, with every election from 2000 to 2024
 combined into each file.
 
-The archive covers who was registered, how people voted, which party's primary they voted in, and, for 20 of
+The archive covers who was registered, how people voted, which party's primary they voted in, and, for 21 of
 the 26 elections so far, who got how many votes in each county for statewide, federal and legislative
 races.
 
@@ -16,14 +16,14 @@ races.
 | [`data/voter_registration.csv`](data/voter_registration.csv) | Registered voters by county and party, plus number of precincts | 26 (13 primary, 13 general) | 14,471 |
 | [`data/voting_by_method.csv`](data/voting_by_method.csv) | Ballots cast by county and method (polling place, early/absentee, mail, provisional, military/overseas, new/former resident) | 26 | 12,784 |
 | [`data/voting_by_party.csv`](data/voting_by_party.csv) | Ballots cast in each primary, by county and party category | 13 (primaries only) | 7,426 |
-| [`data/race_results.csv`](data/race_results.csv) | Votes by county and candidate for President, U.S. Senate and House, statewide offices, the Legislature, Regents and the State Board of Education | **20 of 26** (2002 primary; 2004 primary and general; 2008 general; 2010-2024 primary and general) | 48,138 |
+| [`data/race_results.csv`](data/race_results.csv) | Votes by county and candidate for President, U.S. Senate and House, statewide offices, the Legislature, Regents and the State Board of Education | **21 of 26** (2002 primary; 2004 primary and general; 2006 general; 2008 general; 2010-2024 primary and general) | 50,299 |
 
 Each dataset has an **ERRATA file next to it** (`data/<name>.ERRATA.md`). Read it before you analyze the
 data. It records the schema, the method, every judgment call, every inconsistency in the source, and every
 hand correction.
 
 **Race results are partial.** Judicial retention, local contests and ballot measures are not included, and
-6 elections are not in the file yet (2000, 2002 general, 2006, 2008 primary). The ERRATA lists each
+5 elections are not in the file yet (2000 primary and general, 2002 general, 2006 primary, 2008 primary). The ERRATA lists each
 one and why. A missing election means "not done", not "no data".
 
 ### Shape of the data
@@ -135,8 +135,9 @@ only restructures them. If you find an error, please open an issue with the elec
 
 ## Roadmap
 
-* Race results for the remaining 6 elections: the 2008 primary needs more parser work; 2000, 2002 general and 2006
-  are scans that need OCR and hand correction.
+* Race results for the remaining 5 elections: the 2008 primary needs more parser work; the 2000 primary and general,
+  2002 general and 2006 primary are scans that need much more OCR repair and hand transcription (the 2006 general
+  is done and shows the method).
 * Ballot measures, judicial retention and local contests.
 * Special elections, which this project does not yet cover.
 

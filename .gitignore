@@ -4,3 +4,6 @@ __pycache__/
 .venv/
 # intermediate OCR page images (regenerable; the JSON candidates beside them are kept)
 data/ocr_raw*/_png/
+data/ocr_races/*@*
+!data/ocr_races/2006_general@*
+data/ocr_races/_png/

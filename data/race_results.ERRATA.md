@@ -1,15 +1,15 @@
 # ERRATA: `race_results.csv`
 
 Read this before using the dataset. It records the schema, what is and is not covered, every judgment call
-and every known limitation. **This dataset is partial: 20 of 26 elections, and only statewide, federal and
+and every known limitation. **This dataset is partial: 21 of 26 elections, and only statewide, federal and
 legislative offices.** The coverage section says exactly which, and why.
 
 ## What the dataset is
 
 County-level results for each race, from the "Federal Offices" and "State Offices" sections of the Secretary
 of State canvass books (archived in `pdfs/`). The books print each race as a wide table with candidates as
-column headings; this file has one row per election × race × jurisdiction × candidate. 48,138 rows,
-933 races.
+column headings; this file has one row per election × race × jurisdiction × candidate. 50,299 rows,
+977 races.
 
 | column | meaning |
 |---|---|
@@ -33,6 +33,7 @@ column headings; this file has one row per election × race × jurisdiction × c
 | `is_write_in` | `True` for "Write-In Scatterings" rows. These are the sum of all write-in votes, not a person |
 | `winner` | `True`/`False` only in the 2024 general, the one book that marks winners (a check mark). **Empty in every other election; empty means unknown, not "lost"** |
 | `votes` | votes |
+| `ocr_derived` | `True` for a cell in a scanned book whose value was not the main OCR reading: it was repaired from another OCR reading or a high-resolution re-read of that one cell, or solved as the one unknown in a column whose Total is known. In every case the column then adds up to the printed Total. 17 cells in the 2006 general |
 | `total_derived` | `True` for 57 rows where the book prints no Total row (see below) |
 
 **`Total` is a row, not a column.** To get a race result, filter `jurisdiction_type == "race_total"`. Never
@@ -54,14 +55,14 @@ boards, and ballot measures. Special elections are not in the archive at all.
 
 Included (every check passes, apart from the five source issues listed below):
 
-2002 primary; 2004 primary and general; 2008 general; 2010 primary and general; 2012 primary and general; 2014
+2002 primary; 2004 primary and general; 2006 general; 2008 general; 2010 primary and general; 2012 primary and general; 2014
 primary and general; 2016, 2018, 2020, 2022 and 2024 primaries and generals.
 
 **Not yet included**, and why:
 
 | election | reason |
 |---|---|
-| 2000 primary and general, 2002 general, 2006 primary and general (five scanned books) | scanned images; no text layer. Needs the same OCR-plus-hand-correction process as the earlier datasets |
+| 2000 primary and general, 2002 general, 2006 primary | scanned images. The reading pipeline exists (below) and the 2006 general is done with it, but these four need much more hand correction: the 2006 primary prints each race several times by kind of voter in dense side-by-side tables; the 2002 general scan is shaded and OCR is poor; the 2000 books are 195 and 339 pages |
 | 2008 primary | the U.S. House pages interleave a continuing county list in the right column with new tables in the left; the text-position parser mis-groups them and 23 candidate totals fail validation |
 
 Nothing from those books is in the CSV. Their absence says nothing about the results.
@@ -100,6 +101,26 @@ Three defects in the first published versions of this file were found and fixed:
 * **District labels:** side-by-side tables share one line of labels ("District Fifteen   District Seventeen"), and some
   were given their neighbour's district (2016 and 2010 legislative and Regents races, 2024 House primaries). Labels
   are now matched to tables by position, and I checked that no two different races share a `race_id`.
+
+## Scanned books (2006 general)
+
+The 2006 general book is a scan with no text layer. How it was read:
+
+1. Every page was OCR'd with tesseract (`ocr_race_pages.py`) into word boxes, and read by the same table parser as the
+   text books (`ocr_pages.py` presents OCR words as a page). Digit look-alikes inside numbers are repaired and
+   near-miss county names are snapped to the real county; a cell that is not a number is marked unreadable.
+2. Seven more OCR readings of every page (other resolutions and a version with the ruling lines erased) are used to
+   repair cells: a column that does not add up to its Total is fixed only by replacing one to three cells with values
+   other readings gave, if exactly one choice makes the column add up. A high-resolution re-read of the individual cells
+   is a further source. A county row lost under a heavy underline is restored only if the column then adds up.
+3. Pages the parser could not structure (stacked small tables: the Legislature, State Board of Education and
+   Regents pages, and U.S. House District 3) were **transcribed by hand from the page images**
+   (`corrections/races_2006_general.txt`). Each transcribed column was checked against its printed Total, and all of
+   them matched. A few candidate names the OCR garbled were corrected by hand (`corrections/races_2006_general.json`).
+
+Residual risk: a mis-read digit that the sum check cannot see (two offsetting errors in one column) would survive;
+and candidate names read by OCR on the non-transcribed pages (statewide races, Senate, House Districts 1 and 2,
+Governor) were checked by eye against the images but not exhaustively.
 
 ## Judgment calls
 

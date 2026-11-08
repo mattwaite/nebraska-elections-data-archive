@@ -1,0 +1,399 @@
+# Hand transcription of pages the OCR could not structure (read from the page images; every column is checked
+# against its printed TOTAL by extract_races.py).
+@page 16
+@race U.S. House | District 3 | | | |
+@cols Adrian Smith (Republican) | Scott Kleeb (Democratic)
+TOTAL 113687 93046
+Adams 5322 5284
+Antelope 1595 1061
+Arthur 167 67
+Banner 198 139
+Blaine 143 133
+Boone 1396 1111
+Box Butte 2208 1846
+Boyd 529 399
+Brown 783 610
+Buffalo 8685 6488
+Cedar 1164 1096
+Chase 1045 590
+Cherry 1638 1066
+Cheyenne 1956 1368
+Clay 1450 1152
+Custer 2458 2581
+Dawes 1564 1405
+Dawson 3895 2957
+Deuel 530 270
+Dundy 514 378
+Fillmore 1245 1241
+Franklin 757 715
+Frontier 722 545
+Furnas 1179 875
+Garden 658 360
+Garfield 512 408
+Gosper 549 433
+Grant 218 102
+Greeley 444 592
+Hall 8806 8830
+Hamilton 2674 1889
+Harlan 994 759
+Hayes 300 181
+Hitchcock 677 513
+Holt 2658 1814
+Hooker 188 138
+Howard 1146 1434
+Jefferson 1534 1666
+Kearney 1608 1173
+Keith 2059 1246
+Keya Paha 348 187
+Kimball 934 698
+Knox 1734 1341
+Lincoln 6709 6179
+Logan 236 139
+Loup 167 217
+McPherson 172 88
+Merrick 1683 1367
+Morrill 1176 752
+Nance 772 839
+Nuckolls 1003 1031
+Perkins 807 469
+Phelps 2456 1543
+Pierce 1504 836
+Platte 6714 4011
+Polk 1252 1037
+Red Willow 2476 1793
+Rock 392 380
+Saline 1727 2839
+Scotts Bluff 6062 5281
+Sheridan 1195 669
+Sherman 585 845
+Sioux 424 204
+Thayer 1258 1067
+Thomas 186 158
+Valley 1060 1031
+Webster 848 879
+Wheeler 196 195
+York 3443 2056
+
+@page 17
+@race Legislature | District 2 | | | |
+@cols Dave Pankonin | Jerry O. Bond
+TOTAL 7932 3538
+Cass 5577 2390
+Otoe 1341 851
+Sarpy 1014 297
+@race Legislature | District 4 | | | |
+@cols Pete Pirsch | Tony Sorrentino
+Douglas 7617 5785
+@race Legislature | District 6 | | | |
+@cols Lynne Sarafian Anderson | John E. Nelson
+Douglas 4328 6781
+@race Legislature | District 8 | | | |
+@cols Tom White | Marc Kraft
+Douglas 4820 4429
+@race Legislature | District 10 | | | |
+@cols Mike Friend | Robert Wimberley
+Douglas 7605 2278
+@race Legislature | District 12 | | | |
+@cols Jean Stothert | Steve Lathrop
+Douglas 5059 5073
+@race Legislature | District 14 | | | |
+@cols Tim Gay | Ian M. Hartfield
+Sarpy 8289 2701
+@race Legislature | District 16 | | | |
+@cols Kent Rogert | Jeff Bush
+TOTAL 6066 2956
+Burt 2029 731
+Cuming 1675 787
+Stanton 831 743
+Thurston 800 490
+Washington 731 205
+@race Legislature | District 18 | | | |
+@cols Mick Mines | Scott R. Yahnke
+TOTAL 7490 6001
+Douglas 4045 4539
+Washington 3445 1462
+@race Legislature | District 20 | | | |
+@cols Carol Casey | Brad Ashford
+Douglas 4920 6913
+@race Legislature | District 22 | | | |
+@cols Arnie Stuthman
+TOTAL 9589
+Colfax 1045
+Platte 8544
+@race Legislature | District 24 | | | |
+@cols Greg L. Adams | Curt Friesen
+TOTAL 6088 5891
+Polk 629 877
+Seward 2167 2833
+York 3292 2181
+@race Legislature | District 26 | | | |
+@cols Steve Guittar | Amanda M. McGill
+Lancaster 4569 6593
+@race Legislature | District 28 | | | |
+@cols Bill Avery | Bob Swanson
+Lancaster 5599 4200
+@race Legislature | District 30 | | | |
+@cols Tony Ojeda | Norman Wallman
+TOTAL 6229 8536
+Gage 3110 5799
+Lancaster 3119 2737
+@race Legislature | District 32 | | | |
+@cols Ron Schwab (By Petition) | Russ Karpisek
+TOTAL 4989 7173
+Fillmore 734 1591
+Jefferson 2082 1126
+Saline 1093 3424
+Thayer 1080 1032
+@race Legislature | District 34 | | | |
+@cols Annette M. Dubas | Greg Senkbile
+TOTAL 7084 6843
+Hall 2292 1924
+Hamilton 1998 2371
+Merrick 1360 1706
+Nance 1150 535
+Polk 284 307
+
+@page 18
+@race Legislature | District 36 | | | |
+@cols Dick Pierce | John Wightman
+TOTAL 4552 5623
+Buffalo 2526 1904
+Dawson 2026 3719
+@race Legislature | District 38 | | | |
+@cols Tom Carlson | Wayne Garrison
+TOTAL 7503 6388
+Clay 970 1438
+Franklin 684 653
+Gosper 554 336
+Harlan 902 727
+Nuckolls 694 1375
+Phelps 2925 1007
+Webster 774 852
+@race Legislature | District 40 | | | |
+@cols Cap Dierks | Tom Noecker
+TOTAL 7856 3936
+Cedar 1758 1888
+Holt 2435 487
+Knox 2100 926
+Pierce 1563 635
+@race Legislature | District 42 | | | |
+@cols Thomas F. Hansen | Marc Kaschke
+Lincoln 7139 5378
+@race Legislature | District 44 | | | |
+@cols Mark Christensen | Frank Shoemaker
+TOTAL 7796 5587
+Chase 1019 613
+Dawson 399 179
+Dundy 354 489
+Frontier 871 369
+Furnas 1093 959
+Hayes 311 158
+Hitchcock 735 426
+Perkins 814 412
+Red Willow 2200 1982
+@race Legislature | District 46 | | | |
+@cols Carol J. Brown | Danielle Nantkes
+Lancaster 2413 2985
+@race Legislature | District 48 | | | |
+@cols George H. Schlothauer | John N. Harms
+Scotts Bluff 4220 5840
+@race Public Service Commissioner | District 1 | | |
+@cols Frank Landis (Republican) | Charlie Matulka (Democratic)
+TOTAL 67265 43514
+Cass 4889 2940
+Gage 4656 3124
+Johnson 893 627
+Lancaster 49496 32852
+Nemaha 1565 820
+Otoe 3303 1645
+Pawnee 634 391
+Richardson 1829 1115
+@race Public Service Commissioner | District 3 | | |
+@cols Tim Schram (Republican) | Matt Connealy (Democratic)
+TOTAL 70730 50796
+Burt 930 1990
+Cuming 1184 1793
+Dodge 5358 5800
+Douglas 30262 18971
+Sarpy 24599 14668
+Saunders 3782 3358
+Thurston 695 975
+Washington 3920 3241
+
+@page 19
+@race State Board of Education | District 5 | | | |
+@cols Patricia H. Timm | Alan Jacobsen
+TOTAL 33694 25279
+Adams 4377 3470
+Clay 922 967
+Fillmore 782 1039
+Gage 5820 1943
+Jefferson 1683 878
+Johnson 883 471
+Lancaster 4943 4150
+Nemaha 1450 734
+Nuckolls 793 542
+Otoe 2593 1769
+Pawnee 534 365
+Richardson 1507 1018
+Saline 2023 1697
+Seward 2118 2453
+Thayer 885 750
+Webster 696 531
+York 1685 2502
+@race State Board of Education | District 6 | | | |
+@cols Fred Meyer | Marilyn M. Carpenter
+TOTAL 31661 28222
+Antelope 679 1133
+Boone 772 834
+Boyd 271 268
+Buffalo 4902 5628
+Custer 1861 1610
+Franklin 479 588
+Garfield 347 320
+Greeley 485 283
+Hall 8151 5895
+Hamilton 1882 1402
+Harlan 506 739
+Holt 2029 1375
+Howard 1581 846
+Kearney 950 1086
+Knox 928 1360
+Merrick 1453 845
+Nance 539 434
+Phelps 1488 1327
+Pierce 830 921
+Sherman 542 475
+Valley 849 724
+Wheeler 137 129
+@race State Board of Education | District 7 | | | |
+@cols Kandy Imes | Paula S. Pfister
+TOTAL 38836 21019
+Arthur 112 61
+Banner 240 63
+Blaine 135 63
+Box Butte 2269 1101
+Brown 827 275
+Chase 659 493
+Cherry 1278 765
+Cheyenne 1785 787
+Dawes 1272 1112
+Dawson 2934 2872
+Deuel 420 188
+Dundy 407 230
+Frontier 594 430
+Furnas 1182 542
+Garden 421 294
+Gosper 436 354
+Grant 156 62
+Hayes 218 161
+Hitchcock 555 372
+Hooker 126 56
+Keith 1767 834
+Keya Paha 245 147
+Kimball 898 359
+Lincoln 5905 3821
+Logan 179 93
+Loup 162 80
+McPherson 116 67
+Morrill 1180 403
+Perkins 556 380
+Red Willow 2138 1250
+Rock 370 160
+Scotts Bluff 7881 2304
+Sheridan 969 574
+Sioux 290 194
+Thomas 154 72
+@race State Board of Education | District 8 | | | |
+@cols Joseph Higgins | Dick Galusha
+TOTAL 28864 27793
+Douglas 26583 25960
+Sarpy 2281 1833
+
+@page 20
+@race University Regents | District 3 | | | |
+@cols Chuck Hassebrook
+TOTAL 52378
+Burt 2326
+Butler 2298
+Cedar 2900
+Colfax 2226
+Cuming 2458
+Dakota 3696
+Dixon 1806
+Dodge 9460
+Madison 8504
+Platte 8181
+Polk 1718
+Saunders 1412
+Stanton 1556
+Thurston 1287
+Wayne 2550
+@race University Regents | District 4 | | | |
+@cols Jim Nagengast | Bob Whitehouse
+TOTAL 19745 20703
+Douglas 13262 14049
+Sarpy 6483 6654
+@race University Regents | District 5 | | | |
+@cols Jim McClurg | Robert J. Prokop
+TOTAL 37240 25192
+Adams 5444 3087
+Clay 1179 882
+Fillmore 1048 975
+Gage 4320 3026
+Jefferson 1286 1418
+Johnson 943 557
+Lancaster 6795 2897
+Nemaha 1382 949
+Nuckolls 910 668
+Otoe 2698 1928
+Pawnee 582 437
+Richardson 1713 1054
+Saline 2200 1977
+Seward 2693 2011
+Thayer 816 963
+Webster 665 655
+York 2566 1708
+@race University Regents | District 7 | | | |
+@cols Bob Phares (By Petition)
+TOTAL 51707
+Arthur 168
+Banner 192
+Blaine 164
+Box Butte 2834
+Brown 862
+Chase 1082
+Cherry 1562
+Cheyenne 2202
+Dawes 1992
+Dawson 4647
+Deuel 549
+Dundy 561
+Frontier 919
+Furnas 1405
+Garden 650
+Gosper 658
+Grant 174
+Hayes 286
+Hitchcock 814
+Hooker 189
+Keith 2352
+Keya Paha 291
+Kimball 1147
+Lincoln 10013
+Logan 270
+Loup 198
+McPherson 174
+Morrill 1256
+Perkins 931
+Red Willow 2951
+Rock 413
+Scotts Bluff 7919
+Sheridan 1268
+Sioux 399
+Thomas 215
+@race University Regents | District 8 | | | |
+@cols Randy Ferlic | Carol Russell
+TOTAL 36770 28807
+Douglas 34319 26583
+Sarpy 2451 2224

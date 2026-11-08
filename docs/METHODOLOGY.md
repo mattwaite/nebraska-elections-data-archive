@@ -47,6 +47,12 @@ names wrapped over several lines above each. The extractor (`extract_races.py`) 
 5. **Validation:** county rows must sum to the race Total for every candidate, with one Total per candidate and
    no duplicate counties. The CSV is only written for elections that pass.
 
+**Scanned books** (race results) add an OCR layer: `ocr_race_pages.py` turns each page into word boxes,
+`ocr_pages.py` cleans digits and county names and hands them to the same parser, further OCR readings of the same
+pages (`make_variants.sh`) and per-cell high-resolution re-reads (`cell_ocr.py`) repair cells until each column adds
+up to its printed Total, and pages the parser cannot structure are transcribed by hand
+(`corrections/races_<book>.txt`) and checked the same way. `review_races.py` lists what still fails.
+
 Because some layouts need page-specific handling, the CSV includes only the elections that pass; the ERRATA
 lists the rest.
 
